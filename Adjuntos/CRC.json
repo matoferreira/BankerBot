@@ -1,50 +1,55 @@
 [
     {
-      "name": "Income",
+      "name": "Transactions",
       "superclasses": "",
-      "subclasses": "",
+      "subclasses": "Income, Expenses, Internaltransfers",
       "type": 1,
       "responsibilities": [
-        "- Conocer en que moneda es el ingreso",
-        "- Conocer el destino del ingreso (saber ubicación y tipo de moneda)",
-        "- Saber si es necesario convertir el dinero según el destino.",
-        "- Convertir el dinero al tipo de cambio-",
-        "- Conocer el monto total del ingreso",
-        "- Saber en que fecha se realizó"
-      ],
-      "collaborators": [
-        "Currency",
-        "Wallet"
-      ]
-    },
-    {
-      "name": "Currency",
-      "superclasses": "",
-      "subclasses": "",
-      "type": 2,
-      "responsibilities": [
-        "- Conocer su constructor",
-        "- Conocer la cotización actualizada al día de la consulta",
-        "- Puede convertirse a su valor en dólares"
+        "- Conocer el monto total",
+        "- Saber si es necesario convertir el dinero según el destino y llamar a la conversión.",
+        "- Conocer el monto luego de la conversión.",
+        "- Saber en que fecha se realizó",
+        "- Conocer el concepto"
       ],
       "collaborators": [
         ""
       ]
     },
     {
-      "name": "Wallet",
-      "superclasses": "PaymentMethod",
+      "name": "Income",
+      "superclasses": "Transactions",
       "subclasses": "",
       "type": 1,
       "responsibilities": [
-        "- Conocer que tipos de moneda tengo.",
-        "- Conocer el saldo por moneda",
-        "- Conocer el saldo total de la billetera"
+        "- Conocer en que moneda es el ingreso",
+        "- Conocer el monto total del ingreso",
+        "- Conocer el destino del ingreso (saber ubicación y tipo de moneda)",
+        "- Saber si es necesario convertir el dinero según el destino y llamar a la conversión.",
+        "- Conocer el monto luego de la conversión.",
+        "- Saber en que fecha se realizó",
+        "- Conocer el concepto del ingreso"
       ],
       "collaborators": [
-        "Income",
-        "Expenses",
-        "Internal transfer"
+        "ICurrency",
+        "PaymentMethod"
+      ]
+    },
+    {
+      "name": "Expenses",
+      "superclasses": "",
+      "subclasses": "",
+      "type": 1,
+      "responsibilities": [
+        "Conocer el monto",
+        "Conocer la moneda",
+        "Conocer el rubro",
+        "Conocer la fecha",
+        "Conocer el origen del dinero",
+        "Conocer el concepto del egreso"
+      ],
+      "collaborators": [
+        "Currency",
+        "Payment method"
       ]
     },
     {
@@ -57,41 +62,46 @@
         "- Conocer el destino de la transferencia (cuál es y qué moneda acepta)",
         "- Conocer el importe que se está transfiriendo",
         "- Conocer la moneda del importe",
-        "- Convertir la moneda si es necesario",
+        "- Saber si es necesario convertir el dinero según el destino y llamar a la conversión.",
         "- Conocer el concepto de la transferencia",
         "- Conocer la fecha de la transferencia"
       ],
       "collaborators": [
-        "Currency",
-        "Wallet"
+        "ICurrency",
+        "PaymentMethod"
       ]
     },
     {
-      "name": "Dolar",
-      "superclasses": "Moneda",
+      "name": "ICurrency",
+      "superclasses": "",
+      "subclasses": "",
+      "type": 3,
+      "responsibilities": [
+        "- Conocer su nombre",
+        "- Conocer su país de origen",
+        "- Conocer la cotización actualizada al día de la consulta",
+        "- Puede convertirse a su valor en dólares",
+        "- Puede convertir dólares a su valor"
+      ],
+      "collaborators": [
+        "CurrencyWebService"
+      ]
+    },
+    {
+      "name": "Currency",
+      "superclasses": "ICurrency",
       "subclasses": "",
       "type": 1,
       "responsibilities": [
         "- Conocer su nombre",
-        "- Conocer su país de origen",
+        "- Conocer su origen",
+        "- Conocer su símbolo",
         "- Conocer su cotización"
       ],
       "collaborators": [
-        "Currency"
-      ]
-    },
-    {
-      "name": "Peso",
-      "superclasses": "Moneda",
-      "subclasses": "",
-      "type": 1,
-      "responsibilities": [
-        "- Conocer su nombre",
-        "- Conocer su país de origen",
-        "- Conocer su cotización"
-      ],
-      "collaborators": [
-        "Currency"
+        "CurrencyWebService",
+        "Transactions",
+        "PaymentMethods"
       ]
     },
     {
@@ -100,22 +110,163 @@
       "subclasses": "Wallet, CreditCard, BankAccount",
       "type": 1,
       "responsibilities": [
-        ""
+        "Conocer la moneda",
+        "Conocer el saldo",
+        "Conocer la lista de transacciones"
+      ],
+      "collaborators": [
+        "Statement"
+      ]
+    },
+    {
+      "name": "Wallet",
+      "superclasses": "PaymentMethod",
+      "subclasses": "",
+      "type": 1,
+      "responsibilities": [
+        "- Conocer mi lista de SubWallets",
+        "- Conocer que tipos de moneda tengo.",
+        "- Conocer el saldo por moneda",
+        "- Conocer el saldo total de la billetera"
+      ],
+      "collaborators": [
+        "Transactions"
+      ]
+    },
+    {
+      "name": "BankAccount",
+      "superclasses": "Payment method",
+      "subclasses": "",
+      "type": 1,
+      "responsibilities": [
+        "Conocer el banco",
+        "Conocer la moneda",
+        "Conocer el saldo"
+      ],
+      "collaborators": [
+        "Currency",
+        "Statement"
+      ]
+    },
+    {
+      "name": "CreditCard",
+      "superclasses": "PaymentMethod",
+      "subclasses": "",
+      "type": 1,
+      "responsibilities": [
+        "Conocer el estado de cuenta de este mes",
+        "Agregar un nuevo movimiento al estado de este mes ",
+        "Conocer el límite",
+        "Conocer el saldo",
+        "Eliminar un movimiento cancelado/anulado",
+        "Sumar el total del mes",
+        "Acceder a los Movimientos de Meses anteriores"
+      ],
+      "collaborators": [
+        "Statement",
+        "Currency"
+      ]
+    },
+    {
+      "name": "Statement",
+      "superclasses": "",
+      "subclasses": "",
+      "type": 2,
+      "responsibilities": [
+        "Conocer los egresos de la cuenta(Tarjeta de Crédito, Billetera, Cuenta Bancaria)",
+        "Conocer los ingresos a la cuenta."
       ],
       "collaborators": [
         ""
       ]
     },
     {
-      "name": "Transactions",
+      "name": "CardStatement",
       "superclasses": "",
-      "subclasses": "Income, Expenses, Internaltransfers",
+      "subclasses": "Statement",
       "type": 1,
       "responsibilities": [
-        ""
+        "Conocer los egresos que se hacen",
+        "Conocer los pagos que se reciben"
       ],
       "collaborators": [
-        ""
+        "Statement",
+        "Transactions"
+      ]
+    },
+    {
+      "name": "BankAccountStatement",
+      "superclasses": "Statement",
+      "subclasses": "",
+      "type": 1,
+      "responsibilities": [
+        "Conocer los egresos que se hacen",
+        "Conocer los ingresos que se reciben"
+      ],
+      "collaborators": [
+        "Transactions",
+        "Statement"
+      ]
+    },
+    {
+      "name": "WalletStatement",
+      "superclasses": "Statement",
+      "subclasses": "",
+      "type": 1,
+      "responsibilities": [
+        "Conocer los egresos que se hacen",
+        "Conocer los ingresos que se reciben"
+      ],
+      "collaborators": [
+        "Transactions",
+        "Statement"
+      ]
+    },
+    {
+      "name": "ExpensesAnalysis",
+      "superclasses": "",
+      "subclasses": "",
+      "type": 1,
+      "responsibilities": [
+        "Conocer una lista de Rubros",
+        "Agregar y eliminar Rubros para clasificar",
+        "Brinda información del gasto en un rubro",
+        "Brinda información de los gastos en todos los rubros"
+      ],
+      "collaborators": [
+        "Transactions"
+      ]
+    },
+    {
+      "name": "SavingsAnalysis",
+      "superclasses": "",
+      "subclasses": "",
+      "type": 1,
+      "responsibilities": [
+        "Conocer los saldos por orígenes",
+        "Conocer las monedas por orígenes",
+        "Conoce el total de ahorro",
+        "Conocer el objetivo de ahorro"
+      ],
+      "collaborators": [
+        "Payment method",
+        "Currency"
+      ]
+    },
+    {
+      "name": "ExpenseType",
+      "superclasses": "",
+      "subclasses": "",
+      "type": 3,
+      "responsibilities": [
+        "Conocer su tipo",
+        "Acumula transacciones hechas por rubro",
+        "Calcular sus líneas de gasto por rubro",
+        "Conocer el total por rubro"
+      ],
+      "collaborators": [
+        "Expenses",
+        "Currency"
       ]
     },
     {
@@ -133,51 +284,8 @@
         "Enviar alertas al usuario cuando se llega a los niveles preestablecidos"
       ],
       "collaborators": [
-        "CreditCard",
-        "Wallet",
-        "BankAccount"
-      ]
-    },
-    {
-      "name": "CreditCard",
-      "superclasses": "PaymentMethod",
-      "subclasses": "",
-      "type": 1,
-      "responsibilities": [
-        "Conocer el estado de cuenta de este mes",
-        "Agregar un nuevo movimiento al estado de este mes ",
-        "Eliminar un movimiento cancelado/anulado",
-        "Sumar el total del mes",
-        "Acceder a los Movimientos de Meses anteriores"
-      ],
-      "collaborators": [
-        "CardStatement"
-      ]
-    },
-    {
-      "name": "CardStatement",
-      "superclasses": "",
-      "subclasses": "Statement",
-      "type": 1,
-      "responsibilities": [
-        "Conocer los egresos que se hacen",
-        "Conocer los pagos que se reciben"
-      ],
-      "collaborators": [
-        ""
-      ]
-    },
-    {
-      "name": "Statement",
-      "superclasses": "",
-      "subclasses": "",
-      "type": 2,
-      "responsibilities": [
-        "Conocer los egresos de la cuenta(Tarjeta de Crédito, Billetera, Cuenta Bancaria)",
-        "Conocer los ingresos a la cuenta."
-      ],
-      "collaborators": [
-        ""
+        "PaymentMethod",
+        "UserInterface"
       ]
     },
     {
@@ -189,107 +297,50 @@
         "Interactuar con la App Telegram"
       ],
       "collaborators": [
-        "Bot"
+        "UserInterface"
       ]
     },
     {
-      "name": "Bot(User Interface)",
+      "name": "UserInterface",
       "superclasses": "",
       "subclasses": "",
       "type": 1,
       "responsibilities": [
-        "Interacuar con el usuario"
+        "Interactuar con el usuario"
       ],
       "collaborators": [
-        ""
+        "Transactions",
+        "PaymentMethods",
+        "Alerts",
+        "EntryFormat",
+        "ExpensesAnalysis",
+        "SavingsAnalysis"
       ]
     },
     {
-      "name": "ListaDeEgresos",
+      "name": "EntryFormat",
       "superclasses": "",
       "subclasses": "",
-      "type": 1,
+      "type": 3,
       "responsibilities": [
-        "Conocer una lista de Rubros",
-        "Agregar y eliminar Rubros para clasificar"
+        "Conoce el formato de entrada"
       ],
       "collaborators": [
-        ""
+        "ExcelAPI"
       ]
     },
     {
-      "name": "Expenses",
-      "superclasses": "",
+      "name": "ExcelAPI",
+      "superclasses": "EntryFormat",
       "subclasses": "",
       "type": 1,
       "responsibilities": [
-        "Conocer el monto",
-        "Conocer la moneda",
-        "Conocer el rubro",
-        "Conocer la fecha",
-        "Conocer el origen del dinero"
+        "Interactuar con Excel",
+        "Consultar datos de una planilla de Excel",
+        "Almacenar información en una planilla Excel"
       ],
       "collaborators": [
-        "Currency",
-        "Payment method"
-      ]
-    },
-    {
-      "name": "Entrada",
-      "superclasses": "",
-      "subclasses": "",
-      "type": 1,
-      "responsibilities": [
-        "Recibe la información en cualquiera sea su formato"
-      ],
-      "collaborators": [
-        ""
-      ]
-    },
-    {
-      "name": "BankAccount",
-      "superclasses": "Payment method",
-      "subclasses": "",
-      "type": 1,
-      "responsibilities": [
-        "Conocer el banco",
-        "Conocer la moneda",
-        "Conocer el saldo"
-      ],
-      "collaborators": [
-        "Bank",
-        "Currency"
-      ]
-    },
-    {
-      "name": "Chanchita de Ahorro",
-      "superclasses": "",
-      "subclasses": "",
-      "type": 1,
-      "responsibilities": [
-        "Conocer el saldo",
-        "Conocer la moneda",
-        "Conocer el objetivo"
-      ],
-      "collaborators": [
-        "Payment method",
-        "Currency"
-      ]
-    },
-    {
-      "name": "Rubros",
-      "superclasses": "",
-      "subclasses": "",
-      "type": 1,
-      "responsibilities": [
-        "Conocer su tipo",
-        "Calcular sus líneas de gasto por rubro",
-        "Conocer el total por rubro",
-        ""
-      ],
-      "collaborators": [
-        "Expenses",
-        "Currency"
+        "Statements"
       ]
     }
   ]
