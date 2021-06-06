@@ -33,7 +33,7 @@
     },
     {
       "name": "Wallet",
-      "superclasses": "Payment method",
+      "superclasses": "PaymentMethod",
       "subclasses": "",
       "type": 1,
       "responsibilities": [
@@ -48,7 +48,7 @@
       ]
     },
     {
-      "name": "Internal transfer",
+      "name": "InternalTransfer",
       "superclasses": "Transactions",
       "subclasses": "",
       "type": 1,
@@ -95,9 +95,9 @@
       ]
     },
     {
-      "name": "Payment method",
+      "name": "PaymentMethod",
       "superclasses": "",
-      "subclasses": "Wallet, Credit Card, Bank Account",
+      "subclasses": "Wallet, CreditCard, BankAccount",
       "type": 1,
       "responsibilities": [
         ""
@@ -109,7 +109,7 @@
     {
       "name": "Transactions",
       "superclasses": "",
-      "subclasses": "Income, Expenses, Internal transfers",
+      "subclasses": "Income, Expenses, Internaltransfers",
       "type": 1,
       "responsibilities": [
         ""
@@ -140,7 +140,7 @@
     },
     {
       "name": "CreditCard",
-      "superclasses": "",
+      "superclasses": "PaymentMethod",
       "subclasses": "",
       "type": 1,
       "responsibilities": [
@@ -151,7 +151,7 @@
         "Acceder a los Movimientos de Meses anteriores"
       ],
       "collaborators": [
-        "EstadoDeTarjeta"
+        "CardStatement"
       ]
     },
     {
@@ -247,7 +247,7 @@
       ]
     },
     {
-      "name": "Bank account",
+      "name": "BankAccount",
       "superclasses": "Payment method",
       "subclasses": "",
       "type": 1,
