@@ -1,22 +1,30 @@
 using System;
+using System.Collections.Generic;
 
 namespace Library
 {
-    public class CreditCard
+    public class CreditCard : PaymentMethod
     {
-        public Currency Currency {get ; private set;}
-        public double Limit {get ; private set;}
-        public double Balance {get ; private set;}
-        public CardStatement CurrentStatement {get ; private set;}
-        public List<CardStatement> StatementList {private get; private set;}
+        private double Limit {get ; set;}
+
+        //Este metodo podría ser abstracto en la clase PaymentMethod
+        public List<CardStatement> StatementList {get; private set;}
         //falta agregar constructor
-        public string GetCurrency()
-        {
-            return Currency;
-        }
         public double GetLimit()
         {
             return Limit;
+        }
+        public void SetNewLimit (double NewLimit)
+        {
+            NewLimit = this.Limit;
+        }
+        public override void AddTransaction(string concept, double ammount)
+        {
+
+        }
+        public override void RemoveTransaction(string concept, double ammount)
+        {
+
         }
     }
 }
