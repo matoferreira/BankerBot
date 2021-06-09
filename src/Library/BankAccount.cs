@@ -7,27 +7,21 @@ namespace Library
 {
     public class BankAccount : PaymentMethod
     {
-        private List<BankAccountStatement> StatementList {get; set;}
+        public List<BankAccountStatement> StatementList {get; private set;}
+        public BankAccountStatement CurrentStatement { get; protected set; }
 
-        public BankAccount(Currency currency)
+        public BankAccount(Currency currency, DateTime date)
         {
-
-        }
-        public override void AddTransaction(string concept, double ammount)
-        {
-            
-        }
-        public override void RemoveTransaction(string concept, double ammount)
-        {
-           
-        }
-        public override string GetCurrency()
-        {
-            return null;
+            this.StatementList = new List<BankAccountStatement>();
+            this.CurrentStatement = new BankAccountStatement(currency, date, 0);
         }
         public override double GetBalance()
         {
             return 0;
+        } 
+        public void NewMonth()
+        {
+
         }
 
     }
