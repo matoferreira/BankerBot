@@ -2,10 +2,9 @@ using System;
 
 namespace Library
 {
-    //Creamos una clase abstracta PaymentMethod
-    //La idea de utilizar esta clase es cumplir con el principio de LSP.
-    //Cuando se necesite hacer una transacción, se pedirá un objeto de tipo PaymentMethod
-    //que puede ser sustituido por cualquier clase subtipo de ésta.
+    //Creamos una clase abstracta PaymentMethod, que es un producto financiero o una billetera que se puede usar para operar con dinero.
+    //La idea de utilizar esta clase es cumplir con el principio de LSP, Creditcard, BankAccount y Wallet seran clases polimórficas
+    //PaymentMethod puede ser sustituido por cualquier clase subtipo de ésta.
     public abstract class PaymentMethod
     {
         
