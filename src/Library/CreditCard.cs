@@ -5,12 +5,13 @@ namespace Library
 {
     public class CreditCard : PaymentMethod
     {
-        private double Limit {get ;}
+        private double Limit { get; set; }
         public List<CardStatement> StatementList {get; private set;}
-        //falta agregar constructor
-        public CreditCard(Currency currency, double limit)
+        public CardStatement CurrentStatement { get; protected set; }
+        public CreditCard(Currency currency, DateTime date, double limit)
         {
-            
+            this.CurrentStatement = new CardStatement(currency, date, limit, 0);
+            this.StatementList = new List<CardStatement>();
         }
         public double GetLimit()
         {
@@ -18,23 +19,15 @@ namespace Library
         }
         public void SetNewLimit (double NewLimit)
         {
-            NewLimit = this.Limit;
-        }
-        public override void AddTransaction(string concept, double ammount)
-        {
 
-        }
-        public override void RemoveTransaction(string concept, double ammount)
-        {
-
-        }
-        public override string GetCurrency()
-        {
-            return null;
         }
         public override double GetBalance()
         {
             return 0;
+        }
+        public void NewMonth()
+        {
+            
         }
     }
 }
