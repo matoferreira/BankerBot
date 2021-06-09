@@ -1,3 +1,5 @@
+//Representa las cuentas bancarias que tiene el usuario
+//
 using System;
 using System.Collections.Generic;
 
