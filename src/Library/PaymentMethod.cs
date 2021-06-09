@@ -2,6 +2,10 @@ using System;
 
 namespace Library
 {
+    //Creamos una clase abstracta PaymentMethod
+    //La idea de utilizar esta clase es cumplir con el principio de LSP.
+    //Cuando se necesite hacer una transacción, se pedirá un objeto de tipo PaymentMethod
+    //que puede ser sustituido por cualquier clase subtipo de ésta.
     public abstract class PaymentMethod
     {
         

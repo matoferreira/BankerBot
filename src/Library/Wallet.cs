@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace Library
 {
+    //La clase Wallet es una clase compuesta, que delega parte de sus responsabilidades a la clase SubWallet.
+    //Wallet es la clase Experta (patrón Expert) en calcular el balance total de la billetera, dado a que es en sí,
+    //una lista de SubWallets, por esta razón, es la que conoce los balances de cada una para calcular el balance total.
     public class Wallet : PaymentMethod
     {
         private List<SubWallet> SubWalletList {get; set;}
