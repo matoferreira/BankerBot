@@ -1,13 +1,16 @@
 using System;
+using System.Collections.Generic;
 
 namespace Library
 {
     public class BankAccountStatement : Statement
     {
-        BankAccountStatement(Currency moneda, DateTime fecha)
+        public List<Transactions> transactions { get; private set; }
+        BankAccountStatement(Currency currency, DateTime date)
         {
-            this.Moneda = moneda;
-            this.Fecha = fecha;
+            this.Currency = currency;
+            this.Date = date;
+            this.transactions = new List<Transactions>();
         }
         public override void AddTransaction()
         {
@@ -19,11 +22,11 @@ namespace Library
         }
         public override double GetBalance()
         {
-
+            return 0;
         }
         public override double AccumulateExpenses()
         {
-            
+            return 0;
         }
     }
 }

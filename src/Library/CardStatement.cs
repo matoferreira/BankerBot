@@ -1,15 +1,18 @@
 using System;
+using System.Collections.Generic;
 
 namespace Library
 {
     public class CardStatement : Statement
     {
-        private double limit;
-        CardStatement(Currency moneda, DateTime fecha, double limite)
+        public double limit { get; private set; }
+        public List<Transactions> transactions { get; private set; }
+        CardStatement(Currency currency, DateTime date, double limit)
         {
-            this.Moneda = moneda;
-            this.Fecha = fecha;
-            this.limit = limite;
+            this.Currency = currency;
+            this.Date = date;
+            this.limit = limit;
+            this.transactions = new List<Transactions>();
         }
         public override void AddTransaction()
         {
@@ -21,11 +24,11 @@ namespace Library
         }
         public override double GetBalance()
         {
-
+            return 0;
         }
         public override double AccumulateExpenses()
         {
-            
+            return 0;
         }
     }
 }

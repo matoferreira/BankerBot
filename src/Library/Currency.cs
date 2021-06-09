@@ -4,16 +4,13 @@ namespace Library
 {
     public class Currency : ICurrency
     {
-        public string Name { get; }
-        public string Country { get; }
-        public double ExchangeRate { get; }
+        public string Name { get; private set; }
+        public double ExchangeRate { get; private set; }
 
-        public Currency(string name, string country)
+        public Currency(string name)
         {
             this.Name = name;
-            this.Country = country;
             this.ExchangeRate = 1;
-
         }
         
 
