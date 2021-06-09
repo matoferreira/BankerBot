@@ -7,8 +7,11 @@ namespace Library
     {
         private List<SubWallet> SubWalletList {get; set;}
         private List<Currency> CurrencyList {get; set;}
-        private double TotalBalance {get; set;}
         
+        public Wallet(SubWallet subwallet)
+        {
+
+        }
         public void AddSubWallet (SubWallet newSubWallet)
         {
 
@@ -17,19 +20,19 @@ namespace Library
         {
 
         }
-        public List<Currency> GetAllCurrency()
+        public override string GetCurrency()
         {
-            return this.CurrencyList;
+            return null;
         }
         public double GetBalanceByCurrency (Currency currency)
         {
-            return 2;
+            return 0;
             //En este método se devuelve el balance por cada moneda
-            //Se puso "2" para evitar el error de compilación por esperar un retorno double
+            //Se puso "0" para evitar el error de compilación por esperar un retorno double
         }
-        public double GetTotalBalance()
+        public override double GetBalance()
         {
-            return this.Balance;
+            return 0;
         }
     }
 }

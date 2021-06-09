@@ -7,6 +7,10 @@ namespace Library
     {
         private List<BankAccountStatement> StatementList {get; set;}
 
+        public BankAccount(Currency currency)
+        {
+
+        }
         public override void AddTransaction(string concept, double ammount)
         {
             
@@ -15,5 +19,14 @@ namespace Library
         {
            
         }
+        public override string GetCurrency()
+        {
+            return null;
+        }
+        public override double GetBalance()
+        {
+            return 0;
+        }
+
     }
 }

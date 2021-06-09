@@ -4,13 +4,12 @@ namespace Library
 {
     public abstract class PaymentMethod
     {
-        //Chequear los protected
+        
         protected Currency Currency {get ; private set;}
-        public DateTime Date {get; private set;}
+        protected DateTime Date {get; private set;}
         protected Statement CurrentStatement {get; private set;}
         protected double Balance {get; private set;}
 
-        //Va constructor?
         public virtual void AddTransaction(string concept, double ammount)
         {
 
@@ -19,13 +18,15 @@ namespace Library
         {
 
         }
-        public string GetCurrency()
+
+        //Pasarlo a las clases
+        public virtual string GetCurrency()
         {
-            return Currency;
+           return null;
         }
-        public double GetBalance()
+        public virtual double GetBalance()
         {
-            return Balance;
+            return 0;
         }
     }
 }

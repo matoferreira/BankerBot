@@ -5,11 +5,13 @@ namespace Library
 {
     public class CreditCard : PaymentMethod
     {
-        private double Limit {get ; set;}
-
-        //Este metodo podría ser abstracto en la clase PaymentMethod
+        private double Limit {get ;}
         public List<CardStatement> StatementList {get; private set;}
         //falta agregar constructor
+        public CreditCard(Currency currency, double limit)
+        {
+            
+        }
         public double GetLimit()
         {
             return Limit;
@@ -25,6 +27,14 @@ namespace Library
         public override void RemoveTransaction(string concept, double ammount)
         {
 
+        }
+        public override string GetCurrency()
+        {
+            return null;
+        }
+        public override double GetBalance()
+        {
+            return 0;
         }
     }
 }

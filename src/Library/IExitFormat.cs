@@ -4,6 +4,6 @@ namespace Library
 {
     public interface IExitFormat
     {
-        public EntryFormat EntryFormat {get; set;}
+        EntryFormat EntryFormat {get; set;}
     }
 }
