@@ -18,11 +18,11 @@ namespace Library
             this.transactions = new List<Transactions>();
             this.Balance = lastbalance;
         }
-        public override bool AddTransaction()
+        public override bool AddTransaction(Transactions transaction)
         {
             return true;
         }
-        public override void RemoveTransaction()
+        public override void RemoveTransaction(Transactions transaction)
         {
 
         }
