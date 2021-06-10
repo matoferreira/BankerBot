@@ -4,7 +4,7 @@ using System;
 //Porque conoce como hacerlo y conoce que moneda es.
 namespace Library
 {
-    public class Currency : ICurrency
+    public class Currency
     {
         public string Name { get; private set; }
         public double ExchangeRate { get; private set; }
