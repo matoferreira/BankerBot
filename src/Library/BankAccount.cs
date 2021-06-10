@@ -9,7 +9,7 @@ namespace Library
     {
         public List<BankAccountStatement> StatementList {get; private set;}
         public BankAccountStatement CurrentStatement { get; private set; }
-        private string BankName {get ;}
+        public string BankName { get; private set; }
 
         public BankAccount(String BankName, Currency currency, DateTime date)
         {
