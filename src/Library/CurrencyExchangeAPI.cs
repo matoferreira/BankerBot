@@ -5,5 +5,6 @@ namespace Library
 {
     public class CurrencyExchangeAPI
     {
+        
     }
 }
