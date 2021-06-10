@@ -1,5 +1,5 @@
 //Representa las cuentas bancarias que tiene el usuario
-//
+//Es un Creator de BankAccountStatement porque los crea y almacena.
 using System;
 using System.Collections.Generic;
 

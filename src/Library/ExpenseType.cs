@@ -5,21 +5,24 @@ namespace Library
 {
     public class ExpenseType
     {
-        public string name;
+        public string Name { get; private set; }
         public List<Expense> expenses { get; private set; }
 
 
-        public ExpenseType (string name ){
+        public ExpenseType (string name )
+        {
 
         }
-
-        public double CalculateTotal(List<Expense> expenses){
+      
+        public double CalculateTotaByType(List<Expense> expenses)
+        {
             return 0;
         }
 
-         public void AccumulateExpenses(List<Expense> expenses){
-            
-        }
+         public void AccumulateExpensesByType(List<Expense> expenses)
+         {  
+           
+         }
 
     }
 }

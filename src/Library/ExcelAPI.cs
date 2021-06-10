@@ -2,7 +2,7 @@ using System;
 
 namespace Library
 {
-    public class ExcelAPI
+    public class ExcelAPI : IEntryFormat
     {
     }
 }

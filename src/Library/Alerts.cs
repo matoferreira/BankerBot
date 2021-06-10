@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace Library
 {
+    //
     public class Alerts
     {
         public double SavingsTarget { get; private set; }
