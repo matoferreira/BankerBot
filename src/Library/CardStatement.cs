@@ -21,7 +21,7 @@ namespace Library
             this.transactions = new List<Transactions>();
             this.Balance = lastbalance;
         }
-        public override bool AddTransaction(Transactions transaction)
+        public override bool AddTransaction(Transactions transaction) //Si la transaccion supera el límite, devuelve false
         {
             return true;
         }

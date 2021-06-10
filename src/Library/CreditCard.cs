@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-//Representa las cuentas bancarias que tiene el usuario
+//Representa las tarjetas de crédito que tiene el usuario
 //Es un Creator de CreditCardStatement porque los crea y almacena.
 
 namespace Library

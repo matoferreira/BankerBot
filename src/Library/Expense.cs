@@ -1,5 +1,5 @@
 using System;
-
+//Representa una reducción de los fondos en una cuenta bancaria, o un gasto a crédito en una tarjeta
 //Es un subtipo de Transactions, esto permite que por el principio LSP, donde se espera un tipo Transactions, acepte un subtipo Expense
 namespace Library
 {
