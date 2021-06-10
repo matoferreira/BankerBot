@@ -13,16 +13,16 @@ namespace Library
         {
 
         }
-
+      
         public double CalculateTotaByType(List<Expense> expenses)
         {
             return 0;
         }
 
          public void AccumulateExpensesByType(List<Expense> expenses)
-         {
-            
-        }
+         {  
+           
+         }
 
     }
 }
