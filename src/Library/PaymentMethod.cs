@@ -10,7 +10,6 @@ namespace Library
     {
         
         public Currency Currency { get; protected set; }
-        public DateTime Date { get; protected set; }
         protected double Balance { get; set; }
         public virtual double GetBalance()
         {
