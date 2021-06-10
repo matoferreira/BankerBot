@@ -1,6 +1,6 @@
 using System;
 
-
+//Es un subtipo de Transactions, esto permite que por el principio LSP, donde se espera un tipo Transactions, acepte un subtipo Expense
 namespace Library
 {
     public class Expense : Transactions

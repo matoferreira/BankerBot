@@ -1,5 +1,7 @@
 using System;
 
+//Esta clase interactúa con el ExchangeAPI, dado a esto es la experta (patrón Expert) en actualizar el valor de su moneda
+//Porque conoce como hacerlo y conoce que moneda es.
 namespace Library
 {
     public class Currency : ICurrency
