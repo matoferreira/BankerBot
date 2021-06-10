@@ -6,9 +6,9 @@ namespace Library
     public class InternalTransfer: Transactions
     {
         
-        private double ammount;
+        public double ammount{ get; private set; }
 
-        private DateTime dateTime;
+        public DateTime dateTime{ get; private set; }
 
         public InternalTransfer (String concept, double ammount, Currency currency, PaymentMethod destination ){
 
