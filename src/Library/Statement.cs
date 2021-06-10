@@ -15,11 +15,11 @@ namespace Library
         public DateTime Date { get; protected set; }
         public double Balance { get; protected set; }
         public List<Transactions> Transactions { get; protected set;}
-        public virtual bool AddTransaction()
+        public virtual bool AddTransaction(Transactions transaction)
         {
             return true;
         }
-        public virtual void RemoveTransaction()
+        public virtual void RemoveTransaction(Transactions transaction)
         {
 
         }
