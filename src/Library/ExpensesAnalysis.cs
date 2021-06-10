@@ -11,7 +11,7 @@ namespace Library
 
         }
 
-        public double CalculateTotaByType(List<Expense> expenses){
+        public double CalculateTotalByType(List<Expense> expenses){
             return 0;
         }
 

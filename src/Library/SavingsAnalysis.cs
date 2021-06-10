@@ -7,14 +7,9 @@ namespace Library
 {
     public class SavingsAnalysis
     {   
-        public List<ExpenseAnalysis> expensesAnalysis { get; private set; }
-        public void AddExpenseAnalysis(ExpenseAnalysis expensesAnalysis)
+        public void AnalyseSavings(List<PaymentMethod> savingsAccounts)
         {
 
-        }
-        public void RemoveExpenseAnalysis(ExpenseAnalysis expensesAnalysis)
-        {
-                
         }
     }
 }
