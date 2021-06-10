@@ -4,9 +4,9 @@ using System.Collections.Generic;
 //Esta clase es la encargada de guardar instancias de ExpenseAnalysis
 
 namespace Library
-{    public class SavingsAnalysis
-
-{   
+{
+    public class SavingsAnalysis
+    {   
         public List<ExpenseAnalysis> expensesAnalysis { get; private set; }
         public void AddExpenseAnalysis(ExpenseAnalysis expensesAnalysis)
         {
@@ -14,6 +14,7 @@ namespace Library
         }
         public void RemoveExpenseAnalysis(ExpenseAnalysis expensesAnalysis)
         {
-            
-        
+                
+        }
+    }
 }
