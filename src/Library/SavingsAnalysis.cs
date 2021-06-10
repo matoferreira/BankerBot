@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-//Esta clase es la encargada de guardar instancias de ExpenseAnalysis
+//Esta clase es la encargada de guardar instancias de SavingAnalysis
 
 namespace Library
 {
