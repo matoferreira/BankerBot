@@ -5,6 +5,9 @@ namespace Library
 {
     public class CurrencyExchangeAPI
     {
+        public void GetUpdatedRate(String Name)
+        {
         
+        }
     }
 }
