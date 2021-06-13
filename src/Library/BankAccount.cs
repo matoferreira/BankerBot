@@ -19,11 +19,12 @@ namespace Library
         }
         public override double GetBalance()
         {
-            return 0;
+            return CurrentStatement.GetBalance();
         } 
-        public void NewMonth()
+        public void NewMonth(BankAccountStatement NewStatement)
         {
-
+            StatementList.Add(CurrentStatement);
+            this.CurrentStatement = NewStatement;    
         }
 
     }

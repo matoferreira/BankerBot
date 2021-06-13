@@ -12,7 +12,7 @@ namespace Library
         protected double Balance { get; set; }
         public virtual double GetBalance()
         {
-            return 0;
+            return this.Balance;
         }
     }
 }

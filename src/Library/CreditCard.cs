@@ -18,15 +18,16 @@ namespace Library
         }
         public void SetNewLimit (double NewLimit)
         {
-
+            this.Limit = NewLimit;
         }
         public override double GetBalance()
         {
-            return 0;
+            return CurrentStatement.GetBalance();
         }
-        public void NewMonth()
+        public void NewMonth(CardStatement NewStatement)
         {
-            
+            StatementList.Add(CurrentStatement);
+            this.CurrentStatement = NewStatement;  
         }
     }
 }

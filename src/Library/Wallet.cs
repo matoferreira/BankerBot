@@ -21,11 +21,11 @@ namespace Library
         }
         public void AddSubWallet (SubWallet newSubWallet)
         {
-
+            SubWalletList.Add(newSubWallet);
         }
         public void RemoveSubWallet (SubWallet subwallet)
         {
-
+            SubWalletList.Remove(subwallet);
         }
         public double GetBalanceByCurrency (Currency currency)
         {
