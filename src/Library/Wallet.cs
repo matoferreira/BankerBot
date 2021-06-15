@@ -35,6 +35,7 @@ namespace Library
         //https://github.com/ucudal/PII_Conceptos_De_POO/blob/master/Capitulos/3_Tipos_Genericos/3_2_Desarrollo.md
         public IList GetBalanceByCurrency (Currency currency)
         {
+            //Cambiar a clases de alto nivel
             IList result = new ArrayList();
             foreach (WalletStatement Statement in this.SubWalletList)
             {
