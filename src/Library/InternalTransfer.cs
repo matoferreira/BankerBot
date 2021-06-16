@@ -6,12 +6,23 @@ namespace Library
     public class InternalTransfer: Transactions
     {
         
-        public double ammount{ get; private set; }
+        public double Ammount{ get; private set; }
 
-        public DateTime dateTime{ get; private set; }
+        public DateTime DateTime{ get; private set; }
 
-        public InternalTransfer (String concept, double ammount, Currency currency, PaymentMethod destination ){
+        public string Concept{ get; private set; }
 
+        protected PaymentMethod destination;
+
+        public InternalTransfer (String concept, double ammount, Currency currency, PaymentMethod destination )
+        {
+            this.Concept = concept;
+            this.Ammount = ammount;
+        }
+
+        public void addAmmount(PaymentMethod destination) {
+            destination.GetBalance +=ammount;
+            //como hago para que el importe se sume al balance de el payment method destino?
         }
 
 
