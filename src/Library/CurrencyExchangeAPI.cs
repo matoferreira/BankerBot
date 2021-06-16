@@ -4,11 +4,13 @@ using System;
 namespace Library
 {
     //Desarrollar una abstracción
-    public class CurrencyExchangeAPI
+    public class CurrencyExchangeAPI : IExchange
     {
-        public void GetUpdatedRate(String Name)
+        public double UpdatedRate { get ; set; }
+
+        public double GetUpdatedRate()
         {
-        
+            return 2;
         }
     }
 }

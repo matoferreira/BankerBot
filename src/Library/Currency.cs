@@ -8,8 +8,9 @@ namespace Library
 {
     public class Currency : ICurrency
     {
-        public string Name { get; set; }
-        public double ExchangeRate { get; set; }
+        public string Name { get ; set ; }
+        public double ExchangeRate { get ; set ; }
+        public IExchange Exchanger = new CurrencyExchangeAPI();
 
         public Currency(string name)
         {
@@ -27,8 +28,7 @@ namespace Library
             //No se implementa este método por interactuar con un servicio externo pero si se
             //deja la lógica de como sería.
             double UpdatedRate = 0;
-            CurrencyExchangeAPI.GetUpdatedRate(this.Name) = UpdatedRate;
-            this.ExchangeRate = UpdatedRate;
+            UpdatedRate = Exchanger.GetUpdatedRate();
         }
     }
 }

@@ -33,28 +33,21 @@ namespace Library
         //Statement de cada SubWallet en SubWalletList
         //Para resolver la forma de aplicar este método se uso la siguiente referencia
         //https://github.com/ucudal/PII_Conceptos_De_POO/blob/master/Capitulos/3_Tipos_Genericos/3_2_Desarrollo.md
-        public IList GetBalanceByCurrency (Currency currency)
+        public double GetBalanceBySubWallet (SubWallet subWallet)
         {
-            //Cambiar a clases de alto nivel
-            IList result = new ArrayList();
-            foreach (SubWallet subwallets in this.SubWalletList)
-            {
-                if (subwallets.Currency.Equals(currency))
-                {
-                    result.Add(subwallets.GetBalance());
-                }
-            }
+            double result = 0;
+            result+=subWallet.Statement.GetBalance();
             return result;
         }
 
         //Para solucionar el error de abajo se me ocurre hacer un supertipo (o interfaz que no tiene implementación) PaymentMethod
         //Con dos subtipos uno para wallet y el otro para los demas paymenthmethod
-        public override IList GetBalance()
+        public override double GetBalance()
         {
-            IList result = new ArrayList();
-            foreach (WalletStatement Statement in this.SubWalletList)
+            double result = 0;
+            foreach (SubWallet subwallet in this.SubWalletList)
             {
-                result.Add(Statement.GetBalance());
+                result=+subwallet.Statement.GetBalance()*subwallet.Currency.ExchangeRate;
             }
             return result;
         }
