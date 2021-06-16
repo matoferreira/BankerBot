@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Library
 {
@@ -6,12 +7,16 @@ namespace Library
 //Representa un ingreso de dinero o un pago del saldo de la tarjeta de crédito
     public class Income: Transactions
     {
-        public double ammount { get; private set; }
+        public double Ammount { get; private set; }
         public string Concept { get; private set; } 
 
         public Income (String concept, double ammount, Currency currency)
         {
+            this.Concept = concept;
+            this.Ammount = ammount;
+            this.Currency = currency;
 
+            
         }
     }
 }
