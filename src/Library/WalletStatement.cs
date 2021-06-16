@@ -28,7 +28,7 @@ namespace Library
         }
         public override double GetBalance()
         {
-            return 0;
+            return this.Balance;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Library
 
         public DateTime dateTime{ get; private set; }
 
-        public InternalTransfer (String concept, double ammount, Currency currency, PaymentMethod destination ){
+        public InternalTransfer (String concept, double ammount, Currency currency, IPaymentMethod destination ){
 
         }
 

@@ -33,15 +33,15 @@ namespace Library
         {
             return 0;
         }
-        public void TrackFunds(List<PaymentMethod> list)
+        public void TrackFunds(List<IPaymentMethod> list)
         {
             
         }
-        public void TrackSavings(List<PaymentMethod> list)
+        public void TrackSavings(List<IPaymentMethod> list)
         {
             
         }
-        public void TrackSpending(List<PaymentMethod> list)
+        public void TrackSpending(List<IPaymentMethod> list)
         {
             
         }

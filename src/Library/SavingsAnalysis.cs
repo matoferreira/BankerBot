@@ -7,7 +7,7 @@ namespace Library
 {
     public class SavingsAnalysis
     {   
-        public void AnalyseSavings(List<PaymentMethod> savingsAccounts)
+        public void AnalyseSavings(List<IPaymentMethod> savingsAccounts)
         {
 
         }
