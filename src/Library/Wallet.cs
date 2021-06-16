@@ -37,11 +37,11 @@ namespace Library
         {
             //Cambiar a clases de alto nivel
             IList result = new ArrayList();
-            foreach (WalletStatement Statement in this.SubWalletList)
+            foreach (SubWallet subwallets in this.SubWalletList)
             {
-                if (Statement.Currency.Equals(currency))
+                if (subwallets.Currency.Equals(currency))
                 {
-                    result.Add(Statement.GetBalance());
+                    result.Add(subwallets.GetBalance());
                 }
             }
             return result;

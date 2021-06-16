@@ -18,5 +18,9 @@ namespace Library
             this.Currency = currency;
             this.Statement = new WalletStatement(Currency, 0);
         }
+        public void GetBalance()
+        {
+            this.Statement.GetBalance();
+        }
     }
 }
