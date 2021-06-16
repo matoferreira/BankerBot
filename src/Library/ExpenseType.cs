@@ -9,23 +9,42 @@ namespace Library
     public class ExpenseType
     {
         public string Name { get; private set; }
-        public List<Expense> expenses { get; private set; }
+        public List<PaymentMethod> PaymentMethods { get; private set; }
+
+        public double Total {get; private set;}
 
 
         public ExpenseType (string name )
         {
-
+            this.Name = name;
         }
       
-        public double CalculateTotaByType(List<Expense> expenses)
+        public double CalculateTotal(List<PaymentMethod> paymentMethods)
         {
-            return 0;
+            Total = 0;
+            foreach (PaymentMethod paymentMethod in PaymentMethods)
+            {
+                foreach (Transactions transactions in paymentMethod.CurrentStatement.Transactions)
+                {
+                    if (typeof(Expense).IsInstanceOfType(transactions))
+                    {
+                        Total+=((Expense)transactions).Ammount;
+                    }
+                }
+
+            }
+            return Total;
+           
         }
 
-         public void AccumulateExpensesByType(List<Expense> expenses)
+         /*public void AccumulateExpensesByType(List<Expense> expenses)
          {  
+           foreach (Expense expense in expenses)
+           {
+               Expenses.Add(expense);
+           }
            
-         }
+         } va para analisis
 
-    }
+    }*/ 
 }

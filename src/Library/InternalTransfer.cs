@@ -6,13 +6,22 @@ namespace Library
     public class InternalTransfer: Transactions
     {
         
-        public double ammount{ get; private set; }
+        public DateTime DateTime{ get; private set; }
 
-        public DateTime dateTime{ get; private set; }
+        public string Concept{ get; private set; }
 
-        public InternalTransfer (String concept, double ammount, Currency currency, IPaymentMethod destination ){
+        protected PaymentMethod destination;
 
+        public InternalTransfer (String concept, double ammount, Currency currency, PaymentMethod destination )
+        {
+            this.Concept = concept;
+            this.Ammount = ammount;
+            destination.CurrentStatement.AddTransaction(new Income(concept, ammount, currency));
         }
+
+       
+
+        
 
 
     }

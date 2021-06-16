@@ -17,14 +17,25 @@ namespace Library
         public List<Transactions> Transactions { get; protected set;}
         public virtual bool AddTransaction(Transactions transaction)
         {
+            Transactions.Add(transaction);
+            //el valor de transactions?
+            this.Balance = this.Balance + transaction.ammount;
             return true;
         }
         public virtual void RemoveTransaction(Transactions transaction)
         {
-
+            if (Transactions.Contains(transaction))
+            {
+                Transactions.Remove(transaction);
+            }
         }
-        public virtual double GetBalance()
+        public virtual double GetBalance() // pensar de nuevo las transactions
         {
+            double newbalance = 0;
+            foreach (Transactions transaction in Transactions)
+            {
+                
+            } 
             return 0;
         }
     }
