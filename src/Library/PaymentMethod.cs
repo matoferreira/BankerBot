@@ -10,6 +10,8 @@ namespace Library
         
         public Currency Currency { get; protected set; }
         protected double Balance { get; set; }
+
+        public Statement CurrentStatement { get; protected set; }
         public virtual double GetBalance()
         {
             return 0;
