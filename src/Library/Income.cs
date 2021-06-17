@@ -7,7 +7,6 @@ namespace Library
 //Representa un ingreso de dinero o un pago del saldo de la tarjeta de crédito
     public class Income: Transactions
     {
-        public double Ammount { get; private set; }
         public string Concept { get; private set; } 
 
         public Income (String concept, double ammount, Currency currency)

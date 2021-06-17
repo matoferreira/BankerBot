@@ -14,12 +14,26 @@ namespace Library
         {
             this.Currency = currency;
             this.Date = date;
-            this.Transactions = new List<Transactions>();
             this.Balance = lastbalance;
         }
         public override double GetBalance()
         {
-            return 0;
+            double newbalance = this.Balance;
+            foreach (Transactions transaction in Transactions)
+            {
+                if (typeof(Income).IsInstanceOfType(transaction))
+                {
+                    newbalance = newbalance + transaction.Ammount;
+                }
+                else
+                {
+                    newbalance = newbalance - transaction.Ammount;
+                }
+            } 
+            this.Balance = newbalance;
+            return newbalance;
         }
+
+        //Agregar class NewMonth a BankAccount (expert)
     }
 }
