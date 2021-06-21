@@ -13,13 +13,23 @@ namespace Library
     {
         public Currency Currency { get; protected set; }
         public DateTime Date { get; protected set; }
-        public double Balance { get; protected set; }
+        protected double Balance;
         public List<Transactions> Transactions { get; protected set;}
+        protected Statement()
+        {
+            this.Transactions = new List<Transactions>();
+        }
         public virtual bool AddTransaction(Transactions transaction)
         {
             Transactions.Add(transaction);
-            //el valor de transactions?
-            this.Balance = this.Balance + transaction.ammount;
+            if (typeof(Income).IsInstanceOfType(transaction))
+            {
+                this.Balance = this.Balance + transaction.Ammount;
+            }
+            else
+            {
+                this.Balance = this.Balance - transaction.Ammount;
+            }
             return true;
         }
         public virtual void RemoveTransaction(Transactions transaction)
@@ -29,14 +39,22 @@ namespace Library
                 Transactions.Remove(transaction);
             }
         }
-        public virtual double GetBalance() // pensar de nuevo las transactions
+        public virtual double GetBalance()
         {
             double newbalance = 0;
             foreach (Transactions transaction in Transactions)
             {
-                
+                if (typeof(Income).IsInstanceOfType(transaction))
+                {
+                    newbalance = newbalance + transaction.Ammount;
+                }
+                else
+                {
+                    newbalance = newbalance - transaction.Ammount;
+                }
             } 
-            return 0;
+            this.Balance = newbalance;
+            return newbalance;
         }
     }
 }

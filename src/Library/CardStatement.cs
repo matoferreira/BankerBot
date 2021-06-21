@@ -11,31 +11,72 @@ namespace Library
 {
     public class CardStatement : Statement
     {
-        public double limit { get; private set; }
-        public List<Transactions> transactions { get; private set; }
+        public double Limit { get; private set; }
         public CardStatement(Currency currency, DateTime date, double limit, double lastbalance)
         {
             this.Currency = currency;
             this.Date = date;
-            this.limit = limit;
-            this.transactions = new List<Transactions>();
+            this.Limit = limit;
             this.Balance = lastbalance;
         }
         public override bool AddTransaction(Transactions transaction) //Si la transaccion supera el límite, devuelve false
         {
-            return true;
-        }
-        public override void RemoveTransaction(Transactions transaction)
-        {
-
+            if (transaction.Ammount <= this.Limit)
+            {
+                Transactions.Add(transaction);
+                if (typeof(Income).IsInstanceOfType(transaction))
+                {
+                    this.Balance = this.Balance + transaction.Ammount;
+                }
+                else
+                {
+                    this.Balance = this.Balance - transaction.Ammount;
+                }
+                this.Limit = this.Limit - transaction.Ammount;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         public override double GetBalance()
         {
-            return 0;
+            double newbalance = this.Balance;
+            foreach (Transactions transaction in Transactions)
+            {
+                if (typeof(Income).IsInstanceOfType(transaction))
+                {
+                    newbalance = newbalance + transaction.Ammount;
+                }
+                else
+                {
+                    newbalance = newbalance - transaction.Ammount;
+                }
+            } 
+            this.Balance = newbalance;
+            return newbalance;
         }
         public double CalculatePaymentAmmount()
         {
-            return 0;
+            double newpayment = 0;
+            foreach (Transactions transaction in Transactions)
+            {
+                if (typeof(Income).IsInstanceOfType(transaction))
+                {
+                    newpayment = newpayment + transaction.Ammount;
+                }
+                else
+                {
+                    newpayment = newpayment - transaction.Ammount;
+                }
+            } 
+            return newpayment;
+        }
+        public void MakePayment(double ammount)
+        {
+            this.Limit = this.Limit + ammount;
+            this.AddTransaction(new Income("Pago de Saldo de tarjeta", ammount, this.Currency));
         }
     }
 }
