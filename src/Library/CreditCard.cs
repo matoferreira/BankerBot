@@ -10,7 +10,7 @@ namespace Library
     {
         public double Limit { get; private set; }
         public List<CardStatement> StatementList {get; private set;}
-        public CardStatement CurrentStatement { get; protected set; }
+        public new CardStatement CurrentStatement { get; protected set; }
         public CreditCard(Currency currency, DateTime date, double limit)
         {
             this.CurrentStatement = new CardStatement(currency, date, limit, 0);

@@ -16,7 +16,7 @@ namespace Library
         {
             this.Name = Name;
             this.Currency = currency;
-            this.Statement = new WalletStatement(Currency, 0);
+            this.Statement = new WalletStatement(Currency);
         }
     }
 }
