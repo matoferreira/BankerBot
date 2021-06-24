@@ -8,6 +8,7 @@ namespace Library
         public Currency Currency { get ; protected set; }
         public DateTime Date { get; protected set; }
         public double Ammount { get; protected set; }
+        public string Concept { get; protected set; } 
 
     }
 }

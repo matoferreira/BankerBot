@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Library
 {
-    public class SavingsTargetAlert : Alert
+    public class HighSpendingAlert : Alert
     {
         
     }
