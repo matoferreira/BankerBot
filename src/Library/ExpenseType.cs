@@ -37,14 +37,6 @@ namespace Library
            
         }
 
-         /*public void AccumulateExpensesByType(List<Expense> expenses)
-         {  
-           foreach (Expense expense in expenses)
-           {
-               Expenses.Add(expense);
-           }
-           
-         } va para analisis
-
-    }*/ 
+    }
+    
 }
