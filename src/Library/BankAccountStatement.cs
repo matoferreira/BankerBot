@@ -18,7 +18,7 @@ namespace Library
         }
         public override double GetBalance()
         {
-            double newbalance = this.Balance;
+            double newbalance = 0;
             foreach (Transactions transaction in Transactions)
             {
                 if (typeof(Income).IsInstanceOfType(transaction))

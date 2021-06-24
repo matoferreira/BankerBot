@@ -21,7 +21,7 @@ using NUnit.Framework;
 	        }
 	
 	        [Test]
-	        public void TestConcept() 
+	        public void TestConcept()
 	        {
 	            string a = "Alfajor";
 	            	
@@ -50,7 +50,7 @@ using NUnit.Framework;
 	        {
 	            string a = "Alimentos";
 	            	
-	            Assert.AreEqual(expense.expenseType.Name, a);
+	            Assert.AreEqual(expenseType.Name, a);
 	        }
             
 	    }
