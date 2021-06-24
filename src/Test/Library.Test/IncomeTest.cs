@@ -13,7 +13,7 @@ using NUnit.Framework;
 	        {
 	            // Insertá tu código de inicialización aquí
                 currency = new Currency("USD");
-	            income = new Income("Prueba1",15000,currency);
+	            income = new Income("Prueba1",1500,currency);
 	          
 	        }
 	
