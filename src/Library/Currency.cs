@@ -6,10 +6,12 @@ using System;
 //Y su responsabilidad es convertir la moneda en un valor equivalente en dólares y de dolares a la moneda específica 
 namespace Library
 {
-    public class Currency
+    public class Currency : ICurrency
     {
-        public string Name { get; private set; }
-        public double ExchangeRate { get; private set; }
+        public string Name { get ; set ; }
+        public double ExchangeRate { get ; set ; }
+        public IExchange Exchanger = new CurrencyExchangeAPI();
+
         public Currency(string name)
         {
             this.Name = name;
@@ -17,12 +19,16 @@ namespace Library
         }
         public double Convert(double ammount)
         {
-            throw new NotImplementedException();
+            this.UpdateExchangeRate();
+            return this.ExchangeRate*ammount;
         }
 
         public void UpdateExchangeRate()
         {
-            throw new NotImplementedException();
+            //No se implementa este método por interactuar con un servicio externo pero si se
+            //deja la lógica de como sería.
+            double UpdatedRate = 0;
+            UpdatedRate = Exchanger.GetUpdatedRate();
         }
     }
 }

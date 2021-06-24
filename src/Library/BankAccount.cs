@@ -8,7 +8,7 @@ namespace Library
     public class BankAccount : PaymentMethod
     {
         public List<BankAccountStatement> StatementList {get; private set;}
-        public BankAccountStatement CurrentStatement { get; private set; }
+        public new BankAccountStatement CurrentStatement { get; private set; }
         public string BankName { get; private set; }
 
         public BankAccount(String BankName, Currency currency, DateTime date)
@@ -19,11 +19,12 @@ namespace Library
         }
         public override double GetBalance()
         {
-            return 0;
+            return CurrentStatement.GetBalance();
         } 
-        public void NewMonth()
+        public void NewMonth(BankAccountStatement NewStatement)
         {
-
+            StatementList.Add(CurrentStatement);
+            this.CurrentStatement = NewStatement;    
         }
 
     }

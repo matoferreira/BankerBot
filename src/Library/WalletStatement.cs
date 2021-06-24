@@ -10,25 +10,11 @@ namespace Library
 {
     public class WalletStatement : Statement
     {
-        public List<Transactions> transactions { get; private set; }
-        public WalletStatement(Currency currency, double lastbalance)
+        public WalletStatement(Currency currency)
         {
             this.Currency = currency;
             this.Date = new DateTime(2000, 01, 01);
-            this.transactions = new List<Transactions>();
-            this.Balance = lastbalance;
-        }
-        public override bool AddTransaction(Transactions transaction)
-        {
-            return true;
-        }
-        public override void RemoveTransaction(Transactions transaction)
-        {
-
-        }
-        public override double GetBalance()
-        {
-            return 0;
+            this.Balance = 0;
         }
     }
 }
