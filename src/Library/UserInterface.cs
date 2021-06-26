@@ -7,6 +7,8 @@ namespace Library
 //por estar en una primera instancia del desarrollo del mismo, no se cuenta con estos detalles aún.
     public class UserInteface
     {
+        public Singleton<TelegramAPI> Telegram;
+        public Singleton<ExcelAPI> Excel;
         private UserProfile profile;
         public UserInteface()
         {
@@ -53,6 +55,14 @@ namespace Library
                     }
                 }
             return status;
+        }
+        public void ShowSavingsAnalysis()
+        {
+            //Falta Hacer
+        }
+        public void ShowExpensesAnalysis()
+        {
+            //Falta Hacer
         }
     }
 }

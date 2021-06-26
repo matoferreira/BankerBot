@@ -10,15 +10,17 @@ namespace Library
 {
     public class BankAccountStatement : Statement
     {
+        private double previousBalance;
         public BankAccountStatement(Currency currency, DateTime date, double lastbalance)
         {
             this.Currency = currency;
             this.Date = date;
-            this.Balance = lastbalance;
+            this.Balance = 0;
+            this.previousBalance = lastbalance;
         }
         public override double GetBalance()
         {
-            double newbalance = this.Balance;
+            double newbalance = 0 + previousBalance;
             foreach (Transactions transaction in Transactions)
             {
                 if (typeof(Income).IsInstanceOfType(transaction))
@@ -33,7 +35,5 @@ namespace Library
             this.Balance = newbalance;
             return newbalance;
         }
-
-        //Agregar class NewMonth a BankAccount (expert)
     }
 }
