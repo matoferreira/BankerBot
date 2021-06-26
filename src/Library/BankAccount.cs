@@ -3,15 +3,13 @@
 using System;
 using System.Collections.Generic;
 
-//*****Revisar errores en esta clase********
-
 namespace Library
 {
     public class BankAccount : PaymentMethod
     {
         public List<BankAccountStatement> StatementList {get; private set;}
-      //  public BankAccountStatement CurrentStatement { get; private set; }
         public string BankName { get; private set; }
+        public new BankAccountStatement CurrentStatement {get; protected set;}
 
         public BankAccount(String BankName, Currency currency, DateTime date)
         {
@@ -23,11 +21,12 @@ namespace Library
         {
             return CurrentStatement.GetBalance();
         } 
-       /* public void NewMonth(BankAccountStatement NewStatement)
+        public void NewMonth()
         {
-            StatementList.Add(CurrentStatement);
-            this.CurrentStatement = NewStatement;    
-        }*/
+            BankAccountStatement newStatement = new BankAccountStatement(Currency, DateTime.Now, this.GetBalance());
+            StatementList.Add(this.CurrentStatement);
+            this.CurrentStatement = newStatement;
+        }
 
     }
 }

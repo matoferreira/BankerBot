@@ -8,26 +8,29 @@ namespace Library
 {
     public class CreditCard : PaymentMethod
     {
-        public double Limit { get; private set; }
+        public double limit { get; private set; }
         public List<CardStatement> StatementList {get; private set;}
         public new CardStatement CurrentStatement { get; protected set; }
-        public CreditCard(Currency currency, DateTime date, double limit)
+        public string CardName { get; private set; }
+        public CreditCard(string cardName, Currency currency, DateTime date, double limit)
         {
+            this.CardName = cardName;
             this.CurrentStatement = new CardStatement(currency, date, limit, 0);
             this.StatementList = new List<CardStatement>();
         }
         public void SetNewLimit (double NewLimit)
         {
-            this.Limit = NewLimit;
+            this.limit = NewLimit;
         }
         public override double GetBalance()
         {
             return CurrentStatement.GetBalance();
         }
-        public void NewMonth(CardStatement NewStatement)
+        public void NewMonth()
         {
-            StatementList.Add(CurrentStatement);
-            this.CurrentStatement = NewStatement;  
+            CardStatement newStatement = new CardStatement(Currency, DateTime.Now, this.limit, this.GetBalance());
+            StatementList.Add(this.CurrentStatement);
+            this.CurrentStatement = newStatement;  
         }
     }
 }
