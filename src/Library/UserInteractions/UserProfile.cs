@@ -34,6 +34,7 @@ namespace Library
             if (!PaymentMethods.Contains(newMethod))
             {
                 PaymentMethods.Add(newMethod);
+                newMethod.Subscribe(this);
             }
         }
         public void RemovePaymentMethod(PaymentMethod method)
@@ -50,6 +51,10 @@ namespace Library
             {
                 alert.TrackLevel(PaymentMethods);
             }
+        }
+        public void AddTransaction(Transactions transaction)
+        {
+            
         }
     }
 }
