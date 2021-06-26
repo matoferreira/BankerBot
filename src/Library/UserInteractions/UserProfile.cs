@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Library
 {
-    public class UserProfile : BaseComponent, IObserver
+    public class UserProfile : IObserver
     {
         public List<Alert> Alerts { get; private set; }
         public List<PaymentMethod> PaymentMethods { get; private set; }
@@ -52,9 +52,6 @@ namespace Library
                 alert.TrackLevel(PaymentMethods);
             }
         }
-        public void AddTransaction(Transactions transaction)
-        {
-            
-        }
+        
     }
 }
