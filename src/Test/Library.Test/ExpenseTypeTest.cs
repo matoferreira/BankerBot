@@ -18,8 +18,8 @@ using Library;
 
 			private List<PaymentMethod> MisCuentas;
 
-			
 			private double Ammount;
+			
 	        [SetUp]
 	        public void Setup()
 	        {	
