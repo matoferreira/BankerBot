@@ -35,25 +35,12 @@ using Library;
 				MisCuentas.Add(MyAccount2);		          
 	                 
 	        }
-	
-	       	[Test]
-	        public void TestCalculateTotal() 
-	        {
-	            Assert.AreEqual(400, expenseType1.CalculateTotal(MisCuentas));
-
-				/*está dando error este test*/
-	        }
-
 			[Test]
 			public void TestMiCuenta1()
 	        {
 	               	
 	             Assert.AreEqual(700, MyAccount1.GetBalance());
 	        }
-	
-
-
-            
 	    }
 
 	}

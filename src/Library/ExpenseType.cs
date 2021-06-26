@@ -18,22 +18,7 @@ namespace Library
             this.Name = name;
         }
       
-        public double CalculateTotal(List<PaymentMethod> paymentMethods)
-        {
-            double total = 0;
-            foreach (PaymentMethod paymentMethod in paymentMethods)
-            {
-                foreach (Transactions transaction in paymentMethod.CurrentStatement.Transactions)
-                {
-                    if (typeof(Expense).IsInstanceOfType(transaction))
-                    {
-                        total = total + transaction.Ammount;
-                    }
-                }
-            }
-            this.Total = total;
-            return total;
-        }
+       
 
     }
     
