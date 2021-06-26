@@ -5,16 +5,13 @@ namespace Library
 {
     public class Expense : Transactions
     {
-        public ExpenseType expenseType { get; private set; } 
+        public ExpenseType ExpenseType { get; private set; } 
         public Expense (String concept, double ammount, Currency currency, ExpenseType expenseType)
         {
             this.Concept = concept;
             this.Ammount = ammount;
             this.Currency = currency;
-            
-
+            this.ExpenseType = expenseType;
         }
-
-        
     }
 }

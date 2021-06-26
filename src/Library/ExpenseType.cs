@@ -9,9 +9,8 @@ namespace Library
     public class ExpenseType
     {
         public string Name { get; private set; }
-        public List<PaymentMethod> PaymentMethods { get; private set; }
 
-        public double Total {get; private set;}
+        public double Total { get; private set; }
 
 
         public ExpenseType (string name )
@@ -21,20 +20,19 @@ namespace Library
       
         public double CalculateTotal(List<PaymentMethod> paymentMethods)
         {
-            Total = 0;
-            foreach (PaymentMethod paymentMethod in PaymentMethods)
+            double total = 0;
+            foreach (PaymentMethod paymentMethod in paymentMethods)
             {
-                foreach (Transactions transactions in paymentMethod.CurrentStatement.Transactions)
+                foreach (Transactions transaction in paymentMethod.CurrentStatement.Transactions)
                 {
-                    if (typeof(Expense).IsInstanceOfType(transactions))
+                    if (typeof(Expense).IsInstanceOfType(transaction))
                     {
-                        Total+=((Expense)transactions).Ammount;
+                        total = total + transaction.Ammount;
                     }
                 }
-
             }
-            return Total;
-           
+            this.Total = total;
+            return total;
         }
 
     }
