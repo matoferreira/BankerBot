@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Library
 {
@@ -10,11 +11,30 @@ namespace Library
         
         public Currency Currency { get; protected set; }
         protected double Balance { get; set; }
+        protected List<IObserver> observers = new List<IObserver>();
 
         public Statement CurrentStatement { get; protected set; }
         public virtual double GetBalance()
         {
             return this.Balance;
+        }
+
+        public void Subscribe(IObserver observer)
+        {
+            this.observers.Add(observer);
+        }
+
+        public void Unsubscribe(IObserver observer)
+        {
+            this.observers.Remove(observer);
+        }
+
+        public void NotifyObservers()
+        {
+             foreach (IObserver observer in observers)
+            {
+                observer.Update();
+            }
         }
     }
 }

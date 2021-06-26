@@ -2,7 +2,7 @@ using System;
 
 namespace Library
 {
-    public interface IPaymentMethod
+    public interface IPaymentMethod : IObservable
     {
 
     }
