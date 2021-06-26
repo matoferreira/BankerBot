@@ -28,6 +28,7 @@ namespace Library
                 }
                 else
                 {
+                    this.IsOn = false;
                     this.gastosaltos = 0;
                 }
             }

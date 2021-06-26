@@ -31,6 +31,11 @@ namespace Library
                     this.IsOn = true;
                     this.fondostotales = fondos;
                 }
+                else
+                {
+                    this.IsOn = false;
+                    this.fondostotales = fondos;
+                }
             }
         }
     }

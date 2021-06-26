@@ -27,6 +27,11 @@ namespace Library
                     this.IsOn = true;
                     this.ahorrototal = ahorro;
                 }
+                else
+                {
+                    this.IsOn = false;
+                    this.ahorrototal = ahorro;
+                }
             }
         }
     }
