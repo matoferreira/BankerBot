@@ -25,22 +25,15 @@ namespace Library
             return TotalByType;
         }   
 
-         public void AccumulateExpensesByType(List<Expense> expenses){
+         public void AccumulateExpensesByType(List<Expense> expenses, ExpenseType expenseType){
             foreach (Expense expense in expenses)
+            if (typeof(Expense).IsInstanceOfType(expenseType))
            {
                Expenses.Add(expense);
            }
         }
 
-        
-         /*public void AccumulateExpensesByType(List<Expense> expenses)
-         {  
 
-           
-         } va para analisis
-*/ 
-
-        //no me queda claro que es lo que tiene que hacer el expense analisis para definir los metodos
 
     }
 }

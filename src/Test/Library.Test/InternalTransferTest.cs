@@ -25,37 +25,14 @@ using System;
 	        }
 	
 	        [Test]
-	        public void TestAmmount()
+	        public void TestDestinationAmmount()
 	        {
 	            double a = 20000;
 	            	
 	            Assert.AreEqual(Destination.GetBalance(), a);
 	        }
 	
-	           [Test]
-	        public void TestTestAmmount() 
-	        {
-	         //  double a = 55;
-	            	
-	         //   Assert.AreEqual(expense.Ammount, a);
-	        }
 
-            
-	           [Test]
-	        public void TestTestCurrency() 
-	        {
-	           // string a = "UYU";
-	            	
-	           // Assert.AreEqual(expense.Currency.Name, a);
-	        }
-
-            	           [Test]
-	        public void TestExpenseType() 
-	        {
-	           // string a = "Alimentos";
-	            	
-	           // Assert.AreEqual(expenseType.Name, a);
-	        }
             
 	    }
 
