@@ -28,6 +28,7 @@ namespace Library
         }
         public string CalculateTotalByType(List<PaymentMethod> payments)
         {
+            this.GetExpenseTypes(payments);
             string lista = "";
             foreach (ExpenseType expenseType in ExpenseTypes)
             {
