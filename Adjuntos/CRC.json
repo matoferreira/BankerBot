@@ -75,8 +75,8 @@
     ]
   },
   {
-    "name": "UserPreferences",
-    "superclasses": "",
+    "name": "UserProfile",
+    "superclasses": "IObserver",
     "subclasses": "",
     "type": 1,
     "responsibilities": [
@@ -89,7 +89,8 @@
     ],
     "collaborators": [
       "Alert",
-      "IPaymentMethod"
+      "IPaymentMethod",
+      "IObserver"
     ]
   },
   {
@@ -188,7 +189,7 @@
   },
   {
     "name": "IPaymentMethod",
-    "superclasses": "",
+    "superclasses": "IObservable",
     "subclasses": "PaymentMethod",
     "type": 3,
     "responsibilities": [
@@ -197,9 +198,10 @@
     "collaborators": [
       "PaymentMethod",
       "UserInterface",
-      "UserPreferences",
+      "UserProfile",
       "Alert",
-      "SavingsAnalysis"
+      "SavingsAnalysis",
+      "IObservable"
     ]
   },
   {
@@ -506,6 +508,46 @@
     ],
     "collaborators": [
       "Currency"
+    ]
+  },
+  {
+    "name": "IObserver",
+    "superclasses": "",
+    "subclasses": "UserProfile",
+    "type": 3,
+    "responsibilities": [
+      "Actualizar la lista de objetos seguidos"
+    ],
+    "collaborators": [
+      "UserProfile",
+      "IObservable"
+    ]
+  },
+  {
+    "name": "IObservable",
+    "superclasses": "",
+    "subclasses": "IPaymentMethod",
+    "type": 3,
+    "responsibilities": [
+      "Subscribir Observadores",
+      "Dar de baja Observadores",
+      "Notificar Observadores"
+    ],
+    "collaborators": [
+      "IObserver",
+      "IPaymentMethod"
+    ]
+  },
+  {
+    "name": "Singleton",
+    "superclasses": "",
+    "subclasses": "",
+    "type": 1,
+    "responsibilities": [
+      "Asegurarse de que no haya más de una instancia de un objeto"
+    ],
+    "collaborators": [
+      "UserInterface"
     ]
   }
 ]
