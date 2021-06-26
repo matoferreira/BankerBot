@@ -43,7 +43,7 @@ namespace Library
             double result = 0;
             foreach (SubWallet subwallet in this.SubWalletList)
             {
-                result=+subwallet.Statement.GetBalance()*subwallet.Currency.ExchangeRate;
+                result += subwallet.Statement.GetBalance()*subwallet.Currency.ExchangeRate;
             }
             return result;
         }

@@ -40,6 +40,22 @@ namespace Library.Test
            wallet.RemoveSubWallet(subwallet1);
            Assert.AreEqual(subWalletCounter-1, wallet.SubWalletList.Count());
         }
-        
+
+        [Test]
+        public void GetBalanceBySubWalletTest()
+        {
+           subwallet1.Statement.AddTransaction(new Income("aguinaldo", 500, currency1));
+           Assert.AreEqual(500, wallet.GetBalance());
+        }
+
+        [Test]
+        public void GetBalanceTest()
+        {
+           subwallet1.Statement.AddTransaction(new Income("aguinaldo", 500, currency1));
+           wallet.AddSubWallet(subwallet2);
+           subwallet2.Statement.AddTransaction(new Income("Clases particulares", 100, currency2));
+           Assert.AreEqual(600, wallet.GetBalance());
+        }
+
     }
 }
