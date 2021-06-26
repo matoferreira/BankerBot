@@ -12,37 +12,41 @@ namespace Library
     public class CardStatement : Statement
     {
         public double Limit { get; private set; }
+        private double previousBalance;
         public CardStatement(Currency currency, DateTime date, double limit, double lastbalance)
         {
             this.Currency = currency;
             this.Date = date;
             this.Limit = limit;
-            this.Balance = lastbalance;
+            this.previousBalance = lastbalance;
+            this.Balance = 0;
         }
         public override bool AddTransaction(Transactions transaction) //Si la transaccion supera el límite, devuelve false
         {
-            if (transaction.Ammount <= this.Limit)
+            if (typeof(Income).IsInstanceOfType(transaction))
             {
-                Transactions.Add(transaction);
-                if (typeof(Income).IsInstanceOfType(transaction))
+                if (transaction.Ammount <= this.Limit)
                 {
+                    Transactions.Add(transaction);
                     this.Balance = this.Balance + transaction.Ammount;
+                    this.Limit = this.Limit - transaction.Ammount;                  
                 }
                 else
                 {
-                    this.Balance = this.Balance - transaction.Ammount;
+                    return false;
                 }
-                this.Limit = this.Limit - transaction.Ammount;
-                return true;
             }
             else
             {
-                return false;
+                Transactions.Add(transaction);
+                this.Balance = this.Balance - transaction.Ammount;
+                this.Limit = this.Limit + transaction.Ammount;
             }
+            return true;
         }
         public override double GetBalance()
         {
-            double newbalance = this.Balance;
+            double newbalance = 0 + previousBalance;
             foreach (Transactions transaction in Transactions)
             {
                 if (typeof(Income).IsInstanceOfType(transaction))
@@ -76,7 +80,7 @@ namespace Library
         public void MakePayment(double ammount)
         {
             this.Limit = this.Limit + ammount;
-            this.AddTransaction(new Income("Pago de Saldo de tarjeta", ammount, this.Currency));
+            this.AddTransaction(new Expense("Pago de Saldo de tarjeta", ammount, this.Currency, new ExpenseType("Pago")));
         }
     }
 }
