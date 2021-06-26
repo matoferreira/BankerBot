@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using Library;
 
 	namespace Library.Test
 	{
@@ -11,9 +12,9 @@ using System.Collections.Generic;
 			private ExpenseType expenseType1;
 			private ExpenseType expenseType2; 
 
-			private PaymentMethod MyAccount1;
+			private BankAccount MyAccount1;
 
-			private PaymentMethod MyAccount2;
+			private BankAccount MyAccount2;
 
 			private List<PaymentMethod> MisCuentas;
 
@@ -26,18 +27,14 @@ using System.Collections.Generic;
 	           	ExpenseType expenseType1 = new ExpenseType ("Alimentos");
 				ExpenseType expenseType2 = new ExpenseType ("Vestimenta");
 				currency = new Currency("USD");
-				PaymentMethod MyAccount1 = new BankAccount("MiBanco1", currency,date3);
-				PaymentMethod MyAccount2 = new BankAccount("MiBanco2", currency,date3);
+				BankAccount MyAccount1 = new BankAccount("MiBanco1", currency,date3);
+				BankAccount MyAccount2 = new BankAccount("MiBanco2", currency,date3);
 
-				Expense expense1 = new Expense("Gasto", 100,currency,expenseType1);
-				Expense expense2 = new Expense("Gasto", 200,currency,expenseType2);
-				Expense expense3 = new Expense("Gasto", 300,currency,expenseType1);
-				Expense expense4 = new Expense("Gasto", 100,currency,expenseType2);
-				
-				MyAccount1.CurrentStatement.AddTransaction(expense1);
-				MyAccount1.CurrentStatement.AddTransaction(expense2);
-				MyAccount2.CurrentStatement.AddTransaction(expense3);
-				MyAccount2.CurrentStatement.AddTransaction(expense4);
+				MyAccount1.CurrentStatement.AddTransaction(new Income("sueldo", 1000, currency));
+				//MyAccount1.CurrentStatement.AddTransaction(new Expense("Gasto", 100,currency,expenseType1));
+				//MyAccount1.CurrentStatement.AddTransaction(new Expense("Gasto", 200,currency,expenseType2));
+				MyAccount2.CurrentStatement.AddTransaction(new Expense("Gasto", 300,currency,expenseType1));
+				MyAccount2.CurrentStatement.AddTransaction(new Expense("Gasto", 100,currency,expenseType2));
 
 				List<PaymentMethod> MisCuentas = new List<PaymentMethod>();
 				
@@ -46,18 +43,20 @@ using System.Collections.Generic;
 	                 
 	        }
 	
-	        [Test]
-	        public void TestExpeseType()
-	        {
-	            	            	
-	            //Assert.AreSame(expense.expenseType, expense3.expenseType);
-	        }
-
-			[Test]
+	       	[Test]
 	        public void TestCalculateTotal() 
 	        {
 	            double a = 400;
 	            Assert.AreEqual(a, expenseType1.CalculateTotal(MisCuentas));
+
+				/*está dando error este test*/
+	        }
+
+			[Test]
+			public void TestMiCuenta1()
+	        {
+	               	
+	             Assert.AreEqual(1000,MyAccount1.GetBalance());
 	        }
 	
 
