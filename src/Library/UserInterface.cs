@@ -10,7 +10,7 @@ namespace Library
         public Singleton<TelegramAPI> Telegram;
         public Singleton<ExcelAPI> Excel;
         private UserProfile profile;
-        public UserInteface()
+        public UserInterface()
         {
             this.profile = new UserProfile();
         }
