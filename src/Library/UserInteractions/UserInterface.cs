@@ -10,6 +10,7 @@ namespace Library
         public TelegramAPI Telegram = Singleton<TelegramAPI>.Instance;
         public ExcelAPI Excel = Singleton<ExcelAPI>.Instance;
         public ExpenseAnalysis ExpenseAnalysis = Singleton<ExpenseAnalysis>.Instance;
+        public SavingsAnalysis SavingsAnalysis = Singleton<SavingsAnalysis>.Instance;
         private UserProfile profile;
         public UserInterface()
         {
@@ -55,6 +56,10 @@ namespace Library
                         status = status + $"Saldo en {item.Currency} es: {((Wallet)method).GetBalanceBySubWallet(item)}\n";
                     }
                 }
+                this.ShowExpensesAnalysis();
+                Console.WriteLine("\n");
+                this.ShowSavingsAnalysis();
+                Console.WriteLine("\n");
             }
             foreach (Alert item in profile.Alerts)
                 {
@@ -67,7 +72,7 @@ namespace Library
         }
         public void ShowSavingsAnalysis()
         {
-            //Falta Hacer
+            Console.WriteLine($"{SavingsAnalysis.AnalyseSavings(profile.PaymentMethods)}");
         }
         public void ShowExpensesAnalysis()
         {
