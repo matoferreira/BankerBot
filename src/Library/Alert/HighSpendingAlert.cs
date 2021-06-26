@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
-
+//Esta alerta se dedica a controlar los gastos mensuales que se hacen con tarjetas de crédito, y muestra una
+//alerta cuando se supera un límite mensual definido por el usuario.
+//Al instanciarse, se le asigna un límite negativo, -1, solo cuando el usuario configure un valor positivo
+//como límite pasará a mostrar la advertencia.
 namespace Library
 {
     public class HighSpendingAlert : Alert
