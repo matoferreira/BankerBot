@@ -7,12 +7,21 @@ namespace Library
 //por estar en una primera instancia del desarrollo del mismo, no se cuenta con estos detalles aún.
     public class UserInterface
     {
-        public Singleton<TelegramAPI> Telegram;
-        public Singleton<ExcelAPI> Excel;
+        public TelegramAPI Telegram = Singleton<TelegramAPI>.Instance;
+        public ExcelAPI Excel = Singleton<ExcelAPI>.Instance;
+        public ExpenseAnalysis ExpenseAnalysis = Singleton<ExpenseAnalysis>.Instance;
         private UserProfile profile;
         public UserInterface()
         {
             this.profile = new UserProfile();
+            Console.WriteLine(
+                "Opciones Posibles \n" + 
+                "NewPaymentMethod(PaymentMethod newMethod) \n" + 
+                "ChangeAlertLevel(Alert alert, double newLevel) \n" + 
+                "GetStatus() \n" + 
+                "ShowSavingsAnalysis() \n" + 
+                "ShowExpensesAnalysis() \n"
+            );
         }
         public void NewPaymentMethod(PaymentMethod newMethod)
         {
@@ -62,7 +71,7 @@ namespace Library
         }
         public void ShowExpensesAnalysis()
         {
-            //Falta Hacer
+            Console.WriteLine($"{ExpenseAnalysis.CalculateTotalByType(profile.PaymentMethods)}");
         }
     }
 }
