@@ -8,14 +8,14 @@ namespace Library
         
         public DateTime DateTime{ get; private set; }
 
-        protected PaymentMethod Destination;
+        public PaymentMethod Destination { get; private set; }
 
         public InternalTransfer (String concept, double ammount, Currency currency, PaymentMethod destination )
         {
             this.Concept = concept;
             this.Ammount = ammount;
             this.Destination = destination;
-            destination.CurrentStatement.AddTransaction(new Income(concept, ammount, currency));
+            Destination.CurrentStatement.AddTransaction(new Income(this.Concept, this.Ammount, this.Currency));
         }
 
        
