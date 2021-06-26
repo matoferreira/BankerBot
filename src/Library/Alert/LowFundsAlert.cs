@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
-
+//Esta alerta se dedica a controlar los fondos que se tienen guardados en las cuentas bancarias y en la billetera,
+//muestra una alerta cuando estos son menores a un valor definido por el usuario.
+//Al instanciarse, se le asigna un límite negativo, -1, solo cuando el usuario configure un valor positivo
+//como límite pasará a mostrar la advertencia.
 namespace Library
 {
     public class LowFundsAlert : Alert

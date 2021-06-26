@@ -3,7 +3,9 @@ using System.Collections.Generic;
 
 namespace Library
 {
-    //
+    //Esta clase abstracta define un tipo genérico Alerta, con el comportamiento común a todas las alertas
+    //La operación TrackLevel será polimórfica, ya que cada alerta definirá un comportamiento propio 
+    //Según lo que desee controlar cada alerta
     public abstract class Alert
     {
         public string Name { get; protected set; }
