@@ -14,8 +14,7 @@ namespace Library.Test
         [SetUp]
         public void Setup()
         {
-            expense = new ExpenseType("super");
-            profile.Alerts.Find(item => typeof(HighSpendingAlert).IsInstanceOfType(item)).ChangeLevel(1000);s
+            profile.Alerts.Find(item => typeof(HighSpendingAlert).IsInstanceOfType(item)).ChangeLevel(1000);
             tarjeta = new CreditCard("Santander", currency, 1000000);
             profile.AddPaymentMethod(tarjeta);
             tarjeta.CurrentStatement.AddTransaction(new Expense("prueba", 1900, currency, new ExpenseType("prueba")));

@@ -43,7 +43,6 @@ using Library;
            Assert.AreEqual(3000,3000,$"{expenseAnalysis2.CalculateTotalByType(payments1)}");
 		  // Console.WriteLine($"{expenseAnalysis1.CalculateTotalByType(payments)}");
         }
-*/
 		}
 	}
 
