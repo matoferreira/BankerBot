@@ -8,10 +8,6 @@ using System;
             private PaymentMethod Destination;
 
             private Currency currency;
-
-            private ExpenseType expenseType;
-
-            private InternalTransfer internalTransfer1;
 	
 	        [SetUp]
 	        public void Setup()
