@@ -5,7 +5,7 @@ Si alguna de estas preguntas la respondés con un sí, o si simplemente querés 
 ## Propósito
 Nuestro bot procura asistirte en la administración de tus finanzas personales de una manera cómoda y personalizable.  
     Para interactuar contigo, el BankerBot está configurado para funcionar mediante mensajes enviados en Telegram, aunque el código es fácilmente modificable y podés utilizarlo con **cualquier otro medio de comunicación**.<sup>1</sup>
-
+  
 ## Funciones
 **Banky**, *como nos gusta llamar a nuestro bot*, te permite realizar muchas tareas:
 1. Registrar gastos.
@@ -21,18 +21,25 @@ Nuestro bot procura asistirte en la administración de tus finanzas personales d
 11. Agregar ingresos, gastos o transferencias internas entre tus medios de pago.
 12. Si utilizas tarjeta de crédito, podrás ver cuanto tendrás que pagar al cierre de la misma.
 
+>Learning is a treasure that will follow its owner everywhere.
+
 ## Bibliografía Consultada
-    University of Texas at San Antonio. UML. (http://www.cs.utsa.edu/~cs3443/uml/uml.html)
+    University of Texas at San Antonio. UML. <http://www.cs.utsa.edu/~cs3443/uml/uml.html)
 
-    Rumyancev, P. (2020). UML Class Diagram Arrows Guide. Medium (https://medium.com/the-innovation/uml-class-diagram-arrows-guide-37e4b1bb11e)
+    Rumyancev, P. (2020). UML Class Diagram Arrows Guide. Medium <https://medium.com/the-innovation/uml-class-diagram-arrows-guide-37e4b1bb11e>
      
-    Holub, A. (2017). UML Quick Reference. (https://holub.com/uml/)
+    Holub, A. (2017). UML Quick Reference. <https://holub.com/uml/>
 
-    Nyakundi, H. (2021). How to write a good README file for your Github Project. freeCodeCamp. (https://www.freecodecamp.org/news/how-to-write-a-good-readme-file/)
+    Nyakundi, H. (2021). How to write a good README file for your Github Project. freeCodeCamp. <https://www.freecodecamp.org/news/how-to-write-a-good-readme-file/>
 
-    Maurandi A., Palazón JA. (2013). markdown: guía breve y detallada. (http://fobos.inf.um.es/R/taller5j/30-markdown/guiabreveW.pdf)
+    Maurandi A., Palazón JA. (2013). markdown: guía breve y detallada. <http://fobos.inf.um.es/R/taller5j/30-markdown/guiabreveW.pdf>
 
-    Refactoring.Guru. (2014-2021). Design Patterns (https://refactoring.guru/design-patterns)
+    Refactoring.Guru. (2014-2021). Design Patterns <https://refactoring.guru/design-patterns>
+
+## Como utilizar el bot
+Dado que nuestro bot se encuentra en Fase II, que quiere decir que está su core terminado, pero no el relacionamiento con gateway de mensajes o servicios externos, podrás utilizarlo solo por consola.
+
+
 
 ## Desafíos y Reflexiones
 ### Repasar UML
@@ -50,6 +57,30 @@ En primera instancia, el bot parecía fácil de realizar, esto se debía a que n
 Sin duda que los Test se vuelven una herramienta sumamente necesaria, y es que no hay código que no se vea alterado después de la implementación de estos.  
   El nuestro no fue un caso ajeno, la batería de test realizadas nos hizo darnos cuenta que existían falencias en nuestro código, fallos en su lógica o que podíamos implementar un código más limpio.  
   Nos dedicamos arduamente a esta tarea para poder garantizar que nuestro programa funciona, que se cumple lo que se propuso y que, al final del día, nuestro esfuerzo está bien dirigido y el resultado es satisfactorio.
+
+### Creación de la User Interface
+Un desafío que encontramos y nos ayudó mucho a reflexionar fue la tarea de crear la User Interace.   
+La importancia recae en que la interfase es la espina dorsal de nuestro bot, ya que es el catalizador de todo el programa, es quien envía los mensajes a las distintas clases para realizar las tareas que queremos ejecutar como usuario.   
+La conjunción de tareas genera una gran complejidad a la hora de hacer estas comunicaciones respetando los patrones y principios aprendidos.    
+A su vez, la imagen que da la interfase de usuario es la cara de nuestro bot con el cliente, podemos desarrollar el mejor código que, si no le damos una buena experiencia al consumidor, no estaríamos cumpliendo nuestro objetivo completamente.
+
+
+## Créditos
+Este bot fue realizado por el equipo "Los Tres Mosqueteros" para la materia Programación 2 de la Universidad Católica del Uruguay "Damaso Antonio Larrañaga".  
+Los tres mosqueteros está conformado por:
+1. Matías Ferreira
+2. Juan Andrés Leal
+3. Sonia Olivera  
+![Figura 2](Adjuntos/RecursosReadme/3Mosqueteros.jpg?raw=true "Figura 2 - Los tres mosqueteros")   
+
+El product owner de este bot es:  
+**Bruno Hiriart**   
+
+## Medios de contacto
+Puedes contactarnos a cualquier integrante del equipo para resolver tus dudas o problemas con la utilización de ***Banky***
+1. Matías Ferreira - matias.ferreira@correo.ucu.edu.uy
+2. Juan Andrés Leal - andres.leal@correo.ucu.edu.uy
+3. Sonia Olivera - sonia.olivera@correo.ucu.edu.uy
 
 ---
 <sup>1</sup>: Este código aplica el Principio Open Close Principle (OCP), el cual permite agregar nuevas funcionalidades haciendo cambios mínimos en el código. Procuramos aplicar este principio para integrar otros medios de comunicación.
