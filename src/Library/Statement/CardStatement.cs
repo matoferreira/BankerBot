@@ -19,7 +19,6 @@ namespace Library
             this.Date = date;
             this.Limit = limit;
             this.previousBalance = lastbalance;
-            this.Balance = 0;
         }
         public override bool AddTransaction(Transactions transaction) //Si la transaccion supera el límite, devuelve false
         {
@@ -46,19 +45,7 @@ namespace Library
         }
         public override double GetBalance()
         {
-            double newbalance = 0 + previousBalance;
-            foreach (Transactions transaction in Transactions)
-            {
-                if (typeof(Income).IsInstanceOfType(transaction))
-                {
-                    newbalance = newbalance + transaction.Ammount;
-                }
-                else
-                {
-                    newbalance = newbalance - transaction.Ammount;
-                }
-            } 
-            this.Balance = newbalance;
+            double newbalance = this.Balance + previousBalance;
             return newbalance;
         }
         public double CalculatePaymentAmmount()

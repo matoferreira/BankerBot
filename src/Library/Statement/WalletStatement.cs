@@ -14,7 +14,6 @@ namespace Library
         {
             this.Currency = currency;
             this.Date = new DateTime(2000, 01, 01);
-            this.Balance = 0;
         }
     }
 }

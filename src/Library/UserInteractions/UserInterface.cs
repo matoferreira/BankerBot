@@ -16,17 +16,17 @@ namespace Library
         public UserInterface()
         {
             this.profile = new UserProfile();
+            this.MainMenu();
+        }
+        public void MainMenu()
+        {
             Output.PrintLine(
                 "Opciones Posibles: \n" +
                 "1. AgregarPaymentMethod\n" +
                 "2. Cambia Alerta \n" +
-                "3. Mostrar Status \n" 
+                "3. Mostrar Status \n" +
+                "9. Salir \n"
             );
-            this.MainMenu();
-
-        }
-        public void MainMenu()
-        {
             int x = IntImput.GetImput("Ingrese el número de la opción deseada:");
             switch (x)
             {
@@ -44,6 +44,10 @@ namespace Library
                 case 3:
                     {
                         this.GetStatus();
+                        break;
+                    }
+                    case 9:
+                    {
                         break;
                     }
                 default:
@@ -86,7 +90,7 @@ namespace Library
                     }
                     Currency currency = new Currency(moneda);
                     BankAccount banco = new BankAccount(nombre, currency);
-                    double saldo = IntImput.GetImput("Ingrese el saldo de la cuenta");
+                    double saldo = Convert.ToDouble(IntImput.GetImput("Ingrese el saldo de la cuenta"));
                     banco.CurrentStatement.ChangeBalance(saldo);
                     profile.AddPaymentMethod(banco);
                     break;
@@ -163,6 +167,7 @@ namespace Library
                     break;
             }
             Output.PrintLine("Medio de pago agregado");
+            this.MainMenu();
         }
         public void ChangeAlertLevel()
         {
@@ -198,41 +203,43 @@ namespace Library
                 }
             }
             Output.PrintLine("Alerta Cambiada");
+            this.MainMenu();
         }
-        public string GetStatus()
+        public void GetStatus()
         {
             string status = "";
             foreach (PaymentMethod method in profile.PaymentMethods)
             {
                 if (typeof(BankAccount).IsInstanceOfType(method))
                 {
-                    status = status + $"Saldo en {((BankAccount)method).BankName} en {method.Currency} es {method.GetBalance()}\n#";
+                    status = status + $"Saldo en cuenta bancaria {((BankAccount)method).BankName} en {((BankAccount)method).Currency.Name} es {((BankAccount)method).GetBalance()}#";
                 }
                 if (typeof(CreditCard).IsInstanceOfType(method))
                 {
-                    status = status + $"Saldo en {((CreditCard)method).CardName} en {method.Currency} es {method.GetBalance()}\n#";
+                    status = status + $"Saldo en {((CreditCard)method).CardName} en {method.Currency.Name} es {method.GetBalance()}#";
                 }
                 if (typeof(Wallet).IsInstanceOfType(method))
                 {
-                    status = status + $"Saldo en la billetera es: \n#";
+                    status = status + $"Saldo en la billetera es: #";
                     foreach (SubWallet item in ((Wallet)method).SubWalletList)
                     {
-                        status = status + $"Saldo en {item.Currency} es: {((Wallet)method).GetBalanceBySubWallet(item)}\n#";
+                        status = status + $"{((Wallet)method).GetBalanceBySubWallet(item)} Pesos";
                     }
                 }
-                this.ShowExpensesAnalysis();
-                Output.PrintLine("\n");
-                this.ShowSavingsAnalysis();
-                Output.PrintLine("\n");
             }
             foreach (Alert item in profile.Alerts)
             {
                 if (item.IsOn == true)
                 {
-                    status = status + $"{item.Message}\n#";
+                    status = status + $"{item.Message}#";
                 }
             }
-            return status;
+            Output.PrintLine(status);
+            Output.PrintLine("------------------------#");
+            this.ShowExpensesAnalysis();
+            this.ShowSavingsAnalysis();
+            Output.PrintLine("------------------------#");
+            this.MainMenu();
         }
         public void ShowSavingsAnalysis()
         {
@@ -240,7 +247,8 @@ namespace Library
         }
         public void ShowExpensesAnalysis()
         {
-            Output.PrintLine($"{ExpenseAnalysis.CalculateTotalByType(profile.PaymentMethods)}#");
+            //Esta dando error
+            //Output.PrintLine($"{ExpenseAnalysis.CalculateTotalByType(profile.PaymentMethods)}#");
         }
     }
 }

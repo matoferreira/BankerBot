@@ -15,24 +15,11 @@ namespace Library
         {
             this.Currency = currency;
             this.Date = date;
-            this.Balance = 0;
             this.previousBalance = lastbalance;
         }
         public override double GetBalance()
         {
-            double newbalance = 0 + previousBalance;
-            foreach (Transactions transaction in Transactions)
-            {
-                if (typeof(Income).IsInstanceOfType(transaction))
-                {
-                    newbalance = newbalance + transaction.Ammount;
-                }
-                else
-                {
-                    newbalance = newbalance - transaction.Ammount;
-                }
-            } 
-            this.Balance = newbalance;
+            double newbalance = this.Balance + previousBalance;
             return newbalance;
         }
     }

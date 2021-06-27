@@ -18,6 +18,7 @@ namespace Library
         protected Statement()
         {
             this.Transactions = new List<Transactions>();
+            this.Balance = 0;
         }
         public virtual bool AddTransaction(Transactions transaction)
         {
@@ -45,20 +46,7 @@ namespace Library
         }
         public virtual double GetBalance()
         {
-            double newbalance = 0;
-            foreach (Transactions transaction in Transactions)
-            {
-                if (typeof(Income).IsInstanceOfType(transaction))
-                {
-                    newbalance = newbalance + transaction.Ammount;
-                }
-                else
-                {
-                    newbalance = newbalance - transaction.Ammount;
-                }
-            } 
-            this.Balance = newbalance;
-            return newbalance;
+            return this.Balance;
         }
     }
 }

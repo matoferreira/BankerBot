@@ -14,12 +14,13 @@ namespace Library
         public BankAccount(String BankName, Currency currency)
         {
             this.BankName = BankName;
+            this.Currency = currency;
             this.StatementList = new List<BankAccountStatement>();
             this.CurrentStatement = new BankAccountStatement(currency, DateTime.Today, 0);
         }
         public override double GetBalance()
         {
-            return CurrentStatement.GetBalance();
+            return this.CurrentStatement.GetBalance();
         } 
         public void NewMonth()
         {

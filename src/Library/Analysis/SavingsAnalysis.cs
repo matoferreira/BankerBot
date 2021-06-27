@@ -13,22 +13,22 @@ namespace Library
     {   
         public string AnalyseSavings(List<PaymentMethod> savingsAccounts)
         {
-            string lista = "";
+            string lista = "El ahorro mensual es:\n";
             double total = 0;
             foreach (PaymentMethod item in savingsAccounts)
             {
                 if (typeof(BankAccount).IsInstanceOfType(item))
                 {
                     total = total + item.GetBalance();
-                    lista = lista + $"{((BankAccount)item).BankName},{item.GetBalance()}#";
+                    lista = lista + $"{item.GetBalance()} {item.Currency.Name} en cuenta bancaria {((BankAccount)item).BankName}#";
                 }
                 if (typeof(Wallet).IsInstanceOfType(item))
                 {
                     total = total + item.GetBalance();
-                    lista = lista + $"Billetera,{item.GetBalance()}#";
+                    lista = lista + $"{item.GetBalance()} Pesos En la Billetera#";
                 }
             }
-            lista = lista + $"Total,{total}#";
+            lista = lista + $"Ahorro total: {total} Pesos#";
             return lista;
         }
     }
