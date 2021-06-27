@@ -20,7 +20,7 @@ namespace Library
                 if (typeof(BankAccount).IsInstanceOfType(item))
                 {
                     total = total + item.GetBalance();
-                    lista = lista + $"{item.GetBalance()} {item.Currency.Name} en cuenta bancaria {((BankAccount)item).BankName}#";
+                    lista = lista + $"{item.GetBalance()} {item.Currency.Name} en cuenta bancaria {((BankAccount)item).Name}#";
                 }
                 if (typeof(Wallet).IsInstanceOfType(item))
                 {

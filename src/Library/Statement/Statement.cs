@@ -15,7 +15,7 @@ namespace Library
         public DateTime Date { get; protected set; }
         public double Balance { get; protected set; }
         public List<Transactions> Transactions { get; protected set;}
-        protected Statement()
+        public Statement()
         {
             this.Transactions = new List<Transactions>();
             this.Balance = 0;

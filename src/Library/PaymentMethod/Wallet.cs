@@ -16,6 +16,7 @@ namespace Library
         
         public Wallet(SubWallet subwallet)
         {
+            this.Name = "Billetera";
             this.SubWalletList = new List<SubWallet>();
             this.CurrencyList = new List<Currency>();
             this.SubWalletList.Add(subwallet);

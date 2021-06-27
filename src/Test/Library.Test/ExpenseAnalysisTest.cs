@@ -19,19 +19,19 @@ using Library;
             [SetUp]
         	public void Setup()
         {
-            currency1 = new Currency("USD");
-            bankAccount10 = new BankAccount("Cuenta1", currency1, DateTime.Now);
-			bankAccount20 = new BankAccount("Cuenta2", currency1, DateTime.Now);
-			payments1 = new List<PaymentMethod>();
-			payments1.Add(bankAccount10);
-			payments1.Add(bankAccount20);
-			expenseType3 = new ExpenseType("Ropa");
-			expenseType4 = new ExpenseType("Alimentos");
-			bankAccount10.CurrentStatement.AddTransaction(new Expense("camisa", 1000, currency1,expenseType3));
-			bankAccount20.CurrentStatement.AddTransaction(new Expense("camisa", 2000, currency1,expenseType3));
-			bankAccount10.CurrentStatement.AddTransaction(new Expense("alfajor", 500, currency1,expenseType4));
-			bankAccount20.CurrentStatement.AddTransaction(new Expense("alfajor", 600, currency1,expenseType4));
-			expenseAnalysis2 = new ExpenseAnalysis();
+            currency = new Currency("USD");
+            bankAccount1 = new BankAccount("Cuenta1", currency);
+			bankAccount2 = new BankAccount("Cuenta2", currency);
+			payments = new List<PaymentMethod>();
+			payments.Add(bankAccount1);
+			payments.Add(bankAccount2);
+			expenseType1 = new ExpenseType("Ropa");
+			expenseType2 = new ExpenseType("Alimentos");
+			bankAccount1.CurrentStatement.AddTransaction(new Expense("camisa", 1000, currency,expenseType1));
+			bankAccount2.CurrentStatement.AddTransaction(new Expense("camisa", 2000, currency,expenseType1));
+			bankAccount1.CurrentStatement.AddTransaction(new Expense("alfajor", 500, currency,expenseType2));
+			bankAccount2.CurrentStatement.AddTransaction(new Expense("alfajor", 600, currency,expenseType2));
+			expenseAnalysis1 = new ExpenseAnalysis();
 
 			Console.WriteLine(expenseAnalysis2.CalculateTotalByType(payments1));
             

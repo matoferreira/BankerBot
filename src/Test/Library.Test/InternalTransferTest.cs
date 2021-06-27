@@ -5,7 +5,6 @@ using System;
 	{
 	    public class InternalTransferTest
 	    {
-	        private DateTime DateTime;
             private PaymentMethod Destination;
 
             private Currency currency;
@@ -17,9 +16,8 @@ using System;
 	        [SetUp]
 	        public void Setup()
 	        {
-                DateTime date3 = DateTime.Today;
                 currency = new Currency("UYU");
-	            Destination = new BankAccount("MiBanco", currency, date3);
+	            Destination = new BankAccount("MiBanco", currency);
                 InternalTransfer internalTransfer1 = new InternalTransfer ("Aguinaldo",20000, currency, Destination);
 	          
 	        }
