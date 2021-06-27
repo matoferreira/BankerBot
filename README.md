@@ -21,7 +21,9 @@ Nuestro bot procura asistirte en la administración de tus finanzas personales d
 11. Agregar ingresos, gastos o transferencias internas entre tus medios de pago.
 12. Si utilizas tarjeta de crédito, podrás ver cuanto tendrás que pagar al cierre de la misma.
 
->Learning is a treasure that will follow its owner everywhere.
+>  
+>***Learning is a treasure that will follow its owner everywhere.***
+>  
 
 ## Bibliografía Consultada
     University of Texas at San Antonio. UML. <http://www.cs.utsa.edu/~cs3443/uml/uml.html)
@@ -70,7 +72,8 @@ Este bot fue realizado por el equipo "Los Tres Mosqueteros" para la materia Prog
 Los tres mosqueteros está conformado por:
 1. Matías Ferreira
 2. Juan Andrés Leal
-3. Sonia Olivera  
+3. Sonia Olivera    
+  
 ![Figura 2](Adjuntos/RecursosReadme/3Mosqueteros.jpg?raw=true "Figura 2 - Los tres mosqueteros")   
 
 El product owner de este bot es:  
