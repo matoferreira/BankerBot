@@ -9,13 +9,13 @@ using Library;
 
 		{  
 
-			private ExpenseType expenseType1;
-			private ExpenseType expenseType2;
-			private BankAccount bankAccount1;
-			private BankAccount bankAccount2;
-			private Currency currency;
-			private List<PaymentMethod> payments;
-			private ExpenseAnalysis expenseAnalysis1;
+			private ExpenseType expenseType3;
+			private ExpenseType expenseType4;
+			private BankAccount bankAccount10;
+			private BankAccount bankAccount20;
+			private Currency currency1;
+			private List<PaymentMethod> payments1;
+			private ExpenseAnalysis expenseAnalysis2;
             [SetUp]
         	public void Setup()
         {
@@ -33,14 +33,14 @@ using Library;
 			bankAccount2.CurrentStatement.AddTransaction(new Expense("alfajor", 600, currency,expenseType2));
 			expenseAnalysis1 = new ExpenseAnalysis();
 
-			Console.WriteLine($"{expenseAnalysis1.CalculateTotalByType(payments)}");
+			Console.WriteLine(expenseAnalysis2.CalculateTotalByType(payments1));
             
         }
 
         [Test]
         public void CalculateTotalByTypeTest()
         {
-           Assert.AreEqual(3000,3000,$"{expenseAnalysis1.CalculateTotalByType(payments)}");
+           Assert.AreEqual(3000,3000,$"{expenseAnalysis2.CalculateTotalByType(payments1)}");
 		  // Console.WriteLine($"{expenseAnalysis1.CalculateTotalByType(payments)}");
         }
 
