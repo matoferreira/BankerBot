@@ -4,7 +4,7 @@ Si alguna de estas preguntas la respondés con un sí, o si simplemente querés 
 
 ## Propósito
 Nuestro bot procura asistirte en la administración de tus finanzas personales de una manera cómoda y personalizable.  
-    Para interactuar contigo, el BankerBot está configurado para funcionar mediante mensajes enviados en Telegram, aunque el código es fácilmente modificable y podés utilizarlo con **cualquier otro medio de comunicación**.[^1]
+    Para interactuar contigo, el BankerBot está configurado para funcionar mediante mensajes enviados en Telegram, aunque el código es fácilmente modificable y podés utilizarlo con **cualquier otro medio de comunicación**.<sup>1</sup>
 
 ## Funciones
 **Banky**, *como nos gusta llamar a nuestro bot*, te permite realizar muchas tareas:
@@ -22,7 +22,7 @@ Nuestro bot procura asistirte en la administración de tus finanzas personales d
 12. Si utilizas tarjeta de crédito, podrás ver cuanto tendrás que pagar al cierre de la misma.
 
 ## Bibliografía Consultada
-[University of Texas at San Antonio. UML.] (http://www.cs.utsa.edu/~cs3443/uml/uml.html)
+    [University of Texas at San Antonio. UML.] (http://www.cs.utsa.edu/~cs3443/uml/uml.html)
 
     [Rumyancev, P. (2020). UML Class Diagram Arrows Guide. Medium] (https://medium.com/the-innovation/uml-class-diagram-arrows-guide-37e4b1bb11e)
      
@@ -50,5 +50,5 @@ Sin duda que los Test se vuelven una herramienta sumamente necesaria, y es que n
     El nuestro no fue un caso ajeno, la batería de test realizadas nos hizo darnos cuenta que existían falencias en nuestro código, fallos en su lógica o que podíamos implementar un código más limpio.
     Nos dedicamos arduamente a esta tarea para poder garantizar que nuestro programa funciona, que se cumple lo que se propuso y que, al final del día, nuestro esfuerzo está bien dirigido y el resultado es satisfactorio.
 
-
-[^1]: Este código aplica el Principio Open Close Principle (OCP), el cual permite agregar nuevas funcionalidades haciendo cambios mínimos en el código. Procuramos aplicar este principio para integrar otros medios de comunicación.
+---
+<sup>1</sup>: Este código aplica el Principio Open Close Principle (OCP), el cual permite agregar nuevas funcionalidades haciendo cambios mínimos en el código. Procuramos aplicar este principio para integrar otros medios de comunicación.
