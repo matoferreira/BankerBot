@@ -1,6 +1,6 @@
 # BankerBot
 ¿Tenés problemas para administrar tus finanzas personales?, ¿Llegás a fin de mes con poco dinero?, ¿querés ahorrar para un objetivo y no podés controlarlo?  
-Si alguna de estas preguntas la respondés con un sí, o si simplemente querés ser mas ordenado con tu dinero ***¡te invitamos a usar el Bankerbot!***.
+Si alguna de estas preguntas la respondés con un sí, o si simplemente querés ser mas ordenado con tus finanzas ***¡te invitamos a usar el Bankerbot!***.
 
 ## Propósito
 Nuestro bot procura asistirte en la administración de tus finanzas personales de una manera cómoda y personalizable.  
@@ -27,28 +27,31 @@ Nuestro bot procura asistirte en la administración de tus finanzas personales d
 >  
 >***Learning is a treasure that will follow its owner everywhere.***
 >  
-    University of Texas at San Antonio. UML. <http://www.cs.utsa.edu/~cs3443/uml/uml.html)
+    University of Texas at San Antonio. UML. (http://www.cs.utsa.edu/~cs3443/uml/uml.html)
 
-    Rumyancev, P. (2020). UML Class Diagram Arrows Guide. Medium <https://medium.com/the-innovation/uml-class-diagram-arrows-guide-37e4b1bb11e>
+    Rumyancev, P. (2020). UML Class Diagram Arrows Guide. Medium (https://medium.com/the-innovation/uml-class-diagram-arrows-guide-37e4b1bb11e)
      
-    Holub, A. (2017). UML Quick Reference. <https://holub.com/uml/>
+    Holub, A. (2017). UML Quick Reference. (https://holub.com/uml)
 
-    Nyakundi, H. (2021). How to write a good README file for your Github Project. freeCodeCamp. <https://www.freecodecamp.org/news/how-to-write-a-good-readme-file/>
+    Nyakundi, H. (2021). How to write a good README file for your Github Project. freeCodeCamp. (https://www.freecodecamp.org/news/how-to-write-a-good-readme-file/)
 
-    Maurandi A., Palazón JA. (2013). markdown: guía breve y detallada. <http://fobos.inf.um.es/R/taller5j/30-markdown/guiabreveW.pdf>
+    Maurandi A., Palazón JA. (2013). markdown: guía breve y detallada. (http://fobos.inf.um.es/R/taller5j/30-markdown/guiabreveW.pdf)
 
-    Refactoring.Guru. (2014-2021). Design Patterns <https://refactoring.guru/design-patterns>
+    Refactoring.Guru. (2014-2021). Design Patterns (https://refactoring.guru/design-patterns)   
+
+    The NUnit Project. (2018). NUnit Documentation Site (https://docs.nunit.org/index.html)
 
 ## Como utilizar el bot
-Dado que nuestro bot se encuentra en Fase II, que quiere decir que está su core terminado, pero no el relacionamiento con gateway de mensajes o servicios externos, podrás utilizarlo solo por consola.
+Nuestro bot se encuentra en Fase II, esto quiere decir que está su core terminado pero no el relacionamiento con gateway de mensajes o servicios externos.     
+Debido a esto sólo podrás utilizarlo solo por consola.    
 Una vez que nuestro bot se encuentre desarrollado por completo, encontrarás aquí la guia paso a paso para utilizarlo y videos instructivos.
 
 
 ## Desafíos y Reflexiones
 ### Repasar UML
-Nos pareció que, durante el curso, aprendimos UML pero no llegamos a comprender las formas de relacionamiento entre las clases, es por eso que consultamos distintas fuentes en línea para terminar de comprender los conceptos de representación gráfica de las relaciones entre clases.
-   Nos ayudo mucho utilizar referencias rapidas como esta:
-   ![Figura 1](Adjuntos/RecursosReadme/UMLcheatsheet.gif?raw=true "Figura 1 - UML Cheatsheet")
+Nos pareció que, durante el curso, aprendimos UML pero no llegamos a comprender las formas de relacionamiento entre las clases, es por eso que consultamos distintas fuentes en línea para terminar de comprender los conceptos de representación gráfica de las relaciones entre clases.    
+Nos ayudo mucho utilizar referencias rapidas como esta:
+   ![Figura 1](Adjuntos/RecursosReadme/UMLcheatsheet.gif?raw=true "Figura 1 - UML Cheatsheet")    
                *Figura 1 - UML Cheatsheet*
 
 ### Comprensión de la tarea a realizar
