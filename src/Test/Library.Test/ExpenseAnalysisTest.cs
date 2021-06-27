@@ -2,7 +2,7 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using Library;
-
+/*
 	namespace Library.Test
 	{
 	    public class ExpenseAnalysisTest
@@ -47,3 +47,4 @@ using Library;
 		}
 	}
 
+*/
