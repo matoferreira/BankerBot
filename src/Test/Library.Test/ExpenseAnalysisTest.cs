@@ -9,38 +9,38 @@ using Library;
 
 		{  
 
-			private ExpenseType expenseType1;
-			private ExpenseType expenseType2;
-			private BankAccount bankAccount1;
-			private BankAccount bankAccount2;
-			private Currency currency;
-			private List<PaymentMethod> payments;
-			private ExpenseAnalysis expenseAnalysis1;
+			private ExpenseType expenseType3;
+			private ExpenseType expenseType4;
+			private BankAccount bankAccount10;
+			private BankAccount bankAccount20;
+			private Currency currency1;
+			private List<PaymentMethod> payments1;
+			private ExpenseAnalysis expenseAnalysis2;
             [SetUp]
         	public void Setup()
         {
-            currency = new Currency("USD");
-            bankAccount1 = new BankAccount("Cuenta1", currency, DateTime.Now);
-			bankAccount2 = new BankAccount("Cuenta2", currency, DateTime.Now);
-			payments = new List<PaymentMethod>();
-			payments.Add(bankAccount1);
-			payments.Add(bankAccount2);
-			expenseType1 = new ExpenseType("Ropa");
-			expenseType2 = new ExpenseType("Alimentos");
-			bankAccount1.CurrentStatement.AddTransaction(new Expense("camisa", 1000, currency,expenseType1));
-			bankAccount2.CurrentStatement.AddTransaction(new Expense("camisa", 2000, currency,expenseType1));
-			bankAccount1.CurrentStatement.AddTransaction(new Expense("alfajor", 500, currency,expenseType2));
-			bankAccount2.CurrentStatement.AddTransaction(new Expense("alfajor", 600, currency,expenseType2));
-			expenseAnalysis1 = new ExpenseAnalysis();
+            currency1 = new Currency("USD");
+            bankAccount10 = new BankAccount("Cuenta1", currency1, DateTime.Now);
+			bankAccount20 = new BankAccount("Cuenta2", currency1, DateTime.Now);
+			payments1 = new List<PaymentMethod>();
+			payments1.Add(bankAccount10);
+			payments1.Add(bankAccount20);
+			expenseType3 = new ExpenseType("Ropa");
+			expenseType4 = new ExpenseType("Alimentos");
+			bankAccount10.CurrentStatement.AddTransaction(new Expense("camisa", 1000, currency1,expenseType3));
+			bankAccount20.CurrentStatement.AddTransaction(new Expense("camisa", 2000, currency1,expenseType3));
+			bankAccount10.CurrentStatement.AddTransaction(new Expense("alfajor", 500, currency1,expenseType4));
+			bankAccount20.CurrentStatement.AddTransaction(new Expense("alfajor", 600, currency1,expenseType4));
+			expenseAnalysis2 = new ExpenseAnalysis();
 
-			Console.WriteLine($"{expenseAnalysis1.CalculateTotalByType(payments)}");
+			Console.WriteLine(expenseAnalysis2.CalculateTotalByType(payments1));
             
         }
 
         [Test]
         public void CalculateTotalByTypeTest()
         {
-           Assert.AreEqual(3000,3000,$"{expenseAnalysis1.CalculateTotalByType(payments)}");
+           Assert.AreEqual(3000,3000,$"{expenseAnalysis2.CalculateTotalByType(payments1)}");
 		  // Console.WriteLine($"{expenseAnalysis1.CalculateTotalByType(payments)}");
         }
 
