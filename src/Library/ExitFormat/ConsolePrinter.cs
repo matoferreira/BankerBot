@@ -2,7 +2,7 @@ using System;
 
 namespace Library
 {
-    public class ConsolePrinter : IPrinter
+    public class ConsolePrinter : IExitFormat
     {
         public void PrintLine(string line)
         {
