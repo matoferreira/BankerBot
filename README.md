@@ -1,11 +1,13 @@
 # BankerBot
-¿Tenés problemas para administrar tus finanzas personales?, ¿Llegás a fin de mes con poco dinero?, ¿querés ahorrar para un objetivo y no podes controlarlo?, si alguna de estas preguntas la respondés con un si, o si simplemente querés ser mas ordenado con tu dinero ***¡te invitamos a usar el Bankerbot!***.
+¿Tenés problemas para administrar tus finanzas personales?, ¿Llegás a fin de mes con poco dinero?, ¿querés ahorrar para un objetivo y no podés controlarlo?  
+Si alguna de estas preguntas la respondés con un sí, o si simplemente querés ser mas ordenado con tu dinero ***¡te invitamos a usar el Bankerbot!***.
 
 ## Propósito
-El Bankerbot procura asistirte en la administración de tus Finanzas personales de una manera cómoda y personalizable. Para interactuar contigo, el BankerBot está configurado para funcionar mediante una interacción por Telegram, aunque lo dejamos abierto a la extensión y podés utilizarlo con **cualquier otro medio de comunicación**.
+Nuestro bot procura asistirte en la administración de tus finanzas personales de una manera cómoda y personalizable.  
+    Para interactuar contigo, el BankerBot está configurado para funcionar mediante mensajes enviados en Telegram, aunque el código es fácilmente modificable y podés utilizarlo con **cualquier otro medio de comunicación**.[^1]
 
 ## Funciones
-Banky, *como nos gusta llamar a nuestro bot*, te permite realizar muchas tareas:
+**Banky**, *como nos gusta llamar a nuestro bot*, te permite realizar muchas tareas:
 1. Registrar gastos.
 2. Clasificar los gastos por su rubro.
 3. Obtener resúmenes de gastos por rubros.
@@ -20,18 +22,23 @@ Banky, *como nos gusta llamar a nuestro bot*, te permite realizar muchas tareas:
 12. Si utilizas tarjeta de crédito, podrás ver cuanto tendrás que pagar al cierre de la misma.
 
 ## Bibliografía Consultada
-http://www.cs.utsa.edu/~cs3443/uml/uml.html
-https://medium.com/the-innovation/uml-class-diagram-arrows-guide-37e4b1bb11e
-https://i.stack.imgur.com/O6Itp.gif
-https://loufranco.com/wp-content/uploads/2012/11/cheatsheet.pdf
-https://holub.com/uml/
-https://www.genbeta.com/guia-de-inicio/que-es-markdown-para-que-sirve-y-como-usarlo
-https://anabelisa.co/tips-para-hacer-un-buen-readme-md/
-https://refactoring.guru/design-patterns
+[University of Texas at San Antonio. UML.] (http://www.cs.utsa.edu/~cs3443/uml/uml.html)
+
+    [Rumyancev, P. (2020). UML Class Diagram Arrows Guide. Medium] (https://medium.com/the-innovation/uml-class-diagram-arrows-guide-37e4b1bb11e)
+     
+    [Holub, A. (2017). UML Quick Reference.] (https://holub.com/uml/)
+
+    [Nyakundi, H. (2021). How to write a good README file for your Github Project. freeCodeCamp.] (https://www.freecodecamp.org/news/how-to-write-a-good-readme-file/)
+
+    [Maurandi A., Palazón JA. (2013). markdown: guía breve y detallada.] (http://fobos.inf.um.es/R/taller5j/30-markdown/guiabreveW.pdf)
+
+    [Refactoring.Guru. (2014-2021). Design Patterns] (https://refactoring.guru/design-patterns)
 
 ## Desafíos y Reflexiones
 ### Repasar UML
 Nos pareció que, durante el curso, aprendimos UML pero no llegamos a comprender las formas de relacionamiento entre las clases, es por eso que consultamos distintas fuentes en línea para terminar de comprender los conceptos de representación gráfica de las relaciones entre clases.
+   Nos ayudo mucho utilizar referencias rapidas como esta:
+   ![Figura 1](Adjuntos/RecursosReadme/UMLcheatsheet.gif?raw=true "Title")
 
 ### Comprensión de la tarea a realizar
 En primera instancia, el bot parecía fácil de realizar, esto se debía a que no comprendíamos la extensión de tareas a realizar.
@@ -40,5 +47,8 @@ Una vez realizado esto, pudimos desarrollar una serie de funciones, casos y nece
 
 ### Implementación de Tests
 Sin duda que los Test se vuelven una herramienta sumamente necesaria, y es que no hay código que no se vea alterado después de la implementación de estos.
-El nuestro no fue un caso ajeno, la batería de test realizadas nos hizo darnos cuenta que existían falencias en nuestro código, fallos en su lógica o que podíamos implementar un código más limpio.
-Nos dedicamos arduamente a esta tarea para poder garantizar que nuestro programa funciona, que se cumple lo que se propuso y que, al final del día, nuestro esfuerzo está bien dirigido y el resultado es satisfactorio.
+    El nuestro no fue un caso ajeno, la batería de test realizadas nos hizo darnos cuenta que existían falencias en nuestro código, fallos en su lógica o que podíamos implementar un código más limpio.
+    Nos dedicamos arduamente a esta tarea para poder garantizar que nuestro programa funciona, que se cumple lo que se propuso y que, al final del día, nuestro esfuerzo está bien dirigido y el resultado es satisfactorio.
+
+
+[^1]: Este código aplica el Principio Open Close Principle (OCP), el cual permite agregar nuevas funcionalidades haciendo cambios mínimos en el código. Procuramos aplicar este principio para integrar otros medios de comunicación.
