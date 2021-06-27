@@ -9,14 +9,16 @@ namespace Library.Test
         private UserProfile profile = new UserProfile();
         private Currency currency = new Currency("USD");
         private BankAccount bank; 
+        private ExpenseType expense;
 
         [SetUp]
         public void Setup()
         {
+            expense = new ExpenseType("super");
             profile.Alerts.Find(item => typeof(HighSpendingAlert).IsInstanceOfType(item)).ChangeLevel(1000);
             bank = new BankAccount("Santander", currency);
             profile.AddPaymentMethod(bank);
-            bank.CurrentStatement.AddTransaction(new Income("prueba", 2000, currency));
+            bank.CurrentStatement.AddTransaction(new Expense("prueba", 2000, currency, expense));
         }
 
         [Test]

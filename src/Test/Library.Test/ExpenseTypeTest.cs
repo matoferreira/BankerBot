@@ -7,7 +7,6 @@ using Library;
 	{
 	    public class ExpenseTypeTest
 	    {       
- 			private string name;
         	private ExpenseType expenseType1;
         	private ExpenseType expenseType2;
         
