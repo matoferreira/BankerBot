@@ -22,17 +22,17 @@ Nuestro bot procura asistirte en la administración de tus finanzas personales d
 12. Si utilizas tarjeta de crédito, podrás ver cuanto tendrás que pagar al cierre de la misma.
 
 ## Bibliografía Consultada
-    [University of Texas at San Antonio. UML.] (http://www.cs.utsa.edu/~cs3443/uml/uml.html)
+    University of Texas at San Antonio. UML. (http://www.cs.utsa.edu/~cs3443/uml/uml.html)
 
-    [Rumyancev, P. (2020). UML Class Diagram Arrows Guide. Medium] (https://medium.com/the-innovation/uml-class-diagram-arrows-guide-37e4b1bb11e)
+    Rumyancev, P. (2020). UML Class Diagram Arrows Guide. Medium (https://medium.com/the-innovation/uml-class-diagram-arrows-guide-37e4b1bb11e)
      
-    [Holub, A. (2017). UML Quick Reference.] (https://holub.com/uml/)
+    Holub, A. (2017). UML Quick Reference. (https://holub.com/uml/)
 
-    [Nyakundi, H. (2021). How to write a good README file for your Github Project. freeCodeCamp.] (https://www.freecodecamp.org/news/how-to-write-a-good-readme-file/)
+    Nyakundi, H. (2021). How to write a good README file for your Github Project. freeCodeCamp. (https://www.freecodecamp.org/news/how-to-write-a-good-readme-file/)
 
-    [Maurandi A., Palazón JA. (2013). markdown: guía breve y detallada.] (http://fobos.inf.um.es/R/taller5j/30-markdown/guiabreveW.pdf)
+    Maurandi A., Palazón JA. (2013). markdown: guía breve y detallada. (http://fobos.inf.um.es/R/taller5j/30-markdown/guiabreveW.pdf)
 
-    [Refactoring.Guru. (2014-2021). Design Patterns] (https://refactoring.guru/design-patterns)
+    Refactoring.Guru. (2014-2021). Design Patterns (https://refactoring.guru/design-patterns)
 
 ## Desafíos y Reflexiones
 ### Repasar UML
