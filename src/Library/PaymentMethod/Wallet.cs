@@ -36,6 +36,7 @@ namespace Library
         {
             double result = 0;
             result+=subWallet.Statement.GetBalance();
+            this.NotifyObservers();
             return result;
         }
 

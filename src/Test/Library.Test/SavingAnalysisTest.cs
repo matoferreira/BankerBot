@@ -8,7 +8,7 @@ using Library;
 	    public class SavingAnalysisTest
 
 		{  
-
+/*
 			private ExpenseType expenseType1;
 			private ExpenseType expenseType2;
 			private BankAccount bankAccount1;
@@ -39,6 +39,6 @@ using Library;
            Assert.AreEqual(a,mySavingsAnalysis.AnalyseSavings(savingsAccounts));
 		  
         }
-
+*/
 		}
 	}

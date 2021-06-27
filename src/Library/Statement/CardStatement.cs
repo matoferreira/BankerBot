@@ -22,7 +22,7 @@ namespace Library
         }
         public override bool AddTransaction(Transactions transaction) //Si la transaccion supera el límite, devuelve false
         {
-            if (typeof(Income).IsInstanceOfType(transaction))
+            if (typeof(Expense).IsInstanceOfType(transaction))
             {
                 if (transaction.Ammount <= this.Limit)
                 {
@@ -53,7 +53,7 @@ namespace Library
             double newpayment = 0;
             foreach (Transactions transaction in Transactions)
             {
-                if (typeof(Income).IsInstanceOfType(transaction))
+                if (typeof(Expense).IsInstanceOfType(transaction))
                 {
                     newpayment = newpayment + transaction.Ammount;
                 }

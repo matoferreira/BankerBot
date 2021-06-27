@@ -8,7 +8,6 @@ namespace Library
     public class BankAccount : PaymentMethod
     {
         public List<Statement> StatementList {get; private set;}
-        //public BankAccountStatement CurrentStatement {get; protected set;}
 
         public BankAccount(String BankName, Currency currency)
         {
