@@ -38,17 +38,18 @@ Nuestro bot procura asistirte en la administración de tus finanzas personales d
 ### Repasar UML
 Nos pareció que, durante el curso, aprendimos UML pero no llegamos a comprender las formas de relacionamiento entre las clases, es por eso que consultamos distintas fuentes en línea para terminar de comprender los conceptos de representación gráfica de las relaciones entre clases.
    Nos ayudo mucho utilizar referencias rapidas como esta:
-   ![Figura 1](Adjuntos/RecursosReadme/UMLcheatsheet.gif?raw=true "Title")
+   ![Figura 1](Adjuntos/RecursosReadme/UMLcheatsheet.gif?raw=true "Figura 1 - UML Cheatsheet")
+               *Figura 1 - UML Cheatsheet*
 
 ### Comprensión de la tarea a realizar
-En primera instancia, el bot parecía fácil de realizar, esto se debía a que no comprendíamos la extensión de tareas a realizar.
-Para esto, investigamos sobre las distintas funciones que debería tener un sistema de finanzas personales, accediendo a varios ejemplos para recabar ideas.
-Una vez realizado esto, pudimos desarrollar una serie de funciones, casos y necesidades que puede tener el usuario para que el uso de nuestro bot sea satisfactorio y cumpla con las expectativas.
+En primera instancia, el bot parecía fácil de realizar, esto se debía a que no comprendíamos la extensión de tareas a realizar.  
+  Para esto, investigamos sobre las distintas funciones que debería tener un sistema de finanzas personales, accediendo a varios ejemplos para recabar ideas.   
+  Una vez realizado esto, pudimos desarrollar una serie de funciones, casos y necesidades que puede tener el usuario para que el uso de nuestro bot sea satisfactorio y cumpla con las expectativas.
 
 ### Implementación de Tests
-Sin duda que los Test se vuelven una herramienta sumamente necesaria, y es que no hay código que no se vea alterado después de la implementación de estos.
-    El nuestro no fue un caso ajeno, la batería de test realizadas nos hizo darnos cuenta que existían falencias en nuestro código, fallos en su lógica o que podíamos implementar un código más limpio.
-    Nos dedicamos arduamente a esta tarea para poder garantizar que nuestro programa funciona, que se cumple lo que se propuso y que, al final del día, nuestro esfuerzo está bien dirigido y el resultado es satisfactorio.
+Sin duda que los Test se vuelven una herramienta sumamente necesaria, y es que no hay código que no se vea alterado después de la implementación de estos.  
+  El nuestro no fue un caso ajeno, la batería de test realizadas nos hizo darnos cuenta que existían falencias en nuestro código, fallos en su lógica o que podíamos implementar un código más limpio.  
+  Nos dedicamos arduamente a esta tarea para poder garantizar que nuestro programa funciona, que se cumple lo que se propuso y que, al final del día, nuestro esfuerzo está bien dirigido y el resultado es satisfactorio.
 
 ---
 <sup>1</sup>: Este código aplica el Principio Open Close Principle (OCP), el cual permite agregar nuevas funcionalidades haciendo cambios mínimos en el código. Procuramos aplicar este principio para integrar otros medios de comunicación.
