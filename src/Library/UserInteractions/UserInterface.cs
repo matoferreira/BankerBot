@@ -3,8 +3,16 @@ using System.Collections.Generic;
 
 namespace Library
 {
-    //Se deja intencionalmente esta clase vacía, dado a que su implementación refiere al flujo completo de trabajo del bot
-    //por estar en una primera instancia del desarrollo del mismo, no se cuenta con estos detalles aún.
+    //Esta clase actua como Mediador entre las diferentes clases del bot, buscando que éstas no interactúen entre sí.
+    //De esta manera se reduce la dependencia entre ellas (Low Coupling) y permite que las demás clases sean cerradas
+    //a la modificación.
+    //Utilizamos Interfaces para manejar la entrada y salida de datos del bot, en el momento, solamente se interactúa
+    //con la consola pero estas interfaces permitirán a futuro poder agregar más plataformas (Telegram, Whatsapp, Excel)
+    //Sin tener que modificar el Core bot.
+    //Una interface de entrada acepta solamente int, y la utilizamos para recibir los comandos del usuario,
+    //Mientras que la otra recibe strings para aceptar texto.
+    //Utilizamos Singleton para implementar estos Mecanismos de Imput y Output de datos porque solo es necesario que
+    //exita una instancia de ellos.
     public class UserInterface
     {
         public IStringImput StringImput = Singleton<ConsoleReader>.Instance;
