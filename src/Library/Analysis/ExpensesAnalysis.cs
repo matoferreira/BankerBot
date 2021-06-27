@@ -9,7 +9,8 @@ using System.Collections.Generic;
 //Cuando esto ocurre, el UserInterface llama a este Singleton para que
 //Actualice la string con los gastos agregados por tipo.
 namespace Library
-{    public class ExpenseAnalysis
+{
+    public class ExpenseAnalysis
     {
         public List<ExpenseType> ExpenseTypes { get; private set; }
 
@@ -35,22 +36,25 @@ namespace Library
         }
         public string CalculateTotalByType(List<PaymentMethod> payments)
         {
-            this.GetExpenseTypes(payments);
             string lista = "";
-            foreach (ExpenseType expenseType in ExpenseTypes)
+            this.GetExpenseTypes(payments);
+            if (this.ExpenseTypes.Count >= 1)
             {
-                double total = 0;
-                foreach (PaymentMethod item in payments)
+                foreach (ExpenseType expenseType in ExpenseTypes)
                 {
-                    foreach (Transactions transaction in item.CurrentStatement.Transactions)
+                    double total = 0;
+                    foreach (PaymentMethod item in payments)
                     {
-                        if (typeof(Expense).IsInstanceOfType(transaction) && ((Expense)transaction).ExpenseType == expenseType)
+                        foreach (Transactions transaction in item.CurrentStatement.Transactions)
                         {
-                        total = total + transaction.Ammount;
+                            if (typeof(Expense).IsInstanceOfType(transaction) && ((Expense)transaction).ExpenseType == expenseType)
+                            {
+                                total = total + transaction.Ammount;
+                            }
                         }
                     }
+                    lista = lista + $"{expenseType},{total}#";
                 }
-                lista = lista + $"{expenseType},{total}#";
             }
             return lista;
         }

@@ -10,13 +10,13 @@ namespace Library
     {
         
         public Currency Currency { get; protected set; }
-        protected double Balance { get; set; }
+        public double Balance { get; protected set; }
         protected List<IObserver> observers = new List<IObserver>();
 
         public Statement CurrentStatement { get; protected set; }
         public virtual double GetBalance()
         {
-            return this.Balance;
+            return 1;
         }
 
         public void Subscribe(IObserver observer)

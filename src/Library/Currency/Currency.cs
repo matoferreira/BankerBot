@@ -11,7 +11,7 @@ namespace Library
 {
     public class Currency : ICurrency
     {
-        public string Name { get ; set ; }
+        public string Name { get ; set ;}
         public double ExchangeRate { get ; protected set ; }
         public IExchange Exchanger = new CurrencyExchangeAPI();
 

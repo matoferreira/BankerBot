@@ -10,6 +10,7 @@ namespace Library
         public UserProfile()
         {
             this.PaymentMethods = new List<PaymentMethod>();
+            this.AddPaymentMethod(new Wallet(new SubWallet("Pesos", new Currency("Pesos"))));
             this.Alerts = new List<Alert>();
             Alerts.Add(new HighSpendingAlert());
             Alerts.Add(new SavingsTargetAlert());

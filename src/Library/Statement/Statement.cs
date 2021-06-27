@@ -13,11 +13,12 @@ namespace Library
     {
         public Currency Currency { get; protected set; }
         public DateTime Date { get; protected set; }
-        protected double Balance;
+        public double Balance { get; protected set; }
         public List<Transactions> Transactions { get; protected set;}
         protected Statement()
         {
             this.Transactions = new List<Transactions>();
+            this.Balance = 0;
         }
         public virtual bool AddTransaction(Transactions transaction)
         {
@@ -39,22 +40,13 @@ namespace Library
                 Transactions.Remove(transaction);
             }
         }
+        public virtual void ChangeBalance(double newBalance)
+        {
+            this.Balance = newBalance;
+        }
         public virtual double GetBalance()
         {
-            double newbalance = 0;
-            foreach (Transactions transaction in Transactions)
-            {
-                if (typeof(Income).IsInstanceOfType(transaction))
-                {
-                    newbalance = newbalance + transaction.Ammount;
-                }
-                else
-                {
-                    newbalance = newbalance - transaction.Ammount;
-                }
-            } 
-            this.Balance = newbalance;
-            return newbalance;
+            return this.Balance;
         }
     }
 }

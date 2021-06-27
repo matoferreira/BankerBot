@@ -9,6 +9,6 @@ namespace Library
     //del tipo IExitFormat pudiendo ser substituido por cualquier subtipo de ésta (LSP).
     public interface IExitFormat
     {
-        IEntryFormat EntryFormat {get; set;}
+         void PrintLine(string line);
     }
 }
