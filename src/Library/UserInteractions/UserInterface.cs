@@ -25,6 +25,9 @@ namespace Library
                 "1. AgregarPaymentMethod\n" +
                 "2. Cambia Alerta \n" +
                 "3. Mostrar Status \n" +
+                "4. Agregar Movimiento \n" +
+                "5. Ver Analisis de Ahorro \n" +
+                "6. Ver Analisis de Gastos Mensuales \n" +
                 "9. Salir \n"
             );
             int x = IntImput.GetImput("Ingrese el número de la opción deseada:");
@@ -46,7 +49,22 @@ namespace Library
                         this.GetStatus();
                         break;
                     }
-                    case 9:
+                case 4:
+                    {
+                        this.AddMovement();
+                        break;
+                    }
+                case 5:
+                    {
+                        this.ShowSavingsAnalysis();
+                        break;
+                    }
+                case 6:
+                    {
+                        this.ShowExpensesAnalysis();
+                        break;
+                    }
+                case 9:
                     {
                         break;
                     }
@@ -212,11 +230,11 @@ namespace Library
             {
                 if (typeof(BankAccount).IsInstanceOfType(method))
                 {
-                    status = status + $"Saldo en cuenta bancaria {((BankAccount)method).BankName} en {((BankAccount)method).Currency.Name} es {((BankAccount)method).GetBalance()}#";
+                    status = status + $"Saldo en cuenta bancaria {((BankAccount)method).Name} en {((BankAccount)method).Currency.Name} es {((BankAccount)method).GetBalance()}#";
                 }
                 if (typeof(CreditCard).IsInstanceOfType(method))
                 {
-                    status = status + $"Saldo en {((CreditCard)method).CardName} en {method.Currency.Name} es {method.GetBalance()}#";
+                    status = status + $"Saldo en {((CreditCard)method).Name} en {method.Currency.Name} es {method.GetBalance()}#";
                 }
                 if (typeof(Wallet).IsInstanceOfType(method))
                 {
@@ -236,9 +254,6 @@ namespace Library
             }
             Output.PrintLine(status);
             Output.PrintLine("------------------------#");
-            this.ShowExpensesAnalysis();
-            this.ShowSavingsAnalysis();
-            Output.PrintLine("------------------------#");
             this.MainMenu();
         }
         public void ShowSavingsAnalysis()
@@ -249,6 +264,66 @@ namespace Library
         {
             //Esta dando error
             //Output.PrintLine($"{ExpenseAnalysis.CalculateTotalByType(profile.PaymentMethods)}#");
+        }
+        public void AddMovement()
+        {
+            int y = IntImput.GetImput("Elegir movimiento a agregar: 1. Ingreso 2. Gasto 3. Transferencia Interna");
+            switch (y)
+            {
+                case 1:
+                {
+                    Output.PrintLine("Elija la cuenta a la que agrega el movimiento:");
+                    foreach (PaymentMethod item in profile.PaymentMethods)
+                    {
+                        Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
+                    }
+                    int z = IntImput.GetImput("Cuenta:");
+                    double monto = Convert.ToDouble(IntImput.GetImput($"Ingrese el monto del ingreso en {profile.PaymentMethods[z].Currency.Name}"));
+                    string concepto = StringImput.GetImput("Escriba el concepto del Ingreso");
+                    profile.PaymentMethods[z].CurrentStatement.AddTransaction(new Income(concepto, monto, profile.PaymentMethods[z].Currency));
+                    break;
+                }
+                case 2:
+                {
+                    Output.PrintLine("Elija la cuenta a la que agrega el gasto:");
+                    foreach (PaymentMethod item in profile.PaymentMethods)
+                    {
+                        Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
+                    }
+                    int z = IntImput.GetImput("Cuenta:");
+                    double monto = Convert.ToDouble(IntImput.GetImput($"Ingrese el monto del gasto en {profile.PaymentMethods[z].Currency.Name}"));
+                    string concepto = StringImput.GetImput("Escriba el concepto del gasto");
+                    ExpenseType tipo = new ExpenseType(StringImput.GetImput("Ingrese el tipo del gasto"));
+                    profile.PaymentMethods[z].CurrentStatement.AddTransaction(new Expense(concepto, monto, profile.PaymentMethods[z].Currency, tipo));
+                    break;
+                }
+                case 3:
+                {
+                    Output.PrintLine("Elija la cuenta de la que proviene la transferencia:");
+                    foreach (PaymentMethod item in profile.PaymentMethods)
+                    {
+                        Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
+                    }
+                    int z = IntImput.GetImput("Cuenta a debitar:");
+                    double monto = Convert.ToDouble(IntImput.GetImput($"Ingrese el monto a transferir en {profile.PaymentMethods[z].Currency.Name}"));
+                    string concepto = StringImput.GetImput("Escriba el concepto de la transferencia");
+                    Output.PrintLine("Elija la cuenta a la que envía la transferencia:");
+                    foreach (PaymentMethod item in profile.PaymentMethods)
+                    {
+                        Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
+                    }
+                    int destino = IntImput.GetImput("Cuenta a acreditar:");
+                    profile.PaymentMethods[z].CurrentStatement.AddTransaction(new InternalTransfer(concepto, monto, profile.PaymentMethods[z].Currency, profile.PaymentMethods[destino]));
+                    break;
+                }
+                default:
+                {
+                    Output.PrintLine("Error en eleccion");
+                    break;
+                }
+            }
+            Output.PrintLine("Movimiento realizado");
+            this.MainMenu();
         }
     }
 }
