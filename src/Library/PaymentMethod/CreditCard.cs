@@ -10,7 +10,6 @@ namespace Library
     {
         public double Limit { get; private set; }
         public List<Statement> StatementList {get; private set;}
-        //public CardStatement CurrentStatement { get; protected set; }
         public CreditCard(string cardName, Currency currency, double limit)
         {
             this.Name = cardName;
@@ -25,7 +24,6 @@ namespace Library
         }
         public override double GetBalance()
         {
-            this.NotifyObservers();
             return this.CurrentStatement.GetBalance();
         }
         public void NewMonth()
