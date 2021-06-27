@@ -11,11 +11,11 @@ namespace Library
         public string BankName { get; private set; }
         public new BankAccountStatement CurrentStatement {get; protected set;}
 
-        public BankAccount(String BankName, Currency currency, DateTime date)
+        public BankAccount(String BankName, Currency currency)
         {
             this.BankName = BankName;
             this.StatementList = new List<BankAccountStatement>();
-            this.CurrentStatement = new BankAccountStatement(currency, date, 0);
+            this.CurrentStatement = new BankAccountStatement(currency, DateTime.Today, 0);
         }
         public override double GetBalance()
         {

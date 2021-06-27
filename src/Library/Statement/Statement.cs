@@ -13,7 +13,7 @@ namespace Library
     {
         public Currency Currency { get; protected set; }
         public DateTime Date { get; protected set; }
-        protected double Balance;
+        public double Balance { get; protected set; }
         public List<Transactions> Transactions { get; protected set;}
         protected Statement()
         {
@@ -38,6 +38,10 @@ namespace Library
             {
                 Transactions.Remove(transaction);
             }
+        }
+        public virtual void ChangeBalance(double newBalance)
+        {
+            this.Balance = newBalance;
         }
         public virtual double GetBalance()
         {

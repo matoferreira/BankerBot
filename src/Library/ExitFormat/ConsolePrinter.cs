@@ -8,15 +8,24 @@ namespace Library
         {
             string linea = "";
             int num = 0;
-            while (line.Length >= num - 1)
+            while (num < line.Length)
             {
-                do
+                if (line[num] == '#')
+                {
+                    Console.WriteLine($"{linea}");
+                    linea = "";
+                }
+                else
                 {
                     linea = linea + line[num];
-                    num += 1;
-                } while ((!line[num].Equals("#")) && (line.Length <= num + 1));
-                Console.WriteLine($"{linea} \n");
-                //num += 1;
+                }
+                if (num + 1 == line.Length && (!line[num].Equals("#")))
+                {
+                    linea = linea + line[num];
+                    Console.WriteLine($"{linea}");
+                    linea = "";
+                }
+                num += 1;
             }
         }
     }

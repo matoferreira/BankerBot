@@ -12,10 +12,10 @@ namespace Library
         public List<CardStatement> StatementList {get; private set;}
         public new CardStatement CurrentStatement { get; protected set; }
         public string CardName { get; private set; }
-        public CreditCard(string cardName, Currency currency, DateTime date, double limit)
+        public CreditCard(string cardName, Currency currency, double limit)
         {
             this.CardName = cardName;
-            this.CurrentStatement = new CardStatement(currency, date, limit, 0);
+            this.CurrentStatement = new CardStatement(currency, DateTime.Today, limit, 0);
             this.StatementList = new List<CardStatement>();
         }
         public void SetNewLimit (double NewLimit)

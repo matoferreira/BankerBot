@@ -1,7 +1,7 @@
 
 namespace Library
 {
-    public interface IPrinter
+    public interface IPrinter : IExitFormat
     {
          void PrintLine(string line);
     }
