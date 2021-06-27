@@ -259,15 +259,17 @@ namespace Library
         public void ShowSavingsAnalysis()
         {
             Output.PrintLine($"{SavingsAnalysis.AnalyseSavings(profile.PaymentMethods)}#");
+            this.MainMenu();
         }
         public void ShowExpensesAnalysis()
         {
             //Esta dando error
             //Output.PrintLine($"{ExpenseAnalysis.CalculateTotalByType(profile.PaymentMethods)}#");
+            this.MainMenu();
         }
         public void AddMovement()
         {
-            int y = IntImput.GetImput("Elegir movimiento a agregar: 1. Ingreso 2. Gasto 3. Transferencia Interna");
+            int y = IntImput.GetImput("Elegir movimiento a agregar: \n1. Ingreso \n2. Gasto \n3. Transferencia Interna");
             switch (y)
             {
                 case 1:
@@ -278,10 +280,9 @@ namespace Library
                         Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
                     }
                     int z = IntImput.GetImput("Cuenta:");
-                    double monto = Convert.ToDouble(IntImput.GetImput($"Ingrese el monto del ingreso en {profile.PaymentMethods[z].Currency.Name}"));
+                    double monto = IntImput.GetImput($"Ingrese el monto del ingreso en {profile.PaymentMethods[z].Currency.Name}");
                     string concepto = StringImput.GetImput("Escriba el concepto del Ingreso");
-                    Income mov = new Income(concepto, monto, profile.PaymentMethods[z].CurrentStatement.Currency);
-                    bool movimiento = profile.PaymentMethods[z].CurrentStatement.AddTransaction(mov);
+                    bool movimiento = profile.PaymentMethods[z].CurrentStatement.AddTransaction(new Income(concepto, monto, profile.PaymentMethods[z].Currency));
                     break;
                 }
                 case 2:
