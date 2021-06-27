@@ -10,11 +10,13 @@ namespace Library.Test
         private CreditCard creditCard;
         private Currency currency;
         private double limit;
+
         private ExpenseType super;
 
         [SetUp]
         public void Setup()
         {
+            super = new ExpenseType("Alimentos");
             currency = new Currency("USD");
             limit = 5000;
             creditCard = new CreditCard("Hipermas", currency, limit);
