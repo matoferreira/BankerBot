@@ -14,7 +14,7 @@ namespace Library.Test
         public void Setup()
         {
             profile.Alerts.Find(item => typeof(HighSpendingAlert).IsInstanceOfType(item)).ChangeLevel(1000);
-            bank = new BankAccount("Santander", currency, DateTime.Now);
+            bank = new BankAccount("Santander", currency);
             profile.AddPaymentMethod(bank);
             bank.CurrentStatement.AddTransaction(new Income("prueba", 2000, currency));
         }

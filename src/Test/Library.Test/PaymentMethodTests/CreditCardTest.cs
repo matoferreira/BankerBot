@@ -17,7 +17,7 @@ namespace Library.Test
         {
             currency = new Currency("USD");
             limit = 5000;
-            creditCard = new CreditCard("Hipermas", currency, DateTime.Now, limit);
+            creditCard = new CreditCard("Hipermas", currency, limit);
             creditCard.CurrentStatement.AddTransaction(new Expense("surtido", 2000, currency, super));
 
         }
@@ -26,7 +26,7 @@ namespace Library.Test
         public void SetNewLimitTest()
         {
             creditCard.SetNewLimit(10000);
-            Assert.AreEqual(10000,creditCard.limit);
+            Assert.AreEqual(10000,creditCard.Limit);
         }
 
         [Test]

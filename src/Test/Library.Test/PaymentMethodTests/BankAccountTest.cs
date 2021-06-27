@@ -13,7 +13,7 @@ namespace Library.Test
         public void Setup()
         {
             currency = new Currency("USD");
-            bankAccount = new BankAccount("Santander", currency, DateTime.Now);
+            bankAccount = new BankAccount("Santander", currency);
             bankAccount.CurrentStatement.AddTransaction(new Income("sueldo", 1000, currency));
         }
 

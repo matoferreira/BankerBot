@@ -20,8 +20,8 @@ using Library;
         	public void Setup()
         {
             currency = new Currency("USD");
-            bankAccount1 = new BankAccount("Cuenta1", currency, DateTime.Now);
-			bankAccount2 = new BankAccount("Cuenta2", currency, DateTime.Now);
+            bankAccount1 = new BankAccount("Cuenta1", currency);
+			bankAccount2 = new BankAccount("Cuenta2", currency);
 			payments = new List<PaymentMethod>();
 			payments.Add(bankAccount1);
 			payments.Add(bankAccount2);

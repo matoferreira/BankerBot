@@ -241,7 +241,7 @@ namespace Library
                     status = status + $"Saldo en la billetera es: #";
                     foreach (SubWallet item in ((Wallet)method).SubWalletList)
                     {
-                        status = status + $"{((Wallet)method).GetBalanceBySubWallet(item)} Pesos";
+                        status = status + $"{((Wallet)method).GetBalanceBySubWallet(item)} Pesos#";
                     }
                 }
             }
@@ -280,7 +280,8 @@ namespace Library
                     int z = IntImput.GetImput("Cuenta:");
                     double monto = Convert.ToDouble(IntImput.GetImput($"Ingrese el monto del ingreso en {profile.PaymentMethods[z].Currency.Name}"));
                     string concepto = StringImput.GetImput("Escriba el concepto del Ingreso");
-                    profile.PaymentMethods[z].CurrentStatement.AddTransaction(new Income(concepto, monto, profile.PaymentMethods[z].Currency));
+                    Income mov = new Income(concepto, monto, profile.PaymentMethods[z].CurrentStatement.Currency);
+                    bool movimiento = profile.PaymentMethods[z].CurrentStatement.AddTransaction(mov);
                     break;
                 }
                 case 2:
@@ -290,11 +291,11 @@ namespace Library
                     {
                         Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
                     }
-                    int z = IntImput.GetImput("Cuenta:");
-                    double monto = Convert.ToDouble(IntImput.GetImput($"Ingrese el monto del gasto en {profile.PaymentMethods[z].Currency.Name}"));
+                    int l = IntImput.GetImput("Cuenta:");
+                    double monto = Convert.ToDouble(IntImput.GetImput($"Ingrese el monto del gasto en {profile.PaymentMethods[l].Currency.Name}"));
                     string concepto = StringImput.GetImput("Escriba el concepto del gasto");
                     ExpenseType tipo = new ExpenseType(StringImput.GetImput("Ingrese el tipo del gasto"));
-                    profile.PaymentMethods[z].CurrentStatement.AddTransaction(new Expense(concepto, monto, profile.PaymentMethods[z].Currency, tipo));
+                    profile.PaymentMethods[l].CurrentStatement.AddTransaction(new Expense(concepto, monto, profile.PaymentMethods[l].Currency, tipo));
                     break;
                 }
                 case 3:
