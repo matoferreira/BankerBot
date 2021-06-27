@@ -22,13 +22,32 @@ namespace Library
         {
             foreach (PaymentMethod item in payments)
             {
-                foreach (Transactions transaction in item.CurrentStatement.Transactions)
+                if (typeof(Wallet).IsInstanceOfType(item))
                 {
-                    if (typeof(Expense).IsInstanceOfType(transaction))
+                    foreach (SubWallet subwallet in ((Wallet)item).SubWalletList)
                     {
-                        if (!ExpenseTypes.Contains(((Expense)transaction).ExpenseType))
+                        foreach (Transactions transaction in subwallet.Statement.Transactions)
                         {
-                            ExpenseTypes.Add(((Expense)transaction).ExpenseType);
+                            if (typeof(Expense).IsInstanceOfType(transaction))
+                            {
+                                if (!ExpenseTypes.Contains(((Expense)transaction).ExpenseType))
+                                {
+                                    ExpenseTypes.Add(((Expense)transaction).ExpenseType);
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    foreach (Transactions transaction in item.CurrentStatement.Transactions)
+                    {
+                        if (typeof(Expense).IsInstanceOfType(transaction))
+                        {
+                            if (!ExpenseTypes.Contains(((Expense)transaction).ExpenseType))
+                            {
+                                ExpenseTypes.Add(((Expense)transaction).ExpenseType);
+                            }
                         }
                     }
                 }
@@ -45,15 +64,37 @@ namespace Library
                     double total = 0;
                     foreach (PaymentMethod item in payments)
                     {
-                        foreach (Transactions transaction in item.CurrentStatement.Transactions)
+                        if (typeof(Wallet).IsInstanceOfType(item))
                         {
-                            if (typeof(Expense).IsInstanceOfType(transaction) && ((Expense)transaction).ExpenseType == expenseType)
+                            foreach (SubWallet subwallet in ((Wallet)item).SubWalletList)
                             {
-                                total = total + transaction.Ammount;
+                                foreach (Transactions transaction in subwallet.Statement.Transactions)
+                                {
+                                    if (typeof(Expense).IsInstanceOfType(transaction))
+                                    {
+                                        if (typeof(Expense).IsInstanceOfType(transaction) && ((Expense)transaction).ExpenseType == expenseType)
+                                        {
+                                            total = total + transaction.Ammount;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            foreach (Transactions transaction in item.CurrentStatement.Transactions)
+                            {
+                                if (typeof(Expense).IsInstanceOfType(transaction))
+                                {
+                                    if (typeof(Expense).IsInstanceOfType(transaction) && ((Expense)transaction).ExpenseType == expenseType)
+                                    {
+                                        total = total + transaction.Ammount;
+                                    }
+                                }
                             }
                         }
                     }
-                    lista = lista + $"{expenseType},{total}#";
+                    lista = lista + $"Gastos Mensuales:\n {expenseType.Name}: {total}#";
                 }
             }
             return lista;

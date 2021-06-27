@@ -42,16 +42,16 @@ namespace Library
             switch (x)
             {
                 case 1:
-                {
-                    this.NewPaymentMethod();
-                    break;
-                }
+                    {
+                        this.NewPaymentMethod();
+                        break;
+                    }
                 case 2:
                     {
-                       this.ChangeAlertLevel();
-                       break; 
+                        this.ChangeAlertLevel();
+                        break;
                     }
-                    
+
                 case 3:
                     {
                         this.GetStatus();
@@ -83,111 +83,111 @@ namespace Library
         }
         public void NewPaymentMethod()
         {
-            int x = IntImput.GetImput("1. Agregar nueva cuenta bancaria \n 2. Agregar nueva tarjeta de Crédito \n 3. Agregar nueva billetera");
+            int x = IntImput.GetImput("1. Agregar nueva cuenta bancaria \n2. Agregar nueva tarjeta de Crédito \n3. Agregar nueva billetera");
             switch (x)
             {
                 case 1:
-                {
-                    string nombre = StringImput.GetImput("Ingrese el nombre del banco");
-                    int intmoneda= IntImput.GetImput("Ingrese una Moneda: \n1. USD \n2. EUR \n3.Pesos");
-                    string moneda = "";
-                    switch (intmoneda)
                     {
-                        case 1:
+                        string nombre = StringImput.GetImput("Ingrese el nombre del banco");
+                        int intmoneda = IntImput.GetImput("Ingrese una Moneda: \n1. USD \n2. EUR \n3. Pesos");
+                        string moneda = "";
+                        switch (intmoneda)
                         {
-                            moneda = "USD";
-                            break;
+                            case 1:
+                                {
+                                    moneda = "USD";
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    moneda = "EUR";
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    moneda = "Pesos";
+                                    break;
+                                }
+                            default:
+                                {
+                                    Output.PrintLine("Unknown value");
+                                    break;
+                                }
                         }
-                        case 2:
-                        {
-                            moneda = "EUR";
-                            break;
-                        }
-                        case 3:
-                        {
-                            moneda = "Pesos";
-                            break;
-                        }
-                        default:
-                        {
-                            Output.PrintLine("Unknown value");
-                            break;
-                        }
+                        Currency currency = new Currency(moneda);
+                        BankAccount banco = new BankAccount(nombre, currency);
+                        double saldo = Convert.ToDouble(IntImput.GetImput("Ingrese el saldo de la cuenta"));
+                        banco.CurrentStatement.ChangeBalance(saldo);
+                        profile.AddPaymentMethod(banco);
+                        break;
                     }
-                    Currency currency = new Currency(moneda);
-                    BankAccount banco = new BankAccount(nombre, currency);
-                    double saldo = Convert.ToDouble(IntImput.GetImput("Ingrese el saldo de la cuenta"));
-                    banco.CurrentStatement.ChangeBalance(saldo);
-                    profile.AddPaymentMethod(banco);
-                    break;
-                }
-                    
+
                 case 2:
-                {
-                    string nombre2 = StringImput.GetImput("Ingrese el nombre de la tarjeta");
-                    int intmoneda2 = IntImput.GetImput("Ingrese una Moneda: \n1. USD \n2. EUR \n3.Pesos");
-                    string moneda2 = "";
-                    switch (intmoneda2)
                     {
-                        case 1:
+                        string nombre2 = StringImput.GetImput("Ingrese el nombre de la tarjeta");
+                        int intmoneda2 = IntImput.GetImput("Ingrese una Moneda: \n1. USD \n2. EUR \n3. Pesos");
+                        string moneda2 = "";
+                        switch (intmoneda2)
                         {
-                            moneda2 = "USD";
-                            break;
+                            case 1:
+                                {
+                                    moneda2 = "USD";
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    moneda2 = "EUR";
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    moneda2 = "Pesos";
+                                    break;
+                                }
+                            default:
+                                {
+                                    Output.PrintLine("Unknown value");
+                                    break;
+                                }
                         }
-                        case 2:
-                        {
-                            moneda2 = "EUR";
-                            break;
-                        }
-                        case 3:
-                        {
-                            moneda2 = "Pesos";
-                            break;
-                        }
-                        default:
-                        {
-                            Output.PrintLine("Unknown value");
-                            break;
-                        }
+                        Currency currency2 = new Currency(moneda2);
+                        double limite = IntImput.GetImput("Ingrese el limite de gasto de la tarjeta");
+                        CreditCard tarjeta = new CreditCard(nombre2, currency2, limite);
+                        profile.AddPaymentMethod(tarjeta);
+                        break;
                     }
-                    Currency currency2 = new Currency(moneda2);
-                    double limite = IntImput.GetImput("Ingrese el limite de gasto de la tarjeta");
-                    CreditCard tarjeta = new CreditCard(nombre2, currency2, limite);
-                    profile.AddPaymentMethod(tarjeta);
-                    break;
-                }
-                    
+
                 case 3:
-                {
-                    int intmoneda3 = IntImput.GetImput("Ingrese la Moneda de la billetera: \n1. USD \n2. EUR \n3.Pesos");
-                    string moneda3 = "";
-                    switch (intmoneda3)
                     {
-                        case 1:
+                        int intmoneda3 = IntImput.GetImput("Ingrese la Moneda de la billetera: \n1. USD \n2. EUR \n3. Pesos");
+                        string moneda3 = "";
+                        switch (intmoneda3)
                         {
-                            moneda3 = "USD";
-                            break;
+                            case 1:
+                                {
+                                    moneda3 = "USD";
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    moneda3 = "EUR";
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    moneda3 = "Pesos";
+                                    break;
+                                }
+                            default:
+                                {
+                                    Output.PrintLine("Unknown value");
+                                    break;
+                                }
                         }
-                        case 2:
-                        {
-                            moneda3 = "EUR";
-                            break;
-                        }
-                        case 3:
-                        {
-                            moneda3 = "Pesos";
-                            break;
-                        }
-                        default:
-                        {
-                            Output.PrintLine("Unknown value");
-                            break;
-                        }
+                        Currency currency3 = new Currency(moneda3);
+                        break;
                     }
-                    Currency currency3 = new Currency(moneda3);
-                    break;
-                }
-                    
+
                 default:
                     Output.PrintLine("Unknown value");
                     break;
@@ -202,31 +202,31 @@ namespace Library
             switch (x)
             {
                 case 3:
-                {
-                    alerta = profile.Alerts.Find(x => x is HighSpendingAlert);
-                    double newLevel = IntImput.GetImput("Ingrese el Limite de gastos mensuales a controlar");
-                    alerta.ChangeLevel(newLevel);
-                    break;
-                }
+                    {
+                        alerta = profile.Alerts.Find(x => x is HighSpendingAlert);
+                        double newLevel = IntImput.GetImput("Ingrese el Limite de gastos mensuales a controlar");
+                        alerta.ChangeLevel(newLevel);
+                        break;
+                    }
                 case 2:
-                {
-                    alerta = profile.Alerts.Find(x => x is LowFundsAlert);
-                    double newLevel = IntImput.GetImput("Ingrese el monto minimo de fondos deseado");
-                    alerta.ChangeLevel(newLevel);
-                    break;
-                }
+                    {
+                        alerta = profile.Alerts.Find(x => x is LowFundsAlert);
+                        double newLevel = IntImput.GetImput("Ingrese el monto minimo de fondos deseado");
+                        alerta.ChangeLevel(newLevel);
+                        break;
+                    }
                 case 1:
-                {
-                    alerta = profile.Alerts.Find(x => x is SavingsTargetAlert);
-                    double newLevel = IntImput.GetImput("Ingrese el monto a ahorrar por mes");
-                    alerta.ChangeLevel(newLevel);
-                    break;
-                }
+                    {
+                        alerta = profile.Alerts.Find(x => x is SavingsTargetAlert);
+                        double newLevel = IntImput.GetImput("Ingrese el monto a ahorrar por mes");
+                        alerta.ChangeLevel(newLevel);
+                        break;
+                    }
                 default:
-                {
-                    Output.PrintLine("Unknown value");
-                    break;
-                }
+                    {
+                        Output.PrintLine("Unknown value");
+                        break;
+                    }
             }
             Output.PrintLine("Alerta Cambiada");
             this.MainMenu();
@@ -272,8 +272,7 @@ namespace Library
         }
         public void ShowExpensesAnalysis()
         {
-            //Esta dando error
-            //Output.PrintLine($"{ExpenseAnalysis.CalculateTotalByType(profile.PaymentMethods)}#");
+            Output.PrintLine($"{ExpenseAnalysis.CalculateTotalByType(profile.PaymentMethods)}#");
             this.MainMenu();
         }
         public void AddMovement()
@@ -283,156 +282,156 @@ namespace Library
             switch (y)
             {
                 case 1:
-                {
-                    Output.PrintLine("Elija la cuenta a la que agrega el movimiento:");
-                    foreach (PaymentMethod item in profile.PaymentMethods)
                     {
-                        Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
-                    }
-                    int z = IntImput.GetImput("Cuenta:");
-                    double monto = IntImput.GetImput($"Ingrese el monto del ingreso");
-                    string concepto = StringImput.GetImput("Escriba el concepto del Ingreso");
-                    int intmoneda3 = IntImput.GetImput("Ingrese la Moneda de la transacción: \n1. USD \n2. EUR \n3.Pesos");
-                    string moneda3 = "";
-                    switch (intmoneda3)
-                    {
-                        case 1:
+                        Output.PrintLine("Elija la cuenta a la que agrega el movimiento:");
+                        foreach (PaymentMethod item in profile.PaymentMethods)
                         {
-                            moneda3 = "USD";
-                            break;
+                            Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
                         }
-                        case 2:
+                        int z = IntImput.GetImput("Cuenta:");
+                        double monto = IntImput.GetImput($"Ingrese el monto del ingreso");
+                        string concepto = StringImput.GetImput("Escriba el concepto del Ingreso");
+                        int intmoneda3 = IntImput.GetImput("Ingrese la Moneda de la transacción: \n1. USD \n2. EUR \n3. Pesos");
+                        string moneda3 = "";
+                        switch (intmoneda3)
                         {
-                            moneda3 = "EUR";
-                            break;
+                            case 1:
+                                {
+                                    moneda3 = "USD";
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    moneda3 = "EUR";
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    moneda3 = "Pesos";
+                                    break;
+                                }
+                            default:
+                                {
+                                    Output.PrintLine("Unknown value");
+                                    break;
+                                }
                         }
-                        case 3:
+                        Currency currency3 = new Currency(moneda3);
+                        if (typeof(Wallet).IsInstanceOfType(profile.PaymentMethods[z]))
                         {
-                            moneda3 = "Pesos";
-                            break;
+                            movimiento = ((Wallet)profile.PaymentMethods[z]).SubWalletList.Find(x => x.Currency.Name == currency3.Name).Statement.AddTransaction(new Income(concepto, monto, currency3));
                         }
-                        default:
+                        else
                         {
-                            Output.PrintLine("Unknown value");
-                            break;
+                            movimiento = profile.PaymentMethods[z].CurrentStatement.AddTransaction(new Income(concepto, monto, currency3));
                         }
+
+                        break;
                     }
-                    Currency currency3 = new Currency(moneda3);
-                    if (typeof(Wallet).IsInstanceOfType(profile.PaymentMethods[z]))
-                    {
-                        movimiento = ((Wallet)profile.PaymentMethods[z]).SubWalletList.Find(x => x.Currency.Name == currency3.Name).Statement.AddTransaction(new Income(concepto, monto, currency3));
-                    }
-                    else
-                    {
-                        movimiento = profile.PaymentMethods[z].CurrentStatement.AddTransaction(new Income(concepto, monto, currency3));
-                    }
-                    
-                    break;
-                }
                 case 2:
-                {
-                    Output.PrintLine("Elija la cuenta a la que agrega el gasto:");
-                    foreach (PaymentMethod item in profile.PaymentMethods)
                     {
-                        Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
-                    }
-                    int z = IntImput.GetImput("Cuenta:");
-                    double monto = Convert.ToDouble(IntImput.GetImput($"Ingrese el monto del gasto"));
-                    string concepto = StringImput.GetImput("Escriba el concepto del gasto");
-                    ExpenseType tipo = new ExpenseType(StringImput.GetImput("Ingrese el tipo del gasto"));
-                    int intmoneda3 = IntImput.GetImput("Ingrese la Moneda de la transacción: \n1. USD \n2. EUR \n3.Pesos");
-                    string moneda3 = "";
-                    switch (intmoneda3)
-                    {
-                        case 1:
+                        Output.PrintLine("Elija la cuenta a la que agrega el gasto:");
+                        foreach (PaymentMethod item in profile.PaymentMethods)
                         {
-                            moneda3 = "USD";
-                            break;
+                            Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
                         }
-                        case 2:
+                        int z = IntImput.GetImput("Cuenta:");
+                        double monto = Convert.ToDouble(IntImput.GetImput($"Ingrese el monto del gasto"));
+                        string concepto = StringImput.GetImput("Escriba el concepto del gasto");
+                        ExpenseType tipo = new ExpenseType(StringImput.GetImput("Ingrese el tipo del gasto"));
+                        int intmoneda3 = IntImput.GetImput("Ingrese la Moneda de la transacción: \n1. USD \n2. EUR \n3. Pesos");
+                        string moneda3 = "";
+                        switch (intmoneda3)
                         {
-                            moneda3 = "EUR";
-                            break;
+                            case 1:
+                                {
+                                    moneda3 = "USD";
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    moneda3 = "EUR";
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    moneda3 = "Pesos";
+                                    break;
+                                }
+                            default:
+                                {
+                                    Output.PrintLine("Unknown value");
+                                    break;
+                                }
                         }
-                        case 3:
+                        Currency currency3 = new Currency(moneda3);
+                        if (typeof(Wallet).IsInstanceOfType(profile.PaymentMethods[z]))
                         {
-                            moneda3 = "Pesos";
-                            break;
+                            movimiento = ((Wallet)profile.PaymentMethods[z]).SubWalletList.Find(x => x.Currency.Name == currency3.Name).Statement.AddTransaction(new Expense(concepto, monto, currency3, tipo));
                         }
-                        default:
+                        else
                         {
-                            Output.PrintLine("Unknown value");
-                            break;
+                            movimiento = profile.PaymentMethods[z].CurrentStatement.AddTransaction(new Expense(concepto, monto, currency3, tipo));
                         }
+                        break;
                     }
-                    Currency currency3 = new Currency(moneda3);
-                    if (typeof(Wallet).IsInstanceOfType(profile.PaymentMethods[z]))
-                    {
-                        movimiento = ((Wallet)profile.PaymentMethods[z]).SubWalletList.Find(x => x.Currency.Name == currency3.Name).Statement.AddTransaction(new Expense(concepto, monto, currency3, tipo));
-                    }
-                    else
-                    {
-                        movimiento = profile.PaymentMethods[z].CurrentStatement.AddTransaction(new Expense(concepto, monto, currency3, tipo));
-                    }
-                    break;
-                }
                 case 3:
-                {
-                    Output.PrintLine("Elija la cuenta de la que proviene la transferencia:");
-                    foreach (PaymentMethod item in profile.PaymentMethods)
                     {
-                        Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
-                    }
-                    int z = IntImput.GetImput("Cuenta a debitar:");
-                    int intmoneda3 = IntImput.GetImput("Ingrese la Moneda de la transacción: \n1. USD \n2. EUR \n3.Pesos");
-                    string moneda3 = "";
-                    switch (intmoneda3)
-                    {
-                        case 1:
+                        Output.PrintLine("Elija la cuenta de la que proviene la transferencia:");
+                        foreach (PaymentMethod item in profile.PaymentMethods)
                         {
-                            moneda3 = "USD";
-                            break;
+                            Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
                         }
-                        case 2:
+                        int z = IntImput.GetImput("Cuenta a debitar:");
+                        int intmoneda3 = IntImput.GetImput("Ingrese la Moneda de la transacción: \n1. USD \n2. EUR \n3. Pesos");
+                        string moneda3 = "";
+                        switch (intmoneda3)
                         {
-                            moneda3 = "EUR";
-                            break;
+                            case 1:
+                                {
+                                    moneda3 = "USD";
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    moneda3 = "EUR";
+                                    break;
+                                }
+                            case 3:
+                                {
+                                    moneda3 = "Pesos";
+                                    break;
+                                }
+                            default:
+                                {
+                                    Output.PrintLine("Unknown value");
+                                    break;
+                                }
                         }
-                        case 3:
+                        Currency currency3 = new Currency(moneda3);
+                        double monto = Convert.ToDouble(IntImput.GetImput($"Ingrese el monto a transferir"));
+                        string concepto = StringImput.GetImput("Escriba el concepto de la transferencia");
+                        Output.PrintLine("Elija la cuenta a la que envía la transferencia:");
+                        foreach (PaymentMethod item in profile.PaymentMethods)
                         {
-                            moneda3 = "Pesos";
-                            break;
+                            Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
                         }
-                        default:
+                        int destino = IntImput.GetImput("Cuenta a acreditar:");
+                        if (typeof(Wallet).IsInstanceOfType(profile.PaymentMethods[z]))
                         {
-                            Output.PrintLine("Unknown value");
-                            break;
+                            movimiento = ((Wallet)profile.PaymentMethods[z]).SubWalletList.Find(x => x.Currency.Name == currency3.Name).Statement.AddTransaction(new InternalTransfer(concepto, monto, currency3, profile.PaymentMethods[destino]));
                         }
+                        else
+                        {
+                            movimiento = profile.PaymentMethods[z].CurrentStatement.AddTransaction(new InternalTransfer(concepto, monto, currency3, profile.PaymentMethods[destino]));
+                        }
+                        break;
                     }
-                    Currency currency3 = new Currency(moneda3);
-                    double monto = Convert.ToDouble(IntImput.GetImput($"Ingrese el monto a transferir"));
-                    string concepto = StringImput.GetImput("Escriba el concepto de la transferencia");
-                    Output.PrintLine("Elija la cuenta a la que envía la transferencia:");
-                    foreach (PaymentMethod item in profile.PaymentMethods)
-                    {
-                        Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
-                    }
-                    int destino = IntImput.GetImput("Cuenta a acreditar:");
-                    if (typeof(Wallet).IsInstanceOfType(profile.PaymentMethods[z]))
-                    {
-                        movimiento = ((Wallet)profile.PaymentMethods[z]).SubWalletList.Find(x => x.Currency.Name == currency3.Name).Statement.AddTransaction(new InternalTransfer(concepto, monto, currency3, profile.PaymentMethods[destino]));
-                    }
-                    else
-                    {
-                        movimiento = profile.PaymentMethods[z].CurrentStatement.AddTransaction(new InternalTransfer(concepto, monto, currency3, profile.PaymentMethods[destino]));
-                    }
-                    break;
-                }
                 default:
-                {
-                    Output.PrintLine("Error en eleccion");
-                    break;
-                }
+                    {
+                        Output.PrintLine("Error en eleccion");
+                        break;
+                    }
             }
             Output.PrintLine("Movimiento realizado");
             this.MainMenu();

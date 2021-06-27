@@ -10,14 +10,15 @@ namespace Library.Test
         private Currency currency = new Currency("USD");
         private CreditCard tarjeta; 
 
+
         [SetUp]
         public void Setup()
         {
-            profile.Alerts.Find(item => typeof(HighSpendingAlert).IsInstanceOfType(item)).ChangeLevel(1000);
+            expense = new ExpenseType("super");
+            profile.Alerts.Find(item => typeof(HighSpendingAlert).IsInstanceOfType(item)).ChangeLevel(1000);s
             tarjeta = new CreditCard("Santander", currency, 1000000);
             profile.AddPaymentMethod(tarjeta);
             tarjeta.CurrentStatement.AddTransaction(new Expense("prueba", 1900, currency, new ExpenseType("prueba")));
-            
         }
 
         [Test]
