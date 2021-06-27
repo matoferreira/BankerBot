@@ -10,7 +10,7 @@ using System.Collections.Generic;
 namespace Library
 {
     public class SavingsAnalysis
-    {   
+    {
         public string AnalyseSavings(List<PaymentMethod> savingsAccounts)
         {
             string lista = "El ahorro mensual es:\n";

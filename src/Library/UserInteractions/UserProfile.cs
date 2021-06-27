@@ -53,6 +53,6 @@ namespace Library
                 alert.TrackLevel(PaymentMethods);
             }
         }
-        
+
     }
 }

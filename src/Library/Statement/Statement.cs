@@ -14,7 +14,7 @@ namespace Library
         public Currency Currency { get; protected set; }
         public DateTime Date { get; protected set; }
         public double Balance { get; protected set; }
-        public List<Transactions> Transactions { get; protected set;}
+        public List<Transactions> Transactions { get; protected set; }
         public Statement()
         {
             this.Transactions = new List<Transactions>();
