@@ -21,11 +21,12 @@ Nuestro bot procura asistirte en la administración de tus finanzas personales d
 11. Agregar ingresos, gastos o transferencias internas entre tus medios de pago.
 12. Si utilizas tarjeta de crédito, podrás ver cuanto tendrás que pagar al cierre de la misma.
 
+
+
+## Bibliografía Consultada
 >  
 >***Learning is a treasure that will follow its owner everywhere.***
 >  
-
-## Bibliografía Consultada
     University of Texas at San Antonio. UML. <http://www.cs.utsa.edu/~cs3443/uml/uml.html)
 
     Rumyancev, P. (2020). UML Class Diagram Arrows Guide. Medium <https://medium.com/the-innovation/uml-class-diagram-arrows-guide-37e4b1bb11e>
@@ -40,7 +41,7 @@ Nuestro bot procura asistirte en la administración de tus finanzas personales d
 
 ## Como utilizar el bot
 Dado que nuestro bot se encuentra en Fase II, que quiere decir que está su core terminado, pero no el relacionamiento con gateway de mensajes o servicios externos, podrás utilizarlo solo por consola.
-
+Una vez que nuestro bot se encuentre desarrollado por completo, encontrarás aquí la guia paso a paso para utilizarlo y videos instructivos.
 
 
 ## Desafíos y Reflexiones
@@ -66,6 +67,13 @@ La importancia recae en que la interfase es la espina dorsal de nuestro bot, ya 
 La conjunción de tareas genera una gran complejidad a la hora de hacer estas comunicaciones respetando los patrones y principios aprendidos.    
 A su vez, la imagen que da la interfase de usuario es la cara de nuestro bot con el cliente, podemos desarrollar el mejor código que, si no le damos una buena experiencia al consumidor, no estaríamos cumpliendo nuestro objetivo completamente.
 
+### Resolución de conflictos
+En el equipo no todos teníamos experiencias con Github.    
+Uno de los desafíos que nos planteó fue la resolución de conflictos, lo cual ocurría en oportunidades por la realidad del trabajo colaborativo. Una de los principios que tomamos como equipo fue *todos colaboramos en todo*.    
+El resultado, un código más limpio y ordenado pero varios conflictos en los merges de ramas.    
+Esto nos permitió amigarnos más con la plataforma y aprender a resolverlos de manera perfecta y sin contratiempos.    
+Nos pareció algo a resaltar porque entendimos que el pilar fundamental de la programación es el trabajo en equipo (*que es la realidad del mercado laboral*), y un equipo bien aceitado genera una sinergia que lo hace llegar más lejos.
+
 
 ## Créditos
 Este bot fue realizado por el equipo "Los Tres Mosqueteros" para la materia Programación 2 de la Universidad Católica del Uruguay "Damaso Antonio Larrañaga".  
@@ -73,7 +81,7 @@ Los tres mosqueteros está conformado por:
 1. Matías Ferreira
 2. Juan Andrés Leal
 3. Sonia Olivera    
-  
+
 ![Figura 2](Adjuntos/RecursosReadme/3Mosqueteros.jpg?raw=true "Figura 2 - Los tres mosqueteros")   
 
 El product owner de este bot es:  
