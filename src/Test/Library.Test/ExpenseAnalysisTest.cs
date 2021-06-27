@@ -8,7 +8,7 @@ using Library;
 	    public class ExpenseAnalysisTest
 
 		{  
-
+/*
 			private ExpenseType expenseType3;
 			private ExpenseType expenseType4;
 			private BankAccount bankAccount10;
@@ -43,7 +43,7 @@ using Library;
            Assert.AreEqual(3000,3000,$"{expenseAnalysis2.CalculateTotalByType(payments1)}");
 		  // Console.WriteLine($"{expenseAnalysis1.CalculateTotalByType(payments)}");
         }
-
+*/
 		}
 	}
 

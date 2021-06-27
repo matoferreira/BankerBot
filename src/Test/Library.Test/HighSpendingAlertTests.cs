@@ -8,22 +8,23 @@ namespace Library.Test
     {
         private UserProfile profile = new UserProfile();
         private Currency currency = new Currency("USD");
-        private BankAccount bank; 
+        private CreditCard tarjeta; 
 
         [SetUp]
         public void Setup()
         {
             profile.Alerts.Find(item => typeof(HighSpendingAlert).IsInstanceOfType(item)).ChangeLevel(1000);
-            bank = new BankAccount("Santander", currency);
-            profile.AddPaymentMethod(bank);
-            bank.CurrentStatement.AddTransaction(new Income("prueba", 2000, currency));
+            tarjeta = new CreditCard("Santander", currency, 1000000);
+            profile.AddPaymentMethod(tarjeta);
+            //tarjeta.CurrentStatement.AddTransaction(new Income("prueba", 2000, currency));
+            tarjeta.CurrentStatement.AddTransaction(new Expense("prueba", 1900, currency, new ExpenseType("prueba")));
+            profile.Update();
         }
 
         [Test]
         public void TestLevel()
         {
             Assert.AreEqual(1000, profile.Alerts.Find(item => typeof(HighSpendingAlert).IsInstanceOfType(item)).Level);
-            //Assert.AreEqual(profile.PaymentMethods[0].GetBalance(), bank.GetBalance());
         }
         [Test]
         public void TestTurnoOn()

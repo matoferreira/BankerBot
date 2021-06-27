@@ -234,6 +234,7 @@ namespace Library
         public void GetStatus()
         {
             string status = "";
+            profile.Update();
             foreach (PaymentMethod method in profile.PaymentMethods)
             {
                 if (typeof(BankAccount).IsInstanceOfType(method))

@@ -36,6 +36,7 @@ namespace Library
         {
             double result = 0;
             result+=subWallet.Statement.GetBalance();
+            this.NotifyObservers();
             return result;
         }
 
@@ -46,6 +47,7 @@ namespace Library
             {
                 result += subwallet.Statement.GetBalance()*subwallet.Currency.ExchangeRate;
             }
+            this.NotifyObservers();
             return result;
         }
     }

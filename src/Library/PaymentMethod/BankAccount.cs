@@ -19,6 +19,7 @@ namespace Library
         }
         public override double GetBalance()
         {
+            this.NotifyObservers();
             return this.CurrentStatement.GetBalance();
         } 
         public void NewMonth()
