@@ -10,7 +10,6 @@ namespace Library
     {
         
         public Currency Currency { get; protected set; }
-        public double Balance { get; protected set; }
         public string Name { get; protected set; }
         protected List<IObserver> observers = new List<IObserver>();
 

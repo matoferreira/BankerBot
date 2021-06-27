@@ -269,6 +269,7 @@ namespace Library
         }
         public void AddMovement()
         {
+            bool movimiento;
             int y = IntImput.GetImput("Elegir movimiento a agregar: \n1. Ingreso \n2. Gasto \n3. Transferencia Interna");
             switch (y)
             {
@@ -280,9 +281,43 @@ namespace Library
                         Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
                     }
                     int z = IntImput.GetImput("Cuenta:");
-                    double monto = IntImput.GetImput($"Ingrese el monto del ingreso en {profile.PaymentMethods[z].Currency.Name}");
+                    double monto = IntImput.GetImput($"Ingrese el monto del ingreso");
                     string concepto = StringImput.GetImput("Escriba el concepto del Ingreso");
-                    bool movimiento = profile.PaymentMethods[z].CurrentStatement.AddTransaction(new Income(concepto, monto, profile.PaymentMethods[z].Currency));
+                    int intmoneda3 = IntImput.GetImput("Ingrese la Moneda de la transacción: \n1. USD \n2. EUR \n3.Pesos");
+                    string moneda3 = "";
+                    switch (intmoneda3)
+                    {
+                        case 1:
+                        {
+                            moneda3 = "USD";
+                            break;
+                        }
+                        case 2:
+                        {
+                            moneda3 = "EUR";
+                            break;
+                        }
+                        case 3:
+                        {
+                            moneda3 = "Pesos";
+                            break;
+                        }
+                        default:
+                        {
+                            Output.PrintLine("Unknown value");
+                            break;
+                        }
+                    }
+                    Currency currency3 = new Currency(moneda3);
+                    if (typeof(Wallet).IsInstanceOfType(profile.PaymentMethods[z]))
+                    {
+                        movimiento = ((Wallet)profile.PaymentMethods[z]).SubWalletList.Find(x => x.Currency.Name == currency3.Name).Statement.AddTransaction(new Income(concepto, monto, currency3));
+                    }
+                    else
+                    {
+                        movimiento = profile.PaymentMethods[z].CurrentStatement.AddTransaction(new Income(concepto, monto, currency3));
+                    }
+                    
                     break;
                 }
                 case 2:
@@ -292,11 +327,44 @@ namespace Library
                     {
                         Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
                     }
-                    int l = IntImput.GetImput("Cuenta:");
-                    double monto = Convert.ToDouble(IntImput.GetImput($"Ingrese el monto del gasto en {profile.PaymentMethods[l].Currency.Name}"));
+                    int z = IntImput.GetImput("Cuenta:");
+                    double monto = Convert.ToDouble(IntImput.GetImput($"Ingrese el monto del gasto"));
                     string concepto = StringImput.GetImput("Escriba el concepto del gasto");
                     ExpenseType tipo = new ExpenseType(StringImput.GetImput("Ingrese el tipo del gasto"));
-                    profile.PaymentMethods[l].CurrentStatement.AddTransaction(new Expense(concepto, monto, profile.PaymentMethods[l].Currency, tipo));
+                    int intmoneda3 = IntImput.GetImput("Ingrese la Moneda de la transacción: \n1. USD \n2. EUR \n3.Pesos");
+                    string moneda3 = "";
+                    switch (intmoneda3)
+                    {
+                        case 1:
+                        {
+                            moneda3 = "USD";
+                            break;
+                        }
+                        case 2:
+                        {
+                            moneda3 = "EUR";
+                            break;
+                        }
+                        case 3:
+                        {
+                            moneda3 = "Pesos";
+                            break;
+                        }
+                        default:
+                        {
+                            Output.PrintLine("Unknown value");
+                            break;
+                        }
+                    }
+                    Currency currency3 = new Currency(moneda3);
+                    if (typeof(Wallet).IsInstanceOfType(profile.PaymentMethods[z]))
+                    {
+                        movimiento = ((Wallet)profile.PaymentMethods[z]).SubWalletList.Find(x => x.Currency.Name == currency3.Name).Statement.AddTransaction(new Expense(concepto, monto, currency3, tipo));
+                    }
+                    else
+                    {
+                        movimiento = profile.PaymentMethods[z].CurrentStatement.AddTransaction(new Expense(concepto, monto, currency3, tipo));
+                    }
                     break;
                 }
                 case 3:
@@ -307,7 +375,33 @@ namespace Library
                         Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
                     }
                     int z = IntImput.GetImput("Cuenta a debitar:");
-                    double monto = Convert.ToDouble(IntImput.GetImput($"Ingrese el monto a transferir en {profile.PaymentMethods[z].Currency.Name}"));
+                    int intmoneda3 = IntImput.GetImput("Ingrese la Moneda de la transacción: \n1. USD \n2. EUR \n3.Pesos");
+                    string moneda3 = "";
+                    switch (intmoneda3)
+                    {
+                        case 1:
+                        {
+                            moneda3 = "USD";
+                            break;
+                        }
+                        case 2:
+                        {
+                            moneda3 = "EUR";
+                            break;
+                        }
+                        case 3:
+                        {
+                            moneda3 = "Pesos";
+                            break;
+                        }
+                        default:
+                        {
+                            Output.PrintLine("Unknown value");
+                            break;
+                        }
+                    }
+                    Currency currency3 = new Currency(moneda3);
+                    double monto = Convert.ToDouble(IntImput.GetImput($"Ingrese el monto a transferir"));
                     string concepto = StringImput.GetImput("Escriba el concepto de la transferencia");
                     Output.PrintLine("Elija la cuenta a la que envía la transferencia:");
                     foreach (PaymentMethod item in profile.PaymentMethods)
@@ -315,7 +409,14 @@ namespace Library
                         Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
                     }
                     int destino = IntImput.GetImput("Cuenta a acreditar:");
-                    profile.PaymentMethods[z].CurrentStatement.AddTransaction(new InternalTransfer(concepto, monto, profile.PaymentMethods[z].Currency, profile.PaymentMethods[destino]));
+                    if (typeof(Wallet).IsInstanceOfType(profile.PaymentMethods[z]))
+                    {
+                        movimiento = ((Wallet)profile.PaymentMethods[z]).SubWalletList.Find(x => x.Currency.Name == currency3.Name).Statement.AddTransaction(new InternalTransfer(concepto, monto, currency3, profile.PaymentMethods[destino]));
+                    }
+                    else
+                    {
+                        movimiento = profile.PaymentMethods[z].CurrentStatement.AddTransaction(new InternalTransfer(concepto, monto, currency3, profile.PaymentMethods[destino]));
+                    }
                     break;
                 }
                 default:

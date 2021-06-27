@@ -9,15 +9,15 @@ namespace Library
     public class CreditCard : PaymentMethod
     {
         public double Limit { get; private set; }
-        public List<CardStatement> StatementList {get; private set;}
-        public new CardStatement CurrentStatement { get; protected set; }
+        public List<Statement> StatementList {get; private set;}
+        //public CardStatement CurrentStatement { get; protected set; }
         public CreditCard(string cardName, Currency currency, double limit)
         {
             this.Name = cardName;
             this.Currency = currency;
             this.Limit = limit;
             this.CurrentStatement = new CardStatement(currency, DateTime.Today, limit, 0);
-            this.StatementList = new List<CardStatement>();
+            this.StatementList = new List<Statement>();
         }
         public void SetNewLimit (double NewLimit)
         {
@@ -29,7 +29,7 @@ namespace Library
         }
         public void NewMonth()
         {
-            CardStatement newStatement = new CardStatement(Currency, DateTime.Now, this.Limit, this.GetBalance());
+            Statement newStatement = new CardStatement(Currency, DateTime.Now, this.Limit, this.GetBalance());
             StatementList.Add(this.CurrentStatement);
             this.CurrentStatement = newStatement;  
         }
