@@ -4,8 +4,8 @@ using System;
 //Cumple con DIP pues la comunicación es con clases de alto  nivel.
 namespace Library
 {
-    public interface IIntImput : IEntryFormat
+    public interface IIntInput : IEntryFormat
     {
-        int GetImput(string message);
+        int GetInput(string message);
     }
 }
