@@ -6,7 +6,7 @@ namespace Library
 
     public interface IExchange
     {
-        double UpdatedRate { get; set; }
+        double UpdatedRate { get; }
         double GetUpdatedRate()
         {
             return 2;
