@@ -8,7 +8,7 @@ namespace Library
     //a la modificación.
     //Utilizamos Interfaces para manejar la entrada y salida de datos del bot, en el momento, solamente se interactúa
     //con la consola pero estas interfaces permitirán a futuro poder agregar más plataformas (Telegram, Whatsapp, Excel)
-    //Sin tener que modificar el Core bot.
+    //Sin tener que modificar el Core bot. De esta manera estamos abiertos a la extensión en el futuro (OSP)
     //Una interface de entrada acepta solamente int, y la utilizamos para recibir los comandos del usuario,
     //Mientras que la otra recibe strings para aceptar texto.
     //Utilizamos Singleton para implementar estos Mecanismos de Imput y Output de datos porque solo es necesario que

@@ -2,6 +2,8 @@
 //Es una especialización de Statement, que al ser concreta puede instanciarse.
 //no importa la fecha asociada, un unico WalletStatement se usará para tener los movimientos de cada subwallet, pues 
 //para la billetera solo importa saber la cantidad de dinero que se tiene en el momento.
+//Es el Expert en manejar las transacciones que entran y salen de la billetera, y también es su CREATOR (Crea las 
+//instancias porque es quien las agrega y las usa de forma cercana.)
 
 using System;
 using System.Collections.Generic;
