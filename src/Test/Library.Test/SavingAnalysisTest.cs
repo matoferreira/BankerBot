@@ -8,7 +8,7 @@ using Library;
 	    public class SavingAnalysisTest
 
 		{  
-/*
+
 			private ExpenseType expenseType1;
 			private ExpenseType expenseType2;
 			private BankAccount bankAccount1;
@@ -32,13 +32,13 @@ using Library;
             
         }
 
-        [Test]
+     [Test]
         public void CalculateSavingTest()
         {
-           string a = "98500 USD en cuenta bancaria Cuenta1#Ahorro total: 98500 Pesos";
+           string a = "El ahorro mensual es:\n98500 USD en cuenta bancaria Cuenta1#Ahorro total: 98500 Pesos#";
            Assert.AreEqual(a,mySavingsAnalysis.AnalyseSavings(savingsAccounts));
 		  
         }
-*/
+
 		}
 	}
