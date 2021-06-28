@@ -29,7 +29,7 @@ using System.Collections.Generic;
 	        public void TestGetBalance()
 	        {
 				statement.AddTransaction(income);           	
-	            Assert.AreEqual(15000, statement.GetBalance());
+	            Assert.AreEqual(-15000, statement.GetBalance());
 	        }
 	
 	        [Test]
@@ -38,7 +38,7 @@ using System.Collections.Generic;
 	            statement.AddTransaction(income);
 	            statement.AddTransaction(income);
 				statement.AddTransaction(income);            	
-	            Assert.AreEqual(15000*3, statement.GetBalance());
+	            Assert.AreEqual(-15000*3, statement.GetBalance());
 	        }
 	        [Test]
 	        public void TestRemovetransaction()
@@ -53,32 +53,32 @@ using System.Collections.Generic;
 	        {
 				statement.AddTransaction(income);
 				statement.AddTransaction(new Expense("compra",5000, currency, new ExpenseType("compra")));	
-	            Assert.AreEqual(10000, statement.GetBalance());
+	            Assert.AreEqual(-10000, statement.GetBalance());
 	        }
 			[Test]
 	        public void TestLastBalance()
 	        {
-				CardStatement statement2 = new CardStatement(currency, DateTime.Now, 100000, 1000);
+				CardStatement statement2 = new CardStatement(currency, DateTime.Now, 100000, -1000);
 				statement2.AddTransaction(income);	
-	            Assert.AreEqual(16000, statement2.GetBalance());
+	            Assert.AreEqual(-16000, statement2.GetBalance());
 	        }
 			[Test]
 	        public void TestTransactionBiggerThanLimit()
 	        {
-				Assert.That(statement.AddTransaction(new Income("compra",500000000, currency)),Is.False);		
+				Assert.That(statement.AddTransaction(new Expense("compra",500000000, currency, new ExpenseType("compra"))),Is.False);		
 	        }
 			[Test]
 	        public void TestCalculatePaymentAmmount()
 	        {
 				statement.AddTransaction(income);
-				Assert.AreEqual(15000, statement.CalculatePaymentAmmount());		
+				Assert.AreEqual(-15000, statement.CalculatePaymentAmmount());		
 	        }
 			[Test]
 			public void TestMakePayment()
 	        {
 				statement.AddTransaction(income);
 				statement.MakePayment(10000);
-				Assert.AreEqual(5000, statement.GetBalance());		
+				Assert.AreEqual(-5000, statement.GetBalance());		
 	        }
 	    }
 
