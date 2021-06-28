@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-
+//Esta clase almacena todas la información del usuario. Agrega los paymentMethod que es usuario configuró y las
+//alertas que utiliza, también permite modificarlas. Es el Creator de los PaymentMethod, y tambien los observa
+//según patrón observer, pra notificar de sus cambios a las alertas, quienes necesitan conocerlos para
+//operar.
 namespace Library
 {
     public class UserProfile : IObserver

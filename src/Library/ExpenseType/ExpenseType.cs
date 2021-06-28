@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 //Esta clase será instanciada por cada rubro de gasto que exista
-//Su unica responsabilidad es conocer su nombre para que luego se pueda usar para categorizar los gastos
+//Su unica responsabilidad es conocer su nombre para que luego se pueda usar para categorizar los gastos (SRP)
 namespace Library
 {
     public class ExpenseType

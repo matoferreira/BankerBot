@@ -2,7 +2,9 @@
 //Es una especialización de Statement, que al ser concreta puede instanciarse.
 //tiene una fecha asociada, un nuevo cardStatement se creará a principios de cada mes, comenzará con el balance final del mes anterior
 //como su balance inicial.
-//Tendrá un limite de crédito asociado, transacciones que superen este límite no serán aceptadas
+//Tendrá un limite de crédito asociado, transacciones que superen este límite no serán aceptadas.
+//Es el Expert en manejar las transacciones que entran y salen de la tarjeta, y también es su CREATOR (Crea las 
+//instancias porque es quien las agrega y las usa de forma cercana.)
 
 using System;
 using System.Collections.Generic;

@@ -6,6 +6,8 @@ namespace Library
     //Creamos una clase abstracta PaymentMethod, que es un producto financiero o una billetera que se puede usar para operar con dinero.
     //La idea de utilizar esta clase es cumplir con el principio de LSP, Creditcard, BankAccount y Wallet seran clases polimórficas
     //PaymentMethod puede ser sustituido por cualquier clase subtipo de ésta.
+    //Tambien utilizamos el patrón observer para que las alertas puedan ser actualizadas con la información que necesitan para operar
+    //los paymentMethod seran los IObservables y el Observer será el UserProfile quien los crea.
     public abstract class PaymentMethod : IPaymentMethod
     {
 
