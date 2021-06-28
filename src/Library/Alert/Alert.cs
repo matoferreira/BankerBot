@@ -6,6 +6,8 @@ namespace Library
     //Esta clase abstracta define un tipo genérico Alerta, con el comportamiento común a todas las alertas
     //La operación TrackLevel será polimórfica, ya que cada alerta definirá un comportamiento propio 
     //Según lo que desee controlar cada alerta
+    //Cada alerta será la EXPERT en su propia información, almacenando su nivel límite y controlando cuando debe notificar
+    //al usuario.
     public abstract class Alert
     {
         public string Name { get; protected set; }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 //Esta clase es la encargada de realizar los analisis de los gastos por tipo
 //Recibe una lista con paymentMethods y los categoriza segun su tipo de gasto(Expensetype)
 //Devolviendo un string con cada ExpenseType y el total de gastos
-//Con el siguiente formato: (ExpenseType),(Total)#, para su posterior uso por Telegram.
 //Es un Singleton pues no tiene sentido que exista más de un objeto.
 //Cumple con SRP pues su única razon de cambio es cuando se realiza un nuevo gasto en algún PaymentMethod
 //Cuando esto ocurre, el UserInterface llama a este Singleton para que
