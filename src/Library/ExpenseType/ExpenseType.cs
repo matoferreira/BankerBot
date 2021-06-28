@@ -2,8 +2,7 @@ using System;
 using System.Collections.Generic;
 
 //Esta clase será instanciada por cada rubro de gasto que exista
-//Es la experta (patrón Expert) en calcular el total por rubro ya que su única responsabilidad
-//es acumular los gastos por rubro (Principio SRP)
+//Su unica responsabilidad es conocer su nombre para que luego se pueda usar para categorizar los gastos
 namespace Library
 {
     public class ExpenseType
