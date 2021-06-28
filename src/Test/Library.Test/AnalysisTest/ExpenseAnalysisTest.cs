@@ -2,13 +2,13 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using Library;
-/*
+
 	namespace Library.Test
 	{
 	    public class ExpenseAnalysisTest
 
 		{  
-/*
+
 			private ExpenseType expenseType3;
 			private ExpenseType expenseType4;
 			private BankAccount bankAccount10;
@@ -19,19 +19,19 @@ using Library;
             [SetUp]
         	public void Setup()
         {
-            currency = new Currency("USD");
-            bankAccount1 = new BankAccount("Cuenta1", currency);
-			bankAccount2 = new BankAccount("Cuenta2", currency);
-			payments = new List<PaymentMethod>();
-			payments.Add(bankAccount1);
-			payments.Add(bankAccount2);
-			expenseType1 = new ExpenseType("Ropa");
-			expenseType2 = new ExpenseType("Alimentos");
-			bankAccount1.CurrentStatement.AddTransaction(new Expense("camisa", 1000, currency,expenseType1));
-			bankAccount2.CurrentStatement.AddTransaction(new Expense("camisa", 2000, currency,expenseType1));
-			bankAccount1.CurrentStatement.AddTransaction(new Expense("alfajor", 500, currency,expenseType2));
-			bankAccount2.CurrentStatement.AddTransaction(new Expense("alfajor", 600, currency,expenseType2));
-			expenseAnalysis1 = new ExpenseAnalysis();
+            currency1 = new Currency("USD");
+            bankAccount10 = new BankAccount("Cuenta1", currency1);
+			bankAccount20 = new BankAccount("Cuenta2", currency1);
+			payments1 = new List<PaymentMethod>();
+			payments1.Add(bankAccount10);
+			payments1.Add(bankAccount20);
+			expenseType3 = new ExpenseType("Ropa");
+			expenseType4 = new ExpenseType("Alimentos");
+			bankAccount10.CurrentStatement.AddTransaction(new Expense("camisa", 1000, currency1,expenseType3));
+			bankAccount20.CurrentStatement.AddTransaction(new Expense("fideos", 2000, currency1,expenseType4));
+			bankAccount10.CurrentStatement.AddTransaction(new Expense("pantalon", 500, currency1,expenseType3));
+			bankAccount20.CurrentStatement.AddTransaction(new Expense("alfajor", 600, currency1,expenseType4));
+			expenseAnalysis2 = new ExpenseAnalysis();
 
 			Console.WriteLine(expenseAnalysis2.CalculateTotalByType(payments1));
             
@@ -40,10 +40,10 @@ using Library;
         [Test]
         public void CalculateTotalByTypeTest()
         {
-           Assert.AreEqual(3000,3000,$"{expenseAnalysis2.CalculateTotalByType(payments1)}");
-		  // Console.WriteLine($"{expenseAnalysis1.CalculateTotalByType(payments)}");
+           string a="Gastos Mensuales:\n Ropa: 1500#Gastos Mensuales:\n Alimentos: 2600#";
+		   Assert.AreEqual(a,expenseAnalysis2.CalculateTotalByType(payments1));
+		  
         }
 		}
 	}
 
-*/
