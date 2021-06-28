@@ -4,9 +4,9 @@ using System;
 //Cumple SRP pues su unica razon de cambio es recibir una linea de la consola. 
 namespace Library
 {
-    public class ConsoleReader : IStringImput
+    public class ConsoleReader : IStringInput
     {
-        public string GetImput(string message)
+        public string GetInput(string message)
         {
             Console.WriteLine(message);
             return Console.ReadLine();

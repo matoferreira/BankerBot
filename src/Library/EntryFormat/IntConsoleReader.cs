@@ -5,9 +5,9 @@ using System;
 //(Pues el core bot depende de una abstraccíon y no de el consoleReader)
 namespace Library
 {
-    public class IntConsoleReader : IIntImput
+    public class IntConsoleReader : IIntInput
     {
-        public int GetImput(string message)
+        public int GetInput(string message)
         {
             int n;
             string input;
