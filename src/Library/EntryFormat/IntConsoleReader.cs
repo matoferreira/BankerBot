@@ -2,9 +2,9 @@ using System;
 
 namespace Library
 {
-    public class IntConsoleReader : IIntImput
+    public class IntConsoleReader : IIntInput
     {
-        public int GetImput(string message)
+        public int GetInput(string message)
         {
             int n;
             string input;

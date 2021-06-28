@@ -2,9 +2,9 @@ using System;
 
 namespace Library
 {
-    public class ConsoleReader : IStringImput
+    public class ConsoleReader : IStringInput
     {
-        public string GetImput(string message)
+        public string GetInput(string message)
         {
             Console.WriteLine(message);
             return Console.ReadLine();

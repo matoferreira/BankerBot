@@ -1,6 +1,6 @@
 # BankerBot
-¿Tenés problemas para administrar tus finanzas personales?, ¿Llegás a fin de mes con poco dinero?, ¿querés ahorrar para un objetivo y no podés controlarlo?  
-Si alguna de estas preguntas la respondés con un sí, o si simplemente querés ser mas ordenado con tus finanzas ***¡te invitamos a usar el Bankerbot!***.
+¿Tenés problemas para administrar tus finanzas personales?, ¿llegás a fin de mes con poco dinero?, ¿querés ahorrar para un objetivo y no podés controlarlo?,  
+Si alguna de estas preguntas la respondés con un sí, o si simplemente querés ser mas ordenado con tus finanzas, ***¡te invitamos a usar el Bankerbot!***.
 
 ## Propósito
 Nuestro bot procura asistirte en la administración de tus finanzas personales de una manera cómoda y personalizable.  
