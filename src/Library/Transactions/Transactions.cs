@@ -5,10 +5,10 @@ namespace Library
 {
     public abstract class Transactions
     {
-        public Currency Currency { get ; protected set; }
+        public Currency Currency { get; protected set; }
         public DateTime Date { get; protected set; }
         public double Ammount { get; protected set; }
-        public string Concept { get; protected set; } 
+        public string Concept { get; protected set; }
 
     }
 }

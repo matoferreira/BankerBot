@@ -28,7 +28,7 @@ namespace Library
                 {
                     Transactions.Add(transaction);
                     this.Balance = this.Balance + transaction.Ammount;
-                    this.Limit = this.Limit - transaction.Ammount;                  
+                    this.Limit = this.Limit - transaction.Ammount;
                 }
                 else
                 {
@@ -61,7 +61,7 @@ namespace Library
                 {
                     newpayment = newpayment - transaction.Ammount;
                 }
-            } 
+            }
             return newpayment;
         }
         public void MakePayment(double ammount)

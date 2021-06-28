@@ -2,7 +2,7 @@ using System;
 
 namespace Library
 {
-        public class IntConsoleReader : IIntImput
+    public class IntConsoleReader : IIntImput
     {
         public int GetImput(string message)
         {

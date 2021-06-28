@@ -7,13 +7,13 @@ using System.Collections.Generic;
 
 namespace Library
 {
-    
-    
+
+
     public class Wallet : PaymentMethod
     {
         public List<SubWallet> SubWalletList { get; private set; }
         public List<Currency> CurrencyList { get; private set; }
-        
+
         public Wallet(SubWallet subwallet)
         {
             this.Name = "Billetera";
@@ -21,21 +21,21 @@ namespace Library
             this.CurrencyList = new List<Currency>();
             this.SubWalletList.Add(subwallet);
         }
-        public void AddSubWallet (SubWallet newSubWallet)
+        public void AddSubWallet(SubWallet newSubWallet)
         {
             SubWalletList.Add(newSubWallet);
         }
-        public void RemoveSubWallet (SubWallet subwallet)
+        public void RemoveSubWallet(SubWallet subwallet)
         {
             SubWalletList.Remove(subwallet);
         }
 
         //Para resolver la forma de aplicar este método se usó la siguiente referencia
         //https://github.com/ucudal/PII_Conceptos_De_POO/blob/master/Capitulos/3_Tipos_Genericos/3_2_Desarrollo.md
-        public double GetBalanceBySubWallet (SubWallet subWallet)
+        public double GetBalanceBySubWallet(SubWallet subWallet)
         {
             double result = 0;
-            result+=subWallet.Statement.GetBalance();
+            result += subWallet.Statement.GetBalance();
             this.NotifyObservers();
             return result;
         }
@@ -45,7 +45,7 @@ namespace Library
             double result = 0;
             foreach (SubWallet subwallet in this.SubWalletList)
             {
-                result += subwallet.Statement.GetBalance()*subwallet.Currency.ExchangeRate;
+                result += subwallet.Statement.GetBalance() * subwallet.Currency.ExchangeRate;
             }
             return result;
         }

@@ -6,6 +6,6 @@ namespace Library
 {
     public class ExcelAPI : IEntryFormat
     {
-        
+
     }
 }

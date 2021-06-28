@@ -33,7 +33,7 @@ namespace Library
         }
         public virtual void TrackLevel(List<PaymentMethod> list)
         {
-            
+
         }
     }
 }

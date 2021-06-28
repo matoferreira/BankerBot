@@ -13,13 +13,13 @@ namespace Library
         public double Total { get; private set; }
 
 
-        public ExpenseType (string name )
+        public ExpenseType(string name)
         {
             this.Name = name;
         }
-      
-       
+
+
 
     }
-    
+
 }

@@ -12,7 +12,7 @@ namespace Library
         public string Name { get; private set; }
         public Currency Currency { get; private set; }
         public Statement Statement { get; private set; }
-        public SubWallet (string Name, Currency currency)
+        public SubWallet(string Name, Currency currency)
         {
             this.Name = Name;
             this.Currency = currency;

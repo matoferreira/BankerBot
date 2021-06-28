@@ -8,7 +8,7 @@ namespace Library
     //PaymentMethod puede ser sustituido por cualquier clase subtipo de ésta.
     public abstract class PaymentMethod : IPaymentMethod
     {
-        
+
         public Currency Currency { get; protected set; }
         public string Name { get; protected set; }
         protected List<IObserver> observers = new List<IObserver>();
@@ -31,7 +31,7 @@ namespace Library
 
         public void NotifyObservers()
         {
-             foreach (IObserver observer in observers)
+            foreach (IObserver observer in observers)
             {
                 observer.Update();
             }

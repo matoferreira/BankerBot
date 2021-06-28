@@ -7,7 +7,7 @@ namespace Library
 {
     public class CurrencyExchangeAPI : IExchange
     {
-        public double UpdatedRate { get ; set; }
+        public double UpdatedRate { get; set; }
 
         public double GetUpdatedRate()
         {

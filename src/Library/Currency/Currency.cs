@@ -11,8 +11,8 @@ namespace Library
 {
     public class Currency : ICurrency
     {
-        public string Name { get ; set ;}
-        public double ExchangeRate { get ; protected set ; }
+        public string Name { get; set; }
+        public double ExchangeRate { get; protected set; }
         public IExchange Exchanger = new CurrencyExchangeAPI();
 
         public Currency(string name)
@@ -23,7 +23,7 @@ namespace Library
         public double Convert(double ammount)
         {
             this.UpdateExchangeRate();
-            return this.ExchangeRate*ammount;
+            return this.ExchangeRate * ammount;
         }
 
         public void UpdateExchangeRate()
