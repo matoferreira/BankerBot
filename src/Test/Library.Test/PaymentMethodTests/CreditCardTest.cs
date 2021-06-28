@@ -34,7 +34,7 @@ namespace Library.Test
         [Test]
         public void GetBalanceTest()
         {
-            Assert.AreEqual(-2000,creditCard.GetBalance());
+            Assert.AreEqual(2000,creditCard.GetBalance());
         }
 
 
