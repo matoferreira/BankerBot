@@ -3,8 +3,8 @@ using System;
 //que las clases necesitan, en lugar de acumularlo todo en IEntryFormat
 namespace Library
 {
-    public interface IStringImput : IEntryFormat
+    public interface IStringInput : IEntryFormat
     {
-        string GetImput(string message);
+        string GetInput(string message);
     }
 }
