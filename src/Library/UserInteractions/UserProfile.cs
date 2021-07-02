@@ -10,9 +10,12 @@ namespace Library
     {
         public List<Alert> Alerts { get; private set; }
         public List<PaymentMethod> PaymentMethods { get; private set; }
+        public static List<ExpenseType> ExpenseTypes { get; private set; }
         public UserProfile()
         {
             this.PaymentMethods = new List<PaymentMethod>();
+            ExpenseTypes = new List<ExpenseType>();
+            this.AddExpenseType("Sin Asignar");
             this.AddPaymentMethod(new Wallet(new SubWallet("Pesos", new Currency("Pesos"))));
             this.Alerts = new List<Alert>();
             Alerts.Add(new HighSpendingAlert());
@@ -48,6 +51,20 @@ namespace Library
                 PaymentMethods.Remove(method);
             }
         }
+        public void AddExpenseType(string nombre)
+        {
+            if (!ExpenseTypes.Exists(x => ExpenseType.Name  == nombre))
+            {
+                ExpenseTypes.Add(new ExpenseType(nombre));
+            }
+        }
+        public void RemoveExpenseType(ExpenseType type)
+        {
+            if (ExpenseTypes.Contains(type))
+            {
+                ExpenseTypes.Remove(type);
+            }
+        }
 
         public void Update()
         {
@@ -55,6 +72,15 @@ namespace Library
             {
                 alert.TrackLevel(PaymentMethods);
             }
+        }
+        public bool AddMovement(PaymentMethod paymentMethod, string concept, double ammount, Currency currency, bool isPositive)
+        {
+            return paymentMethod.AddMovement(concept, ammount, currency, isPositive, ExpenseTypes[0]);
+        }
+        public void ChangeExpenseType(Expense expense, string newType)
+        {
+            AddExpenseType(newType);
+            expense.ChangeExpenseType(ExpenseTypes.Find(x => ExpenseType.Name == newType));
         }
 
     }

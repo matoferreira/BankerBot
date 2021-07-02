@@ -12,6 +12,7 @@ namespace Library
             this.Concept = concept;
             this.Ammount = ammount;
             this.Destination = destination;
+            this.IsPositive = false;
             Destination.CurrentStatement.AddTransaction(new Income(this.Concept, this.Ammount, this.Currency));
         }
 

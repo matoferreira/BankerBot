@@ -22,28 +22,30 @@ namespace Library
             this.Limit = limit;
             this.previousBalance = lastbalance;
         }
-        public override bool AddTransaction(Transactions transaction) //Si la transaccion supera el límite, devuelve false
+        public override Transactions AddTransaction(String concept, double ammount, Currency currency, bool isPositive)
         {
-            if (typeof(Expense).IsInstanceOfType(transaction))
+            Transactions transactions;
+            if (isPositive == true)
             {
-                if (transaction.Ammount <= this.Limit)
-                {
-                    Transactions.Add(transaction);
-                    this.Balance = this.Balance + transaction.Ammount;
-                    this.Limit = this.Limit - transaction.Ammount;
-                }
-                else
-                {
-                    return false;
-                }
+                transactions = new Income(concept, ammount, currency);
+                Transactions.Add(transactions);
+                this.Limit = this.Limit + transactions.Ammount;
+                return transactions;
             }
             else
             {
-                Transactions.Add(transaction);
-                this.Balance = this.Balance - transaction.Ammount;
-                this.Limit = this.Limit + transaction.Ammount;
+                if (ammount <= this.Limit)
+                {
+                    transactions = new Expense(concept, ammount, currency);
+                    Transactions.Add(transactions);
+                    this.Limit = this.Limit - transactions.Ammount;
+                    return transactions;
+                }
+                else
+                {
+                    return null;
+                }
             }
-            return true;
         }
         public override double GetBalance()
         {
