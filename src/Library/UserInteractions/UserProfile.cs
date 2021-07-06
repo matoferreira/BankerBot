@@ -10,10 +10,12 @@ namespace Library
     {
         public List<Alert> Alerts { get; private set; }
         public List<PaymentMethod> PaymentMethods { get; private set; }
+        private Wallet wallet;
         public UserProfile()
         {
             this.PaymentMethods = new List<PaymentMethod>();
-            this.AddPaymentMethod(new Wallet(new SubWallet("Pesos", new Currency("Pesos"))));
+            wallet = new Wallet(new SubWallet("Pesos", new Currency("Pesos")));
+            this.AddPaymentMethod(wallet);
             this.Alerts = new List<Alert>();
             Alerts.Add(new HighSpendingAlert());
             Alerts.Add(new SavingsTargetAlert());
@@ -41,6 +43,12 @@ namespace Library
                 newMethod.Subscribe(this);
             }
         }
+
+        public void AddSubWallet (SubWallet newSubWallet)
+        {
+            this.wallet.AddSubWallet(newSubWallet);
+        }
+
         public void RemovePaymentMethod(PaymentMethod method)
         {
             if (PaymentMethods.Contains(method))

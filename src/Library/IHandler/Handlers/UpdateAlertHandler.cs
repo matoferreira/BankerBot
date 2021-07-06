@@ -2,12 +2,12 @@ using System;
 
 namespace Library
 {
-    public class NewPaymentMethodHandler: AbstractHandler
+    public class UpdateAlertHandler: AbstractHandler
     {
         public IStringInput StringImput = Singleton<ConsoleReader>.Instance;
         public override void Handle(Request request)
         {
-            if (request.Content == "/AgregarMetodoDePago")
+            if (request.Content == "/ActualizarAlerta")
             {
                 
             }
