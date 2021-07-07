@@ -2,7 +2,7 @@ using System;
 
 namespace Library
 {
-    public class AddIncomeHandler: AbstractHandler
+    public class AddIncomeHandler : AbstractHandler
     {
         public IStringInput StringImput = Singleton<ConsoleReader>.Instance;
         public IIntInput IntImput = Singleton<IntConsoleReader>.Instance;
@@ -18,9 +18,9 @@ namespace Library
                 }
 
                 int z = IntImput.GetInput("Cuenta:");
-                double monto = IntImput.GetInput($"Ingrese el monto del ingreso");
-                string concepto = StringImput.GetInput("Escriba el concepto del Ingreso");
-                string moneda = StringImput.GetInput("Ingrese la moneda");
+                double monto = IntImput.GetInput($"Ingrese el monto del ingreso:");
+                string concepto = StringImput.GetInput("Escriba el concepto del Ingreso:");
+                string moneda = StringImput.GetInput("Ingrese la moneda:");
 
                 Currency currency = new Currency(moneda);
 
@@ -32,7 +32,7 @@ namespace Library
                 {
                     movimiento = profile.PaymentMethods[z].CurrentStatement.AddTransaction(new Income(concepto, monto, currency));
                 }
-
+                Output.PrintLine("Movimiento realizado con éxito.");
             }
             else
             {

@@ -18,10 +18,10 @@ namespace Library
                 }
 
                 int z = IntImput.GetInput("Cuenta:");
-                double monto = IntImput.GetInput($"Ingrese el monto del gasto");
-                string concepto = StringImput.GetInput("Escriba el concepto del gasto");
-                ExpenseType tipo = new ExpenseType(StringImput.GetInput("Ingrese el tipo del gasto"));
-                string moneda = StringImput.GetInput("Ingrese la moneda");
+                double monto = IntImput.GetInput($"Ingrese el monto del gasto:");
+                string concepto = StringImput.GetInput("Escriba el concepto del gasto:");
+                ExpenseType tipo = new ExpenseType(StringImput.GetInput("Ingrese el tipo del gasto:"));
+                string moneda = StringImput.GetInput("Ingrese la moneda:");
 
                 Currency currency = new Currency(moneda);
 
@@ -33,7 +33,7 @@ namespace Library
                 {
                     movimiento = profile.PaymentMethods[z].CurrentStatement.AddTransaction(new Expense(concepto, monto, currency, tipo));
                 }
-
+                Output.PrintLine("Movimiento realizado con éxito.");
             }
             else
             {

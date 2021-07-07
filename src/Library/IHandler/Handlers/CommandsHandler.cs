@@ -2,14 +2,14 @@ using System;
 
 namespace Library
 {
-    public class ExpenseAnalysisHandler : AbstractHandler
+    public class CommandsHandler : AbstractHandler
     {
         public IStringInput StringImput = Singleton<ConsoleReader>.Instance;
         public override void Handle(Request request)
         {
-            if (request.Content == "/MostrarResumenGastos")
+            if (request.Content == "/Comandos")
             {
-                //Acá va la integración con la API de HTML
+                //Mostrar listado de comandos
             }
             else
             {

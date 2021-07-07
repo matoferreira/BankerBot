@@ -2,7 +2,7 @@ using System;
 
 namespace Library
 {
-    public class StatusHandler: AbstractHandler
+    public class StatusHandler : AbstractHandler
     {
         public IIntInput IntImput = Singleton<IntConsoleReader>.Instance;
         public override void Handle(Request request)
@@ -37,9 +37,9 @@ namespace Library
                         status = status + $"{item.Message}#";
                     }
                 }
-                //FALTA TERMINAR EL OUTPUT!!!!!
-                //Output.PrintLine(status);
-                //Output.PrintLine("------------------------#");
+                
+                Output.PrintLine(status);
+                Output.PrintLine("------------------------#");
                
             }
             else

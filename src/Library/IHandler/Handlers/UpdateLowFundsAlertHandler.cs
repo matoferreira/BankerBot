@@ -2,7 +2,7 @@ using System;
 
 namespace Library
 {
-    public class UpdateLowFundsAlertHandler: AbstractHandler
+    public class UpdateLowFundsAlertHandler : AbstractHandler
     {
         public IIntInput IntImput = Singleton<IntConsoleReader>.Instance;
         public override void Handle(Request request)
@@ -12,9 +12,11 @@ namespace Library
                 Alert alerta;
                 alerta = profile.Alerts.Find(x => x is LowFundsAlert);
 
-                double newLevel = IntImput.GetInput("Ingrese el monto minimo de fondos deseado");
+                double newLevel = IntImput.GetInput("Ingrese el monto minimo de fondos deseado:");
                 
                 alerta.ChangeLevel(newLevel);
+                Output.PrintLine("Alerta actualizada con éxito.");
+
                 base.Handle(request);
             }
             else

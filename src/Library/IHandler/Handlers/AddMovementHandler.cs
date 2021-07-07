@@ -2,7 +2,7 @@ using System;
 
 namespace Library
 {
-    public class AddMovementHandler: AbstractHandler
+    public class AddMovementHandler : AbstractHandler
     {
         public IStringInput StringImput = Singleton<ConsoleReader>.Instance;
         public override void Handle(Request request)
