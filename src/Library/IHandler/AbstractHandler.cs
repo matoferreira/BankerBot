@@ -6,6 +6,7 @@ namespace Library
     {
         protected UserProfile profile;
         public IHandler Next { get; set; }
+        public IExitFormat Output = Singleton<ConsolePrinter>.Instance;
 
         public virtual void Handle(Request request)
         {

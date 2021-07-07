@@ -37,8 +37,9 @@ namespace Library
                         status = status + $"{item.Message}#";
                     }
                 }
-                Output.PrintLine(status);
-                Output.PrintLine("------------------------#");
+                //FALTA TERMINAR EL OUTPUT!!!!!
+                //Output.PrintLine(status);
+                //Output.PrintLine("------------------------#");
                
             }
             else

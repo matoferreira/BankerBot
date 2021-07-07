@@ -9,7 +9,7 @@ namespace Library
         {
             if (request.Content == "/MostrarResumenAhorros")
             {
-                
+                //Acá va la integración con la API de HTML
             }
             else
             {
