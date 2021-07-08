@@ -11,8 +11,8 @@ namespace Library
         public List<Alert> Alerts { get; private set; }
         public List<PaymentMethod> PaymentMethods { get; private set; }
         public static List<ExpenseType> ExpenseTypes { get; private set; }
-        public ExpenseAnalysis ExpenseAnalysis;
-        public SavingsAnalysis SavingsAnalysis;
+        public ExpenseAnalysis ExpenseAnalysis = new ExpenseAnalysis();
+        public SavingsAnalysis SavingsAnalysis = new SavingsAnalysis();
         public UserProfile()
         {
             this.PaymentMethods = new List<PaymentMethod>();

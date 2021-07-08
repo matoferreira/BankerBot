@@ -11,7 +11,12 @@ namespace Library
 {
     public class SavingsAnalysis
     {
-        public string AnalyseSavings(List<PaymentMethod> savingsAccounts)
+        public string Analysis { get; private set; }
+        public SavingsAnalysis()
+        {
+            this.Analysis = null;
+        }
+        public void AnalyseSavings(List<PaymentMethod> savingsAccounts)
         {
             string lista = "El ahorro mensual es:\n";
             double total = 0;
@@ -21,7 +26,7 @@ namespace Library
                 lista = lista + item.GetSavings();
             }
             lista = lista + $"Ahorro total: {total} Pesos#";
-            return lista;
+            this.Analysis = lista;
         }
     }
 }

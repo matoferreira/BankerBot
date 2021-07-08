@@ -11,54 +11,18 @@ namespace Library
 {
     public class ExpenseAnalysis
     {
-        public List<ExpenseType> ExpenseTypes { get; private set; }
+        public string Analysis;
 
         public ExpenseAnalysis()
         {
-            this.ExpenseTypes = new List<ExpenseType>();
+            this.Analysis = null;
         }
-        public void GetExpenseTypes(List<PaymentMethod> payments)
-        {
-            foreach (PaymentMethod item in payments)
-            {
-                if (typeof(Wallet).IsInstanceOfType(item))
-                {
-                    foreach (SubWallet subwallet in ((Wallet)item).SubWalletList)
-                    {
-                        foreach (Transactions transaction in subwallet.Statement.Transactions)
-                        {
-                            if (typeof(Expense).IsInstanceOfType(transaction))
-                            {
-                                if (!ExpenseTypes.Contains(((Expense)transaction).ExpenseType))
-                                {
-                                    ExpenseTypes.Add(((Expense)transaction).ExpenseType);
-                                }
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    foreach (Transactions transaction in item.CurrentStatement.Transactions)
-                    {
-                        if (typeof(Expense).IsInstanceOfType(transaction))
-                        {
-                            if (!ExpenseTypes.Contains(((Expense)transaction).ExpenseType))
-                            {
-                                ExpenseTypes.Add(((Expense)transaction).ExpenseType);
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        public string CalculateTotalByType(List<PaymentMethod> payments)
+        public void CalculateTotalByType(List<PaymentMethod> payments, List<ExpenseType> expenseTypes)
         {
             string lista = "";
-            this.GetExpenseTypes(payments);
-            if (this.ExpenseTypes.Count >= 1)
+            if (expenseTypes.Count >= 1)
             {
-                foreach (ExpenseType expenseType in ExpenseTypes)
+                foreach (ExpenseType expenseType in expenseTypes)
                 {
                     double total = 0;
                     foreach (PaymentMethod item in payments)
@@ -69,11 +33,11 @@ namespace Library
                             {
                                 foreach (Transactions transaction in subwallet.Statement.Transactions)
                                 {
-                                    if (typeof(Expense).IsInstanceOfType(transaction))
+                                    if (transaction.IsPositive == false)
                                     {
-                                        if (typeof(Expense).IsInstanceOfType(transaction) && ((Expense)transaction).ExpenseType == expenseType)
+                                        if (((Expense)transaction).ExpenseType == expenseType)
                                         {
-                                            total = total + transaction.Ammount;
+                                            total = total + transaction.Ammount*transaction.Currency.ExchangeRate;
                                         }
                                     }
                                 }
@@ -83,20 +47,21 @@ namespace Library
                         {
                             foreach (Transactions transaction in item.CurrentStatement.Transactions)
                             {
-                                if (typeof(Expense).IsInstanceOfType(transaction))
+                                if (transaction.IsPositive == false)
                                 {
-                                    if (typeof(Expense).IsInstanceOfType(transaction) && ((Expense)transaction).ExpenseType == expenseType)
+                                    if (((Expense)transaction).ExpenseType == expenseType)
                                     {
-                                        total = total + transaction.Ammount;
+                                        total = total + transaction.Ammount*transaction.Currency.ExchangeRate;
                                     }
                                 }
                             }
                         }
                     }
-                    lista = lista + $"Gastos Mensuales:\n {expenseType.Name}: {total}#";
+                    expenseType.ChangeTotal(total);
+                    lista = lista + $"Gastos en {expenseType} ${expenseType.Total} pesos.\n";
                 }
             }
-            return lista;
+            this.Analysis = lista;
         }
     }
 }
