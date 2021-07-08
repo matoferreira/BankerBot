@@ -23,7 +23,10 @@ namespace Library
         }
         public void AddSubWallet(SubWallet newSubWallet)
         {
-            SubWalletList.Add(newSubWallet);
+            if (!SubWalletList.Exists(x => x.Currency  == newSubWallet.Currency))
+            {
+                SubWalletList.Add(newSubWallet);
+            }
         }
         public void RemoveSubWallet(SubWallet subwallet)
         {

@@ -47,12 +47,6 @@ namespace Library
                 newMethod.Subscribe(this);
             }
         }
-
-        public void AddSubWallet (SubWallet newSubWallet)
-        {
-            this.wallet.AddSubWallet(newSubWallet);
-        }
-
         public void RemovePaymentMethod(PaymentMethod method)
         {
             if (PaymentMethods.Contains(method))
@@ -82,7 +76,7 @@ namespace Library
                 alert.TrackLevel(PaymentMethods);
             }
             SavingsAnalysis.AnalyseSavings(PaymentMethods);
-            ExpenseAnalysis.CalculateTotalByType(PaymentMethods);
+            ExpenseAnalysis.CalculateTotalByType(PaymentMethods, ExpenseTypes);
         }
         public bool AddMovement(PaymentMethod paymentMethod, string concept, double ammount, Currency currency, bool isPositive)
         {
