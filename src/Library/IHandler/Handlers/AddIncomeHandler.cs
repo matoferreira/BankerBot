@@ -11,16 +11,16 @@ namespace Library
             if (request.Content == "/agregaringreso")
             {
                 Output.PrintLine("Elija la cuenta a la que agrega el ingreso:");
-                foreach (PaymentMethod item in profile.PaymentMethods)
+                foreach (PaymentMethod item in request.Profile.PaymentMethods)
                 {
-                    Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
+                    Output.PrintLine($"{request.Profile.PaymentMethods.IndexOf(item)}. {item.Name}");
                 }
                 int z = IntImput.GetInput("Cuenta:");
                 double monto = IntImput.GetInput($"Ingrese el monto del ingreso:");
                 string concepto = StringImput.GetInput("Escriba el concepto del Ingreso:");
                 string moneda = StringImput.GetInput("Ingrese la moneda:");
                 Currency currency = new Currency(moneda);
-                profile.AddMovement(profile.PaymentMethods[z], concepto, monto, currency, true);
+                request.Profile.AddMovement(request.Profile.PaymentMethods[z], concepto, monto, currency, true);
                 Output.PrintLine("Movimiento realizado con éxito.");
             }
             else

@@ -10,7 +10,7 @@ namespace Library
             if (request.Content == "/alertadeahorros")
             {
                 Alert alerta;
-                alerta = profile.Alerts.Find(x => x is SavingsTargetAlert);
+                alerta = request.Profile.Alerts.Find(x => x is SavingsTargetAlert);
 
                 double newLevel = IntImput.GetInput("Ingrese el monto del objetivo de ahorro:");
                 

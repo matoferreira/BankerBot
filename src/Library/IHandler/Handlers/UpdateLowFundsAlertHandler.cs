@@ -10,7 +10,7 @@ namespace Library
             if (request.Content == "/alertabajosfondos")
             {
                 Alert alerta;
-                alerta = profile.Alerts.Find(x => x is LowFundsAlert);
+                alerta = request.Profile.Alerts.Find(x => x is LowFundsAlert);
 
                 double newLevel = IntImput.GetInput("Ingrese el monto minimo de fondos deseado:");
                 

@@ -4,10 +4,12 @@ namespace Library
 {
     public class AbstractHandler : IHandler
     {
-        protected UserProfile profile {get; set;}
-        public IHandler Next { get; set; }
-        public IExitFormat Output = Singleton<ConsolePrinter>.Instance;
-
+        public IHandler Next { get; set;}
+        public TelegramPrinter Output { get; protected set;}
+        public AbstractHandler()
+        {
+            this.Output = new TelegramPrinter();
+        }
         public virtual void Handle(Request request)
         {
             if (this.Next != null)
