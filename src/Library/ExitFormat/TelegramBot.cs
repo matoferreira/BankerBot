@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using Telegram.Bot;
 using Telegram.Bot.Args;
 using Telegram.Bot.Types;
@@ -8,7 +9,8 @@ namespace Library
     public class TelegramBot
     {
 
-        private const string TELEBRAM_BOT_TOKEN = "1861427614:AAFmI6ZCTKH-48Bru2dqSqgMe5nMVkJXbKM";
+        private const string token = "Por motivos de seguridad, el token lo tiene el equipo disponible para pasarlo por otro medio";
+        private const string TELEBRAM_BOT_TOKEN = token;
         private static TelegramBot instance;
         private ITelegramBotClient bot;
 
