@@ -7,8 +7,9 @@ namespace Library
 {
     public class ConsolePrinter : IExitFormat
     {
-        public void PrintLine(string line)
+        public string PrintLine(string line)
         {
+            return "No usado";
             string linea = "";
             int num = 0;
             while (num < line.Length)

@@ -9,8 +9,8 @@ namespace Library
             if (request.Content == "/estado")
             {
                 string status = "";
-                profile.Update();
-                foreach (PaymentMethod method in profile.PaymentMethods)
+                request.Profile.Update();
+                foreach (PaymentMethod method in request.Profile.PaymentMethods)
                 {
                     if (typeof(BankAccount).IsInstanceOfType(method))
                     {
@@ -29,7 +29,7 @@ namespace Library
                         }
                     }
                 }
-                foreach (Alert item in profile.Alerts)
+                foreach (Alert item in request.Profile.Alerts)
                 {
                     if (item.IsOn == true)
                     {

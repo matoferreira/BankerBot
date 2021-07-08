@@ -11,9 +11,9 @@ namespace Library
             if (request.Content == "/agregargasto")
             {
                 Output.PrintLine("Elija la cuenta a la que agrega el gasto:");
-                foreach (PaymentMethod item in profile.PaymentMethods)
+                foreach (PaymentMethod item in request.Profile.PaymentMethods)
                 {
-                    Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
+                    Output.PrintLine($"{request.Profile.PaymentMethods.IndexOf(item)}. {item.Name}");
                 }
                 int z = IntImput.GetInput("Cuenta:");
                 double monto = IntImput.GetInput($"Ingrese el monto del gasto:");
@@ -21,7 +21,7 @@ namespace Library
                 ExpenseType tipo = new ExpenseType(StringImput.GetInput("Ingrese el tipo del gasto:"));
                 string moneda = StringImput.GetInput("Ingrese la moneda:");
                 Currency currency = new Currency(moneda);
-                profile.AddMovement(profile.PaymentMethods[z], concepto, monto, currency, false);
+                request.Profile.AddMovement(request.Profile.PaymentMethods[z], concepto, monto, currency, false);
                 Output.PrintLine("Movimiento realizado con éxito.");
             }
             else

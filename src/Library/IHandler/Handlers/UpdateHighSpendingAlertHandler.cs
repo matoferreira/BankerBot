@@ -10,7 +10,7 @@ namespace Library
             if (request.Content == "/alertagastosmensuales")
             {
                 Alert alerta;
-                alerta = profile.Alerts.Find(x => x is HighSpendingAlert);
+                alerta = request.Profile.Alerts.Find(x => x is HighSpendingAlert);
 
                 double newLevel = IntImput.GetInput("Ingrese su límite de gastos mensuales:");
                 

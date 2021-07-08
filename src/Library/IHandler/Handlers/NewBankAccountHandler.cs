@@ -18,7 +18,7 @@ namespace Library
                 int balance = Convert.ToInt32(StringImput.GetInput("Ingrese el saldo de la cuenta:"));
                 newAccount.CurrentStatement.ChangeBalance(balance);
             
-                this.profile.AddPaymentMethod(newAccount);
+                request.Profile.AddPaymentMethod(newAccount);
                 Output.PrintLine("Medio de pago agregado con éxito.");
 
                 base.Handle(request);

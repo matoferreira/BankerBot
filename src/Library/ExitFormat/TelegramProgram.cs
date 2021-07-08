@@ -2,15 +2,22 @@ using System;
 using Telegram.Bot;
 using Telegram.Bot.Args;
 using Telegram.Bot.Types;
-using Library;
 using Telegram.Bot.Types.Enums;
 using System.IO;
 using System.Text;
+using System.Collections.Generic;
 
 namespace Library
 {
     public class TelegramProgram
     {
+        public static Dictionary<double,UserProfile> Users = new Dictionary<double, UserProfile>();
+        public static HandlersList ListOfHandlers = new HandlersList();
+        public TelegramProgram()
+        {
+            
+        }
+        
         public void Run()
         {
 
@@ -33,40 +40,8 @@ namespace Library
 
             //Detengo la escucha de mensajes 
             bot.StopReceiving();
-
-            AddExpenseHandler addExpenseHandler = new AddExpenseHandler();
-            AddIncomeHandler addIncomeHandler = new AddIncomeHandler();
-            AddInternalTransferHandler addInternalTransferHandler = new AddInternalTransferHandler();
-            AddMovementHandler addMovementHandler = new AddMovementHandler();
-            CommandsHandler commandsHandler = new CommandsHandler();
-            ExpenseAnalysisHandler expenseAnalysisHandler = new ExpenseAnalysisHandler();
-            NewBankAccountHandler newBankAccountHandler = new NewBankAccountHandler();
-            NewCreditCardHandler newCreditCardHandler = new NewCreditCardHandler();
-            NewPaymentMethodHandler newPaymentMethodHandler = new NewPaymentMethodHandler();
-            NewWalletHandler newWalletHandler = new NewWalletHandler();
-            SavingsAnalysisHandler savingsAnalysisHandler = new SavingsAnalysisHandler();
-            StatusHandler statusHandler = new StatusHandler();
-            UpdateAlertHandler updateAlertHandler = new UpdateAlertHandler();
-            UpdateHighSpendingAlertHandler updateHighSpendingAlertHandler = new UpdateHighSpendingAlertHandler();
-            UpdateLowFundsAlertHandler updateLowFundsAlertHandler = new UpdateLowFundsAlertHandler();
-            UpdateSavingsAlertHandler updateSavingsAlertHandler = new UpdateSavingsAlertHandler();
-
-            commandsHandler.Next = statusHandler;
-            statusHandler.Next = newPaymentMethodHandler;
-            newPaymentMethodHandler.Next = newBankAccountHandler;
-            newBankAccountHandler.Next = newCreditCardHandler;
-            newCreditCardHandler.Next = newWalletHandler;
-            newWalletHandler.Next = updateAlertHandler;
-            updateAlertHandler.Next = updateSavingsAlertHandler;
-            updateSavingsAlertHandler.Next = updateLowFundsAlertHandler;
-            updateLowFundsAlertHandler.Next = updateHighSpendingAlertHandler;
-            updateHighSpendingAlertHandler.Next = statusHandler;
-            savingsAnalysisHandler.Next = expenseAnalysisHandler;
-            expenseAnalysisHandler.Next = addMovementHandler;
-            addMovementHandler.Next = addIncomeHandler;
-            addIncomeHandler.Next = addExpenseHandler;
-            addExpenseHandler.Next = addInternalTransferHandler;
-            addInternalTransferHandler.Next = null;
+            
+            
 
         }
 
@@ -78,8 +53,19 @@ namespace Library
             if (messageText != null)
             {
                 ITelegramBotClient client = TelegramBot.Instance.Client;
+                if (Users.ContainsKey(message.Chat.Id) == false)
+                {
+                    Console.WriteLine($"{chatInfo.FirstName}: no existe {message.Text}");
+                    Users.Add(message.Chat.Id, new UserProfile());
+                }
+                else
+                {
+                    Console.WriteLine($"{chatInfo.FirstName}: existe {message.Text}");
+                }
+                UserProfile PerfilUsuario;
+                Users.TryGetValue(message.Chat.Id, out PerfilUsuario);
                 Console.WriteLine($"{chatInfo.FirstName}: envío {message.Text}");
-
+                ListOfHandlers.commandsHandler.Handle(new Request(messageText, PerfilUsuario));
                 switch (messageText)
                 {
                     case "/commands":

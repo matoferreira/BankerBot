@@ -16,7 +16,7 @@ namespace Library
                 Currency currency = new Currency(moneda);
                 CreditCard newCard = new CreditCard(name, currency, limit);
                 
-                this.profile.AddPaymentMethod(newCard);
+                request.Profile.AddPaymentMethod(newCard);
                 Output.PrintLine("Medio de pago agregado con éxito.");
 
                 base.Handle(request);

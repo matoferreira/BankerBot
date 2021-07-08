@@ -7,7 +7,7 @@ namespace Library
     {
         public override void Handle(Request request)
         {
-            if (request.Content == "/comandos")
+            if (request.Content == "/comandos" || request.Content == "/commands")
             {
                 StringBuilder commandsStringBuilder = new StringBuilder("Lista de Comandos:\n")
                                                                             .Append("/comandos\n")
