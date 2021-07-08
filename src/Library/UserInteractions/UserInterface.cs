@@ -14,7 +14,7 @@ namespace Library
     //Utilizamos Singleton para implementar estos Mecanismos de Imput y Output de datos porque solo es necesario que
     //exita una instancia de ellos.
     public class UserInterface
-    {
+    {/*
         public IStringInput StringImput = Singleton<ConsoleReader>.Instance;
         public IIntInput IntImput = Singleton<IntConsoleReader>.Instance;
         public IExitFormat Output = Singleton<ConsolePrinter>.Instance;
@@ -434,5 +434,5 @@ namespace Library
             Output.PrintLine("Movimiento realizado");
             this.MainMenu();
         }
-    }
+    */}
 }

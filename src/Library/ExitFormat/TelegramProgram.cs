@@ -9,9 +9,9 @@ using System.Text;
 
 namespace Library
 {
-    class TelegramProgram
+    public class TelegramProgram
     {
-        public static void Main()
+        public void Run()
         {
 
             //Obtengo una instancia de TelegramBot

@@ -12,11 +12,9 @@ namespace Library
                 string moneda = StringImput.GetInput("Ingrese la moneda de la billetera:");
 
                 Currency currency = new Currency(moneda);
-                SubWallet subWallet = new SubWallet(moneda, currency);
-                
-                this.profile.AddSubWallet(subWallet);
+                PaymentMethod wallet = profile.PaymentMethods.Find(x => x.Name == "Billetera");
+                ((Wallet)wallet).AddSubWallet(new SubWallet(moneda, currency));
                 Output.PrintLine("Medio de pago agregado con éxito.");
-
                 base.Handle(request);
             }
             else

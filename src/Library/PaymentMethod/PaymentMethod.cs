@@ -15,7 +15,7 @@ namespace Library
         public string Name { get; protected set; }
         protected List<IObserver> observers = new List<IObserver>();
 
-        public Statement CurrentStatement { get; protected set; }
+        public virtual Statement CurrentStatement { get; protected set; }
         public virtual double GetBalance()
         {
             return 1;
@@ -38,7 +38,7 @@ namespace Library
                 observer.Update();
             }
         }
-        public bool AddMovement(string concept, double ammount, Currency currency, bool isPositive, ExpenseType basicType)
+        public virtual bool AddMovement(string concept, double ammount, Currency currency, bool isPositive, ExpenseType basicType)
         {
             Transactions tran = CurrentStatement.AddTransaction(concept, ammount, currency, isPositive);
             if (tran != null)

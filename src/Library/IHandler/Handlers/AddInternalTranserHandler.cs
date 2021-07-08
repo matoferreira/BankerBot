@@ -20,9 +20,7 @@ namespace Library
                 int z = IntImput.GetInput("Cuenta a debitar:");
                 double monto = IntImput.GetInput("Ingrese el monto a transferir:");
                 string concepto = StringImput.GetInput("Escriba el concepto de la transferencia:");
-                string moneda = StringImput.GetInput("Ingrese la moneda:");
-
-                Currency currency = new Currency(moneda);
+                Currency currency = profile.PaymentMethods[z].Currency;
 
                 Output.PrintLine("Elija la cuenta a la que envía la transferencia:");
                 foreach (PaymentMethod item in profile.PaymentMethods)
@@ -30,18 +28,8 @@ namespace Library
                     Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
                 }
                 int destino = IntImput.GetInput("Cuenta a acreditar:");
-
-                if (typeof(Wallet).IsInstanceOfType(profile.PaymentMethods[z]))
-                {
-                     movimiento = ((Wallet)profile.PaymentMethods[z]).SubWalletList.Find(x => x.Currency.Name == currency.Name).Statement.AddTransaction(new InternalTransfer(concepto, monto, currency, profile.PaymentMethods[destino]));
-                }
-                else
-                {
-                    movimiento = profile.PaymentMethods[z].CurrentStatement.AddTransaction(new InternalTransfer(concepto, monto, currency, profile.PaymentMethods[destino]));
-                }
+                movimiento = profile.MakeInternalTransfer(concepto, monto, currency, profile.PaymentMethods[z], profile.PaymentMethods[destino]);
                 Output.PrintLine("Movimiento realizado con éxito.");
-
-
             }
             else
             {
