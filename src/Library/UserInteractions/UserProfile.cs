@@ -47,6 +47,12 @@ namespace Library
                 newMethod.Subscribe(this);
             }
         }
+
+        public void AddSubWallet (SubWallet newSubWallet)
+        {
+            this.wallet.AddSubWallet(newSubWallet);
+        }
+
         public void RemovePaymentMethod(PaymentMethod method)
         {
             if (PaymentMethods.Contains(method))
