@@ -5,16 +5,17 @@ namespace Library
 {
     public class StartHandler : AbstractHandler
     {
-        public override void Handle(Request request)
+        public override object Handle(Request request)
         {
             if (request.Content == "/start")
             {
-                Output.PrintLine("Bienvenido al BankyBot, soy Banky y te voy a ayudar en tus finanzas personales, escribe /comandos para ver todo lo que puedo hacer");
+                return "Bienvenido al BankyBot, soy Banky y te voy a ayudar en tus finanzas personales, escribe /comandos para ver todo lo que puedo hacer";
             }
             else
             {
-                this.Next.Handle(request);
+                return base.Next.Handle(request);
             }
+            
         }
     }
 }

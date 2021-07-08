@@ -13,6 +13,7 @@ namespace Library
     {
         public static Dictionary<double,UserProfile> Users = new Dictionary<double, UserProfile>();
         public static HandlersList ListOfHandlers = new HandlersList();
+        public IExitFormat Output = Singleton<TelegramPrinter>.Instance; 
         public TelegramProgram()
         {
             
@@ -67,7 +68,7 @@ namespace Library
                 Console.WriteLine($"{chatInfo.FirstName}: envío {message.Text}");
                 await client.SendTextMessageAsync(
                                                 chatId: chatInfo.Id,
-                 "bienvenido");
+                                                text:    ListOfHandlers.startHandler.Handle(new Request(message.Text, PerfilUsuario)).ToString()                           );
             }
         }
     }

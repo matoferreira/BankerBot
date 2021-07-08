@@ -6,6 +6,6 @@ namespace Library
     {
         IHandler Next { get; }
 
-        void Handle(Request request);
+        object Handle(Request request);
     }
 }

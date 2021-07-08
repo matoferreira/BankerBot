@@ -5,7 +5,7 @@ namespace Library
 {
     public class CommandsHandler : AbstractHandler
     {
-        public override void Handle(Request request)
+        public override object Handle(Request request)
         {
             if (request.Content == "/comandos" || request.Content == "/commands")
             {
@@ -28,11 +28,11 @@ namespace Library
                                                                             .Append("/agregartransferenciainterna\n");
             
 
-                Output.PrintLine(commandsStringBuilder.ToString());
+                return commandsStringBuilder.ToString();
             }
             else
             {
-                this.Next.Handle(request);
+                return base.Next.Handle(request);
             }
         }
     }

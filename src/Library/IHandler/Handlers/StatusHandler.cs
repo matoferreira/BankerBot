@@ -4,7 +4,7 @@ namespace Library
 {
     public class StatusHandler : AbstractHandler
     {
-        public override void Handle(Request request)
+        public override object Handle(Request request)
         {
             if (request.Content == "/estado")
             {
@@ -37,13 +37,11 @@ namespace Library
                     }
                 }
                 
-                Output.PrintLine(status);
-                Output.PrintLine("------------------------#");
-               
+                return status;
             }
             else
             {
-                this.Next.Handle(request);
+                return base.Next.Handle(request);
             }
         }
     }

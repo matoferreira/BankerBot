@@ -4,15 +4,15 @@ namespace Library
 {
     public class AddMovementHandler : AbstractHandler
     {
-        public override void Handle(Request request)
+        public override object Handle(Request request)
         {
             if (request.Content == "/agregarmovimiento")
             {
-                
+                return "Falta implementar";
             }
             else
             {
-                this.Next.Handle(request);
+                return base.Next.Handle(request);
             }
         }
     }

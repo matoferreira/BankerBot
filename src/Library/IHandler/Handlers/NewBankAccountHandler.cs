@@ -1,14 +1,19 @@
 using System;
+using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
+using Telegram.Bot.Types.ReplyMarkups;
+
 
 namespace Library
 {
     public class NewBankAccountHandler : AbstractHandler
     {
         public IStringInput StringImput = Singleton<ConsoleReader>.Instance;
-        public override void Handle(Request request)
+        public override object Handle(Request request)
         {
             if (request.Content == "/agregarcuentabancaria")
             {
+                
                 string name = StringImput.GetInput("Ingrese el nombre del banco:");
                 string moneda = StringImput.GetInput("Ingrese la moneda:");
 
@@ -19,13 +24,11 @@ namespace Library
                 newAccount.CurrentStatement.ChangeBalance(balance);
             
                 request.Profile.AddPaymentMethod(newAccount);
-                Output.PrintLine("Medio de pago agregado con éxito.");
-
-                base.Handle(request);
+                return "Medio de pago agregado con éxito.";
             }
             else
             {
-                this.Next.Handle(request);
+                return base.Next.Handle(request);
             }
         }
     }

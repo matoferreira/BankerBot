@@ -5,7 +5,7 @@ namespace Library
     public class UpdateLowFundsAlertHandler : AbstractHandler
     {
         public IIntInput IntImput = Singleton<IntConsoleReader>.Instance;
-        public override void Handle(Request request)
+        public override object Handle(Request request)
         {
             if (request.Content == "/alertabajosfondos")
             {
@@ -15,13 +15,11 @@ namespace Library
                 double newLevel = IntImput.GetInput("Ingrese el monto minimo de fondos deseado:");
                 
                 alerta.ChangeLevel(newLevel);
-                Output.PrintLine("Alerta actualizada con éxito.");
-
-                base.Handle(request);
+                return "Alerta actualizada con éxito.";
             }
             else
             {
-                this.Next.Handle(request);
+                return base.Next.Handle(request);
             }
         }
     }

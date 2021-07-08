@@ -5,7 +5,7 @@ namespace Library
     public class NewWalletHandler : AbstractHandler
     {
         public IStringInput StringImput = Singleton<ConsoleReader>.Instance;
-        public override void Handle(Request request)
+        public override object Handle(Request request)
         {
             if (request.Content == "/agregarbilletera")
             {
@@ -14,12 +14,11 @@ namespace Library
                 Currency currency = new Currency(moneda);
                 PaymentMethod wallet = request.Profile.PaymentMethods.Find(x => x.Name == "Billetera");
                 ((Wallet)wallet).AddSubWallet(new SubWallet(moneda, currency));
-                Output.PrintLine("Medio de pago agregado con éxito.");
-                base.Handle(request);
+                return "Medio de pago agregado con éxito.";
             }
             else
             {
-                this.Next.Handle(request);
+                return base.Next.Handle(request);
             }
         }
     }

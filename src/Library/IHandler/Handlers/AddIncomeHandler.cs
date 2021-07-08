@@ -6,11 +6,14 @@ namespace Library
     {
         public IStringInput StringImput = Singleton<ConsoleReader>.Instance;
         public IIntInput IntImput = Singleton<IntConsoleReader>.Instance;
-        public override void Handle(Request request)
+        public override object Handle(Request request)
         {
             if (request.Content == "/agregaringreso")
             {
-                Output.PrintLine("Elija la cuenta a la que agrega el ingreso:");
+                /// <summary>
+                /// /////////////
+                /// </summary>
+                return "OJO Elija la cuenta a la que agrega el ingreso:";
                 foreach (PaymentMethod item in request.Profile.PaymentMethods)
                 {
                     Output.PrintLine($"{request.Profile.PaymentMethods.IndexOf(item)}. {item.Name}");
@@ -25,7 +28,7 @@ namespace Library
             }
             else
             {
-                this.Next.Handle(request);
+                return base.Next.Handle(request);
             }
         }
     }

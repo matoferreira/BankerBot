@@ -10,11 +10,15 @@ namespace Library
         {
             this.Output = new TelegramPrinter();
         }
-        public virtual void Handle(Request request)
+        public virtual object Handle(Request request)
         {
             if (this.Next != null)
             {
-                this.Next.Handle(request);
+                return this.Next.Handle(request);
+            }
+            else
+            {
+                return "Error en cad Abstrac";
             }
         }
     }
