@@ -17,16 +17,8 @@ namespace Library
             double total = 0;
             foreach (PaymentMethod item in savingsAccounts)
             {
-                if (typeof(BankAccount).IsInstanceOfType(item))
-                {
-                    total = total + item.GetBalance();
-                    lista = lista + $"{item.GetBalance()} {item.Currency.Name} en cuenta bancaria {((BankAccount)item).Name}#";
-                }
-                if (typeof(Wallet).IsInstanceOfType(item))
-                {
-                    total = total + item.GetBalance();
-                    lista = lista + $"{item.GetBalance()} Pesos En la Billetera#";
-                }
+                total = total + item.GetBalance();
+                lista = lista + item.GetSavings();
             }
             lista = lista + $"Ahorro total: {total} Pesos#";
             return lista;

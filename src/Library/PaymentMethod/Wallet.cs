@@ -49,5 +49,15 @@ namespace Library
             }
             return result;
         }
+        public override string GetSavings()
+        {
+            string linea = "";
+            foreach (SubWallet subwallet in this.SubWalletList)
+            {
+                linea = linea + $"{subwallet.Statement.GetBalance()} {this.Currency.Name} En la Billetera#";
+            }
+            linea = linea + $"Valor en Pesos del dinero en la billetera: {this.GetBalance()}#";
+            return linea;
+        }
     }
 }

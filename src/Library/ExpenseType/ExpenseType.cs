@@ -15,7 +15,13 @@ namespace Library
         public ExpenseType(string name)
         {
             ExpenseType.Name = name;
+            this.Total = 0;
         }
+        public void ChangeTotal(double newTotal)
+        {
+            this.Total = newTotal;
+        }
+
 
 
 

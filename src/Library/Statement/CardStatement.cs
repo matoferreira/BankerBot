@@ -57,7 +57,7 @@ namespace Library
             double newpayment = 0;
             foreach (Transactions transaction in Transactions)
             {
-                if (typeof(Expense).IsInstanceOfType(transaction))
+                if (transaction.IsPositive == false)
                 {
                     newpayment = newpayment + transaction.Ammount;
                 }
@@ -71,7 +71,7 @@ namespace Library
         public void MakePayment(double ammount)
         {
             this.Limit = this.Limit + ammount;
-            this.AddTransaction(new Expense("Pago de Saldo de tarjeta", ammount, this.Currency, new ExpenseType("Pago")));
+            this.AddTransaction("Pago de Saldo de tarjeta", ammount, this.Currency, true);
         }
     }
 }

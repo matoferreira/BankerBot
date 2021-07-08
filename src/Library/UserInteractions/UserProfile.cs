@@ -11,11 +11,14 @@ namespace Library
         public List<Alert> Alerts { get; private set; }
         public List<PaymentMethod> PaymentMethods { get; private set; }
         public static List<ExpenseType> ExpenseTypes { get; private set; }
+        public ExpenseAnalysis ExpenseAnalysis;
+        public SavingsAnalysis SavingsAnalysis;
         public UserProfile()
         {
             this.PaymentMethods = new List<PaymentMethod>();
             ExpenseTypes = new List<ExpenseType>();
             this.AddExpenseType("Sin Asignar");
+            this.AddExpenseType("Transferencia Interna");
             this.AddPaymentMethod(new Wallet(new SubWallet("Pesos", new Currency("Pesos"))));
             this.Alerts = new List<Alert>();
             Alerts.Add(new HighSpendingAlert());
@@ -72,6 +75,8 @@ namespace Library
             {
                 alert.TrackLevel(PaymentMethods);
             }
+            SavingsAnalysis.AnalyseSavings(PaymentMethods);
+            ExpenseAnalysis.CalculateTotalByType(PaymentMethods);
         }
         public bool AddMovement(PaymentMethod paymentMethod, string concept, double ammount, Currency currency, bool isPositive)
         {
@@ -81,6 +86,15 @@ namespace Library
         {
             AddExpenseType(newType);
             expense.ChangeExpenseType(ExpenseTypes.Find(x => ExpenseType.Name == newType));
+        }
+        public virtual bool MakeInternalTransfer(string concept, double ammount, Currency currency, PaymentMethod origin, PaymentMethod destination)
+        {
+            bool correct = origin.AddMovement(concept, ammount, currency, false, ExpenseTypes[1]);
+            if (correct == true)
+            {
+                AddMovement(destination, concept, ammount, currency, true);
+            }
+            return correct;
         }
 
     }

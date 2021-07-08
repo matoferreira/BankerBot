@@ -54,5 +54,9 @@ namespace Library
                 return false;
             }
         }
+        public virtual string GetSavings()
+        {
+            return null;
+        }
     }
 }

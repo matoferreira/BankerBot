@@ -18,8 +18,6 @@ namespace Library
         public IStringInput StringImput = Singleton<ConsoleReader>.Instance;
         public IIntInput IntImput = Singleton<IntConsoleReader>.Instance;
         public IExitFormat Output = Singleton<ConsolePrinter>.Instance;
-        public ExpenseAnalysis ExpenseAnalysis = Singleton<ExpenseAnalysis>.Instance;
-        public SavingsAnalysis SavingsAnalysis = Singleton<SavingsAnalysis>.Instance;
         private UserProfile profile;
         public UserInterface()
         {
