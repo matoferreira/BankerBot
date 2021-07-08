@@ -8,7 +8,7 @@ namespace Library
         public IIntInput IntImput = Singleton<IntConsoleReader>.Instance;
         public override void Handle(Request request)
         {
-            if (request.Content == "/AgregarTransferenciaInterna")
+            if (request.Content == "/agregartransferenciainterna")
             {
                 bool movimiento;
                 Output.PrintLine("Elija la cuenta de la que proviene la transferencia:");

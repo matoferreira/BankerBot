@@ -7,7 +7,7 @@ namespace Library
         public IStringInput StringImput = Singleton<ConsoleReader>.Instance;
         public override void Handle(Request request)
         {
-            if (request.Content == "/AgregarBilletera")
+            if (request.Content == "/agregarbilletera")
             {
                 string moneda = StringImput.GetInput("Ingrese la moneda de la billetera:");
 

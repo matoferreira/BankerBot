@@ -4,10 +4,9 @@ namespace Library
 {
     public class StatusHandler : AbstractHandler
     {
-        public IIntInput IntImput = Singleton<IntConsoleReader>.Instance;
         public override void Handle(Request request)
         {
-            if (request.Content == "/Estado")
+            if (request.Content == "/estado")
             {
                 string status = "";
                 profile.Update();

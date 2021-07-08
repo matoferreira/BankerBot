@@ -8,7 +8,7 @@ namespace Library
         public IIntInput IntImput = Singleton<IntConsoleReader>.Instance;
         public override void Handle(Request request)
         {
-            if (request.Content == "/AgregarGasto")
+            if (request.Content == "/agregargasto")
             {
                 Output.PrintLine("Elija la cuenta a la que agrega el gasto:");
                 foreach (PaymentMethod item in profile.PaymentMethods)
