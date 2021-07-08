@@ -4,7 +4,7 @@ namespace Library
 {
     public class AbstractHandler : IHandler
     {
-        protected UserProfile profile;
+        protected UserProfile profile {get; set;}
         public IHandler Next { get; set; }
         public IExitFormat Output = Singleton<ConsolePrinter>.Instance;
 

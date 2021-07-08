@@ -10,28 +10,17 @@ namespace Library
         {
             if (request.Content == "/AgregarIngreso")
             {
-                bool movimiento;
                 Output.PrintLine("Elija la cuenta a la que agrega el ingreso:");
                 foreach (PaymentMethod item in profile.PaymentMethods)
                 {
                     Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
                 }
-
                 int z = IntImput.GetInput("Cuenta:");
                 double monto = IntImput.GetInput($"Ingrese el monto del ingreso:");
                 string concepto = StringImput.GetInput("Escriba el concepto del Ingreso:");
                 string moneda = StringImput.GetInput("Ingrese la moneda:");
-
                 Currency currency = new Currency(moneda);
-
-                if (typeof(Wallet).IsInstanceOfType(profile.PaymentMethods[z]))
-                {
-                    movimiento = ((Wallet)profile.PaymentMethods[z]).SubWalletList.Find(x => x.Currency.Name == currency.Name).Statement.AddTransaction(new Income(concepto, monto, currency));
-                }
-                else
-                {
-                    movimiento = profile.PaymentMethods[z].CurrentStatement.AddTransaction(new Income(concepto, monto, currency));
-                }
+                profile.AddMovement(profile.PaymentMethods[z], concepto, monto, currency, true);
                 Output.PrintLine("Movimiento realizado con éxito.");
             }
             else

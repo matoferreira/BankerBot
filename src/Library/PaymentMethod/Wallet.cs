@@ -13,7 +13,6 @@ namespace Library
     {
         public List<SubWallet> SubWalletList { get; private set; }
         public List<Currency> CurrencyList { get; private set; }
-
         public Wallet(SubWallet subwallet)
         {
             this.Name = "Billetera";
@@ -42,7 +41,22 @@ namespace Library
             this.NotifyObservers();
             return result;
         }
-
+        public override bool AddMovement(string concept, double ammount, Currency currency, bool isPositive, ExpenseType basicType)
+        {
+            Transactions tran = SubWalletList.Find(x => x.Currency == currency).Statement.AddTransaction(concept, ammount, currency, isPositive);
+            if (tran != null)
+            {
+                if (isPositive == false)
+                {
+                    ((Expense)tran).ChangeExpenseType(basicType);
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
         public override double GetBalance()
         {
             double result = 0;
