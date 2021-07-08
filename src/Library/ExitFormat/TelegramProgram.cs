@@ -16,7 +16,7 @@ namespace Library
 
             //Obtengo una instancia de TelegramBot
             TelegramBot telegramBot = TelegramBot.Instance;
-            Console.WriteLine($"Hola soy el Bot de P2, mi nombre es {telegramBot.BotName} y tengo el Identificador {telegramBot.BotId}");
+            Console.WriteLine($"Hola soy BankyBot, el bot de finanzas personales, mi nombre es {telegramBot.BotName} y tengo el Identificador {telegramBot.BotId}");
 
             //Obtengo el cliente de Telegram
             ITelegramBotClient bot = telegramBot.Client;
@@ -33,6 +33,41 @@ namespace Library
 
             //Detengo la escucha de mensajes 
             bot.StopReceiving();
+
+            AddExpenseHandler addExpenseHandler = new AddExpenseHandler();
+            AddIncomeHandler addIncomeHandler = new AddIncomeHandler();
+            AddInternalTransferHandler addInternalTransferHandler = new AddInternalTransferHandler();
+            AddMovementHandler addMovementHandler = new AddMovementHandler();
+            CommandsHandler commandsHandler = new CommandsHandler();
+            ExpenseAnalysisHandler expenseAnalysisHandler = new ExpenseAnalysisHandler();
+            NewBankAccountHandler newBankAccountHandler = new NewBankAccountHandler();
+            NewCreditCardHandler newCreditCardHandler = new NewCreditCardHandler();
+            NewPaymentMethodHandler newPaymentMethodHandler = new NewPaymentMethodHandler();
+            NewWalletHandler newWalletHandler = new NewWalletHandler();
+            SavingsAnalysisHandler savingsAnalysisHandler = new SavingsAnalysisHandler();
+            StatusHandler statusHandler = new StatusHandler();
+            UpdateAlertHandler updateAlertHandler = new UpdateAlertHandler();
+            UpdateHighSpendingAlertHandler updateHighSpendingAlertHandler = new UpdateHighSpendingAlertHandler();
+            UpdateLowFundsAlertHandler updateLowFundsAlertHandler = new UpdateLowFundsAlertHandler();
+            UpdateSavingsAlertHandler updateSavingsAlertHandler = new UpdateSavingsAlertHandler();
+
+            commandsHandler.Next = statusHandler;
+            statusHandler.Next = newPaymentMethodHandler;
+            newPaymentMethodHandler.Next = newBankAccountHandler;
+            newBankAccountHandler.Next = newCreditCardHandler;
+            newCreditCardHandler.Next = newWalletHandler;
+            newWalletHandler.Next = updateAlertHandler;
+            updateAlertHandler.Next = updateSavingsAlertHandler;
+            updateSavingsAlertHandler.Next = updateLowFundsAlertHandler;
+            updateLowFundsAlertHandler.Next = updateHighSpendingAlertHandler;
+            updateHighSpendingAlertHandler.Next = statusHandler;
+            savingsAnalysisHandler.Next = expenseAnalysisHandler;
+            expenseAnalysisHandler.Next = addMovementHandler;
+            addMovementHandler.Next = addIncomeHandler;
+            addIncomeHandler.Next = addExpenseHandler;
+            addExpenseHandler.Next = addInternalTransferHandler;
+            addInternalTransferHandler.Next = null;
+
         }
 
         private static async void OnMessage(object sender, MessageEventArgs messageEventArgs)

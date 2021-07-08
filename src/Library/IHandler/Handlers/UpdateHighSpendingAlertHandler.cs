@@ -7,7 +7,7 @@ namespace Library
         public IIntInput IntImput = Singleton<IntConsoleReader>.Instance;
         public override void Handle(Request request)
         {
-            if (request.Content == "/AlertaGastosMensuales")
+            if (request.Content == "/alertagastosmensuales")
             {
                 Alert alerta;
                 alerta = profile.Alerts.Find(x => x is HighSpendingAlert);
