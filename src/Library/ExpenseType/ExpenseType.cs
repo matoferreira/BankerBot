@@ -7,15 +7,21 @@ namespace Library
 {
     public class ExpenseType
     {
-        public string Name { get; private set; }
+        public static string Name { get; private set; }
 
         public double Total { get; private set; }
 
 
         public ExpenseType(string name)
         {
-            this.Name = name;
+            ExpenseType.Name = name;
+            this.Total = 0;
         }
+        public void ChangeTotal(double newTotal)
+        {
+            this.Total = newTotal;
+        }
+
 
 
 

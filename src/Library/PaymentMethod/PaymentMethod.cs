@@ -38,5 +38,25 @@ namespace Library
                 observer.Update();
             }
         }
+        public bool AddMovement(string concept, double ammount, Currency currency, bool isPositive, ExpenseType basicType)
+        {
+            Transactions tran = CurrentStatement.AddTransaction(concept, ammount, currency, isPositive);
+            if (tran != null)
+            {
+                if (isPositive == false)
+                {
+                    ((Expense)tran).ChangeExpenseType(basicType);
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public virtual string GetSavings()
+        {
+            return null;
+        }
     }
 }

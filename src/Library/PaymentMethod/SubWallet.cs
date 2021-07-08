@@ -17,7 +17,7 @@ namespace Library
             this.Name = Name;
             this.Currency = currency;
             this.Statement = new WalletStatement(Currency);
-            this.Statement.AddTransaction(new Income("Apertura de Billetera", 0, Currency));
+            this.Statement.AddTransaction("Apertura de Billetera", 0, Currency, true);
         }
     }
 }

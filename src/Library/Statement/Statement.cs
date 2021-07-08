@@ -20,18 +20,20 @@ namespace Library
             this.Transactions = new List<Transactions>();
             this.Balance = 0;
         }
-        public virtual bool AddTransaction(Transactions transaction)
+        public virtual Transactions AddTransaction(String concept, double ammount, Currency currency, bool isPositive)
         {
-            Transactions.Add(transaction);
-            if (typeof(Income).IsInstanceOfType(transaction))
+            Transactions transactions;
+            if (isPositive == true)
             {
-                this.Balance = this.Balance + transaction.Ammount;
+                transactions = new Income(concept, ammount, currency);
+                Transactions.Add(transactions);
             }
             else
             {
-                this.Balance = this.Balance - transaction.Ammount;
+                transactions = new Expense(concept, ammount, currency);
+                Transactions.Add(transactions);
             }
-            return true;
+            return transactions;
         }
         public virtual void RemoveTransaction(Transactions transaction)
         {
@@ -48,5 +50,6 @@ namespace Library
         {
             return this.Balance;
         }
+        
     }
 }

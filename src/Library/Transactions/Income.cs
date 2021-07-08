@@ -12,8 +12,7 @@ namespace Library
             this.Concept = concept;
             this.Ammount = ammount;
             this.Currency = currency;
-
-
+            this.IsPositive = true;
         }
     }
 }

@@ -10,12 +10,16 @@ namespace Library
     {
         public List<Alert> Alerts { get; private set; }
         public List<PaymentMethod> PaymentMethods { get; private set; }
-        private Wallet wallet;
+        public static List<ExpenseType> ExpenseTypes { get; private set; }
+        public ExpenseAnalysis ExpenseAnalysis = new ExpenseAnalysis();
+        public SavingsAnalysis SavingsAnalysis = new SavingsAnalysis();
         public UserProfile()
         {
             this.PaymentMethods = new List<PaymentMethod>();
-            wallet = new Wallet(new SubWallet("Pesos", new Currency("Pesos")));
-            this.AddPaymentMethod(wallet);
+            ExpenseTypes = new List<ExpenseType>();
+            this.AddExpenseType("Sin Asignar");
+            this.AddExpenseType("Transferencia Interna");
+            this.AddPaymentMethod(new Wallet(new SubWallet("Pesos", new Currency("Pesos"))));
             this.Alerts = new List<Alert>();
             Alerts.Add(new HighSpendingAlert());
             Alerts.Add(new SavingsTargetAlert());
@@ -43,17 +47,25 @@ namespace Library
                 newMethod.Subscribe(this);
             }
         }
-
-        public void AddSubWallet (SubWallet newSubWallet)
-        {
-            this.wallet.AddSubWallet(newSubWallet);
-        }
-
         public void RemovePaymentMethod(PaymentMethod method)
         {
             if (PaymentMethods.Contains(method))
             {
                 PaymentMethods.Remove(method);
+            }
+        }
+        public void AddExpenseType(string nombre)
+        {
+            if (!ExpenseTypes.Exists(x => ExpenseType.Name  == nombre))
+            {
+                ExpenseTypes.Add(new ExpenseType(nombre));
+            }
+        }
+        public void RemoveExpenseType(ExpenseType type)
+        {
+            if (ExpenseTypes.Contains(type))
+            {
+                ExpenseTypes.Remove(type);
             }
         }
 
@@ -63,6 +75,26 @@ namespace Library
             {
                 alert.TrackLevel(PaymentMethods);
             }
+            SavingsAnalysis.AnalyseSavings(PaymentMethods);
+            ExpenseAnalysis.CalculateTotalByType(PaymentMethods, ExpenseTypes);
+        }
+        public bool AddMovement(PaymentMethod paymentMethod, string concept, double ammount, Currency currency, bool isPositive)
+        {
+            return paymentMethod.AddMovement(concept, ammount, currency, isPositive, ExpenseTypes[0]);
+        }
+        public void ChangeExpenseType(Expense expense, string newType)
+        {
+            AddExpenseType(newType);
+            expense.ChangeExpenseType(ExpenseTypes.Find(x => ExpenseType.Name == newType));
+        }
+        public virtual bool MakeInternalTransfer(string concept, double ammount, Currency currency, PaymentMethod origin, PaymentMethod destination)
+        {
+            bool correct = origin.AddMovement(concept, ammount, currency, false, ExpenseTypes[1]);
+            if (correct == true)
+            {
+                AddMovement(destination, concept, ammount, currency, true);
+            }
+            return correct;
         }
 
     }

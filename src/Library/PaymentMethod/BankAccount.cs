@@ -26,6 +26,9 @@ namespace Library
             StatementList.Add(this.CurrentStatement);
             this.CurrentStatement = newStatement;
         }
-
+        public override string GetSavings()
+        {
+            return $"{GetBalance()} {Currency.Name} en cuenta bancaria {Name}#";
+        }
     }
 }

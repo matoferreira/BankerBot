@@ -23,7 +23,10 @@ namespace Library
         }
         public void AddSubWallet(SubWallet newSubWallet)
         {
-            SubWalletList.Add(newSubWallet);
+            if (!SubWalletList.Exists(x => x.Currency  == newSubWallet.Currency))
+            {
+                SubWalletList.Add(newSubWallet);
+            }
         }
         public void RemoveSubWallet(SubWallet subwallet)
         {
@@ -48,6 +51,16 @@ namespace Library
                 result += subwallet.Statement.GetBalance() * subwallet.Currency.ExchangeRate;
             }
             return result;
+        }
+        public override string GetSavings()
+        {
+            string linea = "";
+            foreach (SubWallet subwallet in this.SubWalletList)
+            {
+                linea = linea + $"{subwallet.Statement.GetBalance()} {this.Currency.Name} En la Billetera#";
+            }
+            linea = linea + $"Valor en Pesos del dinero en la billetera: {this.GetBalance()}#";
+            return linea;
         }
     }
 }
