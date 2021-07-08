@@ -28,7 +28,7 @@ namespace Library
                                                                             .Append("/agregartransferenciainterna\n");
             
 
-            Output.PrintLine(commandsStringBuilder.ToString());
+                Output.PrintLine(commandsStringBuilder.ToString());
             }
             else
             {
