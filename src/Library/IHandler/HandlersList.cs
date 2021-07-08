@@ -21,6 +21,7 @@ namespace Library
             public UpdateLowFundsAlertHandler updateLowFundsAlertHandler{ get; private set; }
             public UpdateSavingsAlertHandler updateSavingsAlertHandler{ get; private set; }
             public NoComprendoHandler noComprendoHandler {get; private set; }
+            public StartHandler startHandler {get; private set; }
         public HandlersList()
         {
             this.addExpenseHandler = new AddExpenseHandler();
@@ -40,7 +41,9 @@ namespace Library
             this.updateLowFundsAlertHandler = new UpdateLowFundsAlertHandler();
             this.updateSavingsAlertHandler = new UpdateSavingsAlertHandler();
             this.noComprendoHandler = new NoComprendoHandler();
+            this.startHandler = new StartHandler();
 
+            startHandler.Next = commandsHandler;
             commandsHandler.Next = statusHandler;
             statusHandler.Next = newPaymentMethodHandler;
             newPaymentMethodHandler.Next = newBankAccountHandler;
