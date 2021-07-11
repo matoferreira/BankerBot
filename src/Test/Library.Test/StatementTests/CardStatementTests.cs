@@ -21,14 +21,14 @@ using System.Collections.Generic;
 			[Test]
 	        public void TestGetBalance()
 	        {
-				statement.AddTransaction("depósito", 15000, currency, true);   	
+				statement.AddTransaction("compra", 15000, currency, false);   	
 	            Assert.AreEqual(-15000, statement.GetBalance());
 	        }
 
 			[Test]
 	        public void TestTransactionBiggerThanLimit()
 	        {
-				Assert.That(statement.AddTransaction("compra",500000000, currency, false),Is.False);		
+				Assert.That(statement.AddTransaction("compra",500000000, currency, false),Is.Null);		
 	        }
 			[Test]
 	        public void TestCalculatePaymentAmmount()
@@ -39,7 +39,7 @@ using System.Collections.Generic;
 			[Test]
 			public void TestMakePayment()
 	        {
-				statement.AddTransaction("depósito", 15000, currency, true); 
+				statement.AddTransaction("compra", 15000, currency, false); 
 				statement.MakePayment(10000);
 				Assert.AreEqual(-5000, statement.GetBalance());		
 	        }
