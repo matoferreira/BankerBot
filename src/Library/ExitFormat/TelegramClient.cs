@@ -56,8 +56,8 @@ namespace Library
             {
                 offset = update.Id + 1;
                 Message message = e.Update.Message;
-            Chat chatInfo = message.Chat;
-            string messageText = message.Text.ToLower();
+                Chat chatInfo = message.Chat;
+                string messageText = message.Text.ToLower();
             if (messageText != null)
             {
                 ITelegramBotClient client = TelegramBot.Instance.Client;
