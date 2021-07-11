@@ -59,7 +59,7 @@ namespace Library
                         }
                     }
                     expenseType.ChangeTotal(total);
-                    lista = lista + $"Gastos en {expenseType} ${expenseType.Total} pesos.\n";
+                    lista = lista + $"Gastos en {UserProfile.ExpenseTypes.IndexOf(expenseType)} ${expenseType.Total} pesos.\n";
                 }
                 return lista;
             }

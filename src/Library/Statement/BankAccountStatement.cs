@@ -21,16 +21,16 @@ namespace Library
         }
         public override double GetBalance()
         {
-            double newbalance = previousBalance;
+            double newbalance = this.previousBalance;
             foreach (Transactions item in this.Transactions)
             {
                 if (item.IsPositive == true)
                 {
-                    newbalance += item.Ammount;
+                    newbalance = newbalance + item.Ammount;
                 }
                 else
                 {
-                    newbalance -= item.Ammount;
+                    newbalance = newbalance - item.Ammount;
                 }
             };
             this.Balance = newbalance;
