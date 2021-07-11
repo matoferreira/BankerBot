@@ -13,6 +13,7 @@ namespace Library
     {
         public string Analysis;
 
+
         public ExpenseAnalysis()
         {
             this.Analysis = null;
