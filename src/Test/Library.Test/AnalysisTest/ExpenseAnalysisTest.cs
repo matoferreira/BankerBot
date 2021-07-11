@@ -40,7 +40,7 @@ using Library;
 			Console.WriteLine($"{expenseAnalysis2.CalculateTotalByType(payments1, expenseList)}");
             
         }
-
+		// No funciona porque no está haciendo bien el ExpenseAnalysis
         [Test]
         public void CalculateTotalByTypeTest()
         {
