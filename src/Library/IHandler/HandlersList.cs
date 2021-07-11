@@ -4,13 +4,16 @@ namespace Library
 {
     public class HandlersList
     {
+        /*
             public AddExpenseHandler addExpenseHandler { get; private set; }
             public AddIncomeHandler addIncomeHandler{ get; private set; }
             public AddInternalTransferHandler addInternalTransferHandler{ get; private set; }
             public AddMovementHandler addMovementHandler{ get; private set; }
             public CommandsHandler commandsHandler{ get; private set; }
             public ExpenseAnalysisHandler expenseAnalysisHandler{ get; private set; }
+            */
             public NewBankAccountHandler newBankAccountHandler{ get; private set; }
+            /*
             public NewCreditCardHandler newCreditCardHandler{ get; private set; }
             public NewPaymentMethodHandler newPaymentMethodHandler{ get; private set; }
             public NewWalletHandler newWalletHandler{ get; private set; }
@@ -22,15 +25,19 @@ namespace Library
             public UpdateSavingsAlertHandler updateSavingsAlertHandler{ get; private set; }
             public NoComprendoHandler noComprendoHandler {get; private set; }
             public StartHandler startHandler {get; private set; }
+            */
         public HandlersList()
         {
+            /*
             this.addExpenseHandler = new AddExpenseHandler();
             this.addIncomeHandler = new AddIncomeHandler();
             this.addInternalTransferHandler = new AddInternalTransferHandler();
             this.addMovementHandler = new AddMovementHandler();
             this.commandsHandler = new CommandsHandler();
             this.expenseAnalysisHandler = new ExpenseAnalysisHandler();
+            */
             this.newBankAccountHandler = new NewBankAccountHandler();
+            /*
             this.newCreditCardHandler = new NewCreditCardHandler();
             this.newPaymentMethodHandler = new NewPaymentMethodHandler();
             this.newWalletHandler = new NewWalletHandler();
@@ -61,6 +68,7 @@ namespace Library
             addExpenseHandler.Next = addInternalTransferHandler;
             addInternalTransferHandler.Next = noComprendoHandler;
             noComprendoHandler.Next = null;
+            */
         }
     }
 }
