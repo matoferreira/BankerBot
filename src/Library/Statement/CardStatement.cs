@@ -49,8 +49,21 @@ namespace Library
         }
         public override double GetBalance()
         {
-            double newbalance = this.Balance + previousBalance;
+            double newbalance = previousBalance;
+            foreach (Transactions item in this.Transactions)
+            {
+                if (item.IsPositive == true)
+                {
+                    newbalance += item.Ammount;
+                }
+                else
+                {
+                    newbalance -= item.Ammount;
+                }
+            };
+            this.Balance = newbalance;
             return newbalance;
+
         }
         public double CalculatePaymentAmmount()
         {
@@ -70,7 +83,6 @@ namespace Library
         }
         public void MakePayment(double ammount)
         {
-            this.Limit = this.Limit + ammount;
             this.AddTransaction("Pago de Saldo de tarjeta", ammount, this.Currency, true);
         }
     }
