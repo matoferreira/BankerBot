@@ -97,6 +97,11 @@ Al observar esto, decidimos hacer un brainstorming para encontrar una manera de 
 ### Implementación con Telegram
 La implementación con la interface de Telegram se convirtió en nuestro desafío más grande, fue tal la magnitud de este desafío que lamentablemente no pudimos resolverlo a tiempo para la entrega, consideramos que era cuestión de tiempo para poder resolver este problema, continuar probando otras formas de lograr el funcionamiento fluido del trabajo.    
 Nos deja acongojados en cierta manera porque creíamos que era posible lograrlo a tiempo, aunque estamos orgullosos de haber dado el cien por ciento de nuestro esfuerzo, con la satisfacción de que cumplimos en levantar un bot y que este interactúe con nuestro usuario, lamentamos que la interacción no fuese la esperada.  
+Al intentar implementar TelegramAPI, surgieron problemas que no nos fue posible solucionar a tiempo para la entrega. Concretamente, no pudimos implementar el comportamiento asincrono que utilizaba dicha API de manera correcta. Al tratar de interactuar con el usuario, nuestro bot no esperaba la respuesta del usuario, y cuando lo hacía, solo registraba la primer respuesta. Esto no permitió que registrramos la información que el usuario proveía al bot, como cuentas bancarias y transacciones.
+
+Intentamos diversas formas de implementar una base de datos que permitiera almacenar esta configuración, como diccionarios y un archivo txt, sin poder solucionar los inconvenientes. 
+
+Decidimos dejar una segunda rama con esta implementación incompleta de Telegram en una rama auxiliar, llamada ReferenciaTelegram, para poder continuar trabajando con ella a futuro.
 
 ### Gestión de Proyecto
 La gestión del proyecto fue un desafío y nos dejó con un gran abanico de reflexiones.   
