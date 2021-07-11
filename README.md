@@ -20,6 +20,8 @@ Nuestro bot procura asistirte en la administración de tus finanzas personales d
 10. Saber los movimientos de los métodos de pago.
 11. Agregar ingresos, gastos o transferencias internas entre tus medios de pago.
 12. Si utilizas tarjeta de crédito, podrás ver cuanto tendrás que pagar al cierre de la misma.
+13. Obtener reportes al día de la fecha de los ahorros que tenés en tus cuentas.
+14. Obtener reportes al día de los gastos que llevas y en que rubros.
 
 
 
@@ -42,10 +44,8 @@ Nuestro bot procura asistirte en la administración de tus finanzas personales d
     The NUnit Project. (2018). NUnit Documentation Site (https://docs.nunit.org/index.html)
 
 ## Como utilizar el bot
-Nuestro bot se encuentra en Fase II, esto quiere decir que está su core terminado pero no el relacionamiento con gateway de mensajes o servicios externos.     
-Debido a esto sólo podrás utilizarlo solo por consola.    
-Una vez que nuestro bot se encuentre desarrollado por completo, encontrarás aquí la guia paso a paso para utilizarlo y videos instructivos.
-
+Debido a que no se completó al cien por ciento la integración con Telegram, se puede verificar el funcionamiento del Bot de Telegram pero no utilizar todas sus funciones, para eso, el equipo tiene el Token del Bot para iniciarlo a disposición para enviarlo por mail.     
+El funcionamiento de nuestro bot se da por consola para justificar que el mismo está operativo y en funcionamiento tanto en el CoreBot como en la integración de la API de HTML.   
 
 ## Desafíos y Reflexiones
 ### Repasar UML
@@ -77,6 +77,36 @@ El resultado, un código más limpio y ordenado pero varios conflictos en los me
 Esto nos permitió amigarnos más con la plataforma y aprender a resolverlos de manera perfecta y sin contratiempos.    
 Nos pareció algo a resaltar porque entendimos que el pilar fundamental de la programación es el trabajo en equipo (*que es la realidad del mercado laboral*), y un equipo bien aceitado genera una sinergia que lo hace llegar más lejos.
 
+### Refactoring
+El hecho de haber escrito un buen nivel y cantidad de tests nos permitió hacer refactoring de nuestro código en múltiples ocasiones, especialmente, posterior a la entrega de la Fase II y tras una revisión por parte de los profesores, se encontraron múltiples errores en el diseño del Bot.  
+Estos errores al nivel de patrones y principios generaban que nuestro código presentara un alto acoplamiento en sus clases, donde clases de bajo nivel dependían de clases de bajo nivel, dándole demasiada rigidez y fragilidad.  
+La tarea fue aplicar una serie de patrones y principios (Creator, Chain of Responsibility, DIP, entre otros), para mejorar la calidad de nuestro código y así tener un producto que cumpliera con OCP, que fuera robusto y con bajo acoplamiento.  
+Gracias a los Test que habíamos hecho, sabíamos que podíamos generar un refactoring del código con la confianza de que nuestra resolución de problemas era la correcta.  
+Pero eso no fue todo, la realidad de empezar a hacer este proceso nos permitió ir mejorando cada vez más el código, eliminando clases innecesarias, métodos demasiado rebuscados o dependencias de bajo nivel, lo cual nos dejó muy satisfecho con el resultado. 
+
+### Integración de la API HTML
+La posibilidad de interactuar con esta API fue una oportunidad muy valorada por nosotros, nos gustó el desafío de tener un módulo de código pronto y trabajar en la integración del mismo a nuestro programa.  
+Nuestro objetivo con los reportes HTML era que los mismos se adaptaran al usuario, por lo tanto, debían tener métodos que generaran automáticamente el contenido de las filas y celdas acorde a la información del usuario.  
+Para eso comenzamos diseñando una tabla en Word que se asemejara al resultado esperado, posterior a eso comenzamos a escribir el código que nos permitiera acercarnos a ese objetivo.   
+Nuestro primer problema se dio cuando, dentro de la tabla y en la lista de filas, pretendimos agregar un método que recorriera la información y agregara filas y celdas acorde a los datos relevantes. Esto nos daba un error ya que no podíamos utilizar *foreach* dentro de la tabla. La solución la generamos al hacer toda la lista de filas fuera de la tabla, para luego solo agregarlas oportunamente a esta.  
+Nuestro segundo problema se da cuando, al final de la tabla, queremos explicitar en una celda el total de la información (sean los saldos o los gastos), debido a la forma que teníamos implementada para obtener estos resultados, ninguno tenía como resultado un double o int.   
+Para eso, en un principio agregamos dos largos métodos que hicieran esta tarea en el perfil del usuario, el problema al hacer esto era que íbamos en contra de *SRP* (porque le estábamos dando dos razones más de cambio al perfil de usuario) y con *DIP* (porque dependíamos de una clase de bajo nivel).   
+Al observar esto, decidimos hacer un brainstorming para encontrar una manera de evitar esta complicación y tras reflexionar diversas maneras, apareció la solución la cual con tan solo un par de líneas de código dentro del foreach, sumaba los valores que iba obteniendo para cada celda, resultando en el total para agregar al footer.    
+
+
+### Implementación con Telegram
+La implementación con la interface de Telegram se convirtió en nuestro desafío más grande, fue tal la magnitud de este desafío que lamentablemente no pudimos resolverlo a tiempo para la entrega, consideramos que era cuestión de tiempo para poder resolver este problema, continuar probando otras formas de lograr el funcionamiento fluido del trabajo.    
+Nos deja acongojados en cierta manera porque creíamos que era posible lograrlo a tiempo, aunque estamos orgullosos de haber dado el cien por ciento de nuestro esfuerzo, con la satisfacción de que cumplimos en levantar un bot y que este interactúe con nuestro usuario, lamentamos que la interacción no fuese la esperada.  
+
+### Gestión de Proyecto
+La gestión del proyecto fue un desafío y nos dejó con un gran abanico de reflexiones.   
+Entender que no siempre se van a dar las condiciones ideales para realizar el trabajo es prácticamente la realidad de la vida. 
+En nuestro equipo, se dio la situación de que los tres integrantes trabajábamos 40 horas semanales o más en algunos casos y en horarios distintos, imposibilitando el trabajo en conjunto de lunes a viernes, esto hacía que el trabajo individual fuese clave para alcanzar las metas trazadas.    
+Para eso, era importante realizar una correcta y clara delimitación de las áreas de responsabilidad y de los plazos de entrega de las funciones, de manera que cada integrante estuviese en conocimiento sobre que tenía que hacer y para cuando tenía que hacerlo. Así mismo, el código escrito por cada integrante debía ser chequeado por otro compañero del equipo para verificar que este cumpliera los patrones y principios, estuviese justificado correctamente y respaldado por los test necesarios para validar su funcionalidad.     
+Esta situación propulsó la investigación individual, ya que cada uno debía instruirse en la solución de errores cuando se presentaban para poder continuar con su trabajo, ya que la espera para obtener la ayuda de otro compañero podía demorar el trabajo. Para estas consultas, cuando podían ser rápidas, nos enviábamos capturas o mensajes por WhatsApp para que otro nos respondiera desde su trabajo. Cuando eran demasiado complejas, utilizábamos el Discord del grupo para compartir pantalla y hacer la resolución en conjunto.    
+Lamentablemente, un aspecto negativo de nuestra gestión fue no haber cumplido con el objetivo al cien por ciento, esto se debe a que, faltando dos semanas para la entrega, uno de los integrantes no aportó más al trabajo sin dar una explicación ni respuesta.     
+El error recae en que no tomamos las medidas adecuadas en los tiempos correctos para poder obtener una respuesta acorde, esperando hasta último momento el aporte de este integrante.    
+A raíz de eso, nuestra planificación se mantuvo como si el equipo fuera integrado por tres, cuando en la realidad, las últimas dos semanas terminamos dos compañeros directamente haciendo el trabajo.     
 
 ## Créditos
 Este bot fue realizado por el equipo "Los Tres Mosqueteros" para la materia Programación 2 de la Universidad Católica del Uruguay "Damaso Antonio Larrañaga".  

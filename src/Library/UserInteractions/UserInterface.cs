@@ -14,7 +14,7 @@ namespace Library
     //Utilizamos Singleton para implementar estos Mecanismos de Imput y Output de datos porque solo es necesario que
     //exita una instancia de ellos.
     public class UserInterface
-    {/*
+    {
         public IStringInput StringImput = Singleton<ConsoleReader>.Instance;
         public IIntInput IntImput = Singleton<IntConsoleReader>.Instance;
         public IExitFormat Output = Singleton<ConsolePrinter>.Instance;
@@ -265,12 +265,12 @@ namespace Library
         }
         public void ShowSavingsAnalysis()
         {
-            Output.PrintLine($"{SavingsAnalysis.AnalyseSavings(profile.PaymentMethods)}#");
+            Output.PrintLine($"{profile.SavingsAnalysis.AnalyseSavings(profile.PaymentMethods)}#");
             this.MainMenu();
         }
         public void ShowExpensesAnalysis()
         {
-            Output.PrintLine($"{ExpenseAnalysis.CalculateTotalByType(profile.PaymentMethods)}#");
+            Output.PrintLine($"{profile.ExpenseAnalysis.CalculateTotalByType(profile.PaymentMethods, UserProfile.ExpenseTypes)}#");
             this.MainMenu();
         }
         public void AddMovement()
@@ -317,11 +317,11 @@ namespace Library
                         Currency currency3 = new Currency(moneda3);
                         if (typeof(Wallet).IsInstanceOfType(profile.PaymentMethods[z]))
                         {
-                            movimiento = ((Wallet)profile.PaymentMethods[z]).SubWalletList.Find(x => x.Currency.Name == currency3.Name).Statement.AddTransaction(new Income(concepto, monto, currency3));
+                            ((Wallet)profile.PaymentMethods[z]).SubWalletList.Find(x => x.Currency.Name == currency3.Name).Statement.AddTransaction(concepto, monto, currency3, true);
                         }
                         else
                         {
-                            movimiento = profile.PaymentMethods[z].CurrentStatement.AddTransaction(new Income(concepto, monto, currency3));
+                            movimiento = profile.AddMovement(profile.PaymentMethods[z], concepto, monto, currency3, true);
                         }
 
                         break;
@@ -365,11 +365,11 @@ namespace Library
                         Currency currency3 = new Currency(moneda3);
                         if (typeof(Wallet).IsInstanceOfType(profile.PaymentMethods[z]))
                         {
-                            movimiento = ((Wallet)profile.PaymentMethods[z]).SubWalletList.Find(x => x.Currency.Name == currency3.Name).Statement.AddTransaction(new Expense(concepto, monto, currency3, tipo));
+                            ((Wallet)profile.PaymentMethods[z]).SubWalletList.Find(x => x.Currency.Name == currency3.Name).Statement.AddTransaction(concepto, monto, currency3, false);
                         }
                         else
                         {
-                            movimiento = profile.PaymentMethods[z].CurrentStatement.AddTransaction(new Expense(concepto, monto, currency3, tipo));
+                            profile.PaymentMethods[z].CurrentStatement.AddTransaction(concepto, monto, currency3, false);
                         }
                         break;
                     }
@@ -415,14 +415,7 @@ namespace Library
                             Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
                         }
                         int destino = IntImput.GetInput("Cuenta a acreditar:");
-                        if (typeof(Wallet).IsInstanceOfType(profile.PaymentMethods[z]))
-                        {
-                            movimiento = ((Wallet)profile.PaymentMethods[z]).SubWalletList.Find(x => x.Currency.Name == currency3.Name).Statement.AddTransaction(new InternalTransfer(concepto, monto, currency3, profile.PaymentMethods[destino]));
-                        }
-                        else
-                        {
-                            movimiento = profile.PaymentMethods[z].CurrentStatement.AddTransaction(new InternalTransfer(concepto, monto, currency3, profile.PaymentMethods[destino]));
-                        }
+                        profile.MakeInternalTransfer(concepto, monto, currency3, profile.PaymentMethods[z], profile.PaymentMethods[destino]);
                         break;
                     }
                 default:
@@ -430,9 +423,9 @@ namespace Library
                         Output.PrintLine("Error en eleccion");
                         break;
                     }
-            }
+                }
             Output.PrintLine("Movimiento realizado");
             this.MainMenu();
         }
-    */}
+    }
 }

@@ -22,18 +22,18 @@ namespace Library
         }
         public virtual Transactions AddTransaction(String concept, double ammount, Currency currency, bool isPositive)
         {
-            Transactions transactions;
+            Transactions transaction;
             if (isPositive == true)
             {
-                transactions = new Income(concept, ammount, currency);
-                Transactions.Add(transactions);
+                transaction = new Income(concept, ammount, currency);
+                Transactions.Add(transaction);
             }
             else
             {
-                transactions = new Expense(concept, ammount, currency);
-                Transactions.Add(transactions);
+                transaction = new Expense(concept, ammount, currency);
+                Transactions.Add(transaction);
             }
-            return transactions;
+            return transaction;
         }
         public virtual void RemoveTransaction(Transactions transaction)
         {
@@ -48,7 +48,20 @@ namespace Library
         }
         public virtual double GetBalance()
         {
-            return this.Balance;
+            double newbalance = 0;
+            foreach (Transactions item in this.Transactions)
+            {
+                if (item.IsPositive == true)
+                {
+                    newbalance += item.Ammount;
+                }
+                else
+                {
+                    newbalance -= item.Ammount;
+                }
+            };
+            this.Balance = newbalance;
+            return newbalance;
         }
         
     }

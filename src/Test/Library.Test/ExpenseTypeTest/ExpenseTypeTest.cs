@@ -23,8 +23,8 @@ using Library;
 	       	[Test]
 	        public void TestExpensesTypes()
 			{
-	            string a = "Alimentos";
-	            Assert.AreEqual(a, expenseType1.Name);
+	            string a = "Alimentos"; 
+	            Assert.AreEqual(a, ExpenseType.Name);
 
 	        }
 

@@ -12,7 +12,6 @@ using NUnit.Framework;
 	        [SetUp]
 	        public void Setup()
 	        {
-	            // Insertá tu código de inicialización aquí
                 currency = new Currency("USD");
 	            income = new Income("Prueba1",1500,currency);
 				bank = new BankAccount("santander", currency);
@@ -20,7 +19,7 @@ using NUnit.Framework;
 	        }
 	
 	        [Test]
-	        public void TestConcept() // Cambiá el nombre para indicar qué estás probando
+	        public void TestConcept()
 	        {
 	            string a = "Prueba1";
 	            	
@@ -28,7 +27,7 @@ using NUnit.Framework;
 	        }
 	
 	           [Test]
-	        public void TestTestAmmount() 
+	        public void TestAmmount() 
 	        {
 	            double a = 1500;
 	            	
@@ -37,7 +36,7 @@ using NUnit.Framework;
 
             
 	        [Test]
-	        public void TestTestCurrency() 
+	        public void TestCurrency() 
 	        {
 	            string a = "USD";
 	            	
@@ -46,7 +45,7 @@ using NUnit.Framework;
 			[Test]
 	        public void TestIncome() 
 	        {
-	            bank.CurrentStatement.AddTransaction(income);
+	            bank.CurrentStatement.AddTransaction("prueba1",1500, currency, true);
 	            Assert.AreEqual(income.Ammount, bank.GetBalance());
 	        }
             

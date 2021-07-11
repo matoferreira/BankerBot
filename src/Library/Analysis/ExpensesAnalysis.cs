@@ -13,11 +13,12 @@ namespace Library
     {
         public string Analysis;
 
+
         public ExpenseAnalysis()
         {
             this.Analysis = null;
         }
-        public void CalculateTotalByType(List<PaymentMethod> payments, List<ExpenseType> expenseTypes)
+        public string CalculateTotalByType(List<PaymentMethod> payments, List<ExpenseType> expenseTypes)
         {
             string lista = "";
             if (expenseTypes.Count >= 1)
@@ -60,8 +61,10 @@ namespace Library
                     expenseType.ChangeTotal(total);
                     lista = lista + $"Gastos en {expenseType} ${expenseType.Total} pesos.\n";
                 }
+                return lista;
             }
             this.Analysis = lista;
+            return lista;
         }
     }
 }
