@@ -2,17 +2,7 @@ using System;
 using Telegram.Bot;
 using Telegram.Bot.Args;
 using Telegram.Bot.Types;
-using Telegram.Bot.Types.Enums;
-using System.IO;
-using System.Text;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using Telegram.Bot.Requests.Abstractions;
-using System.Threading;
-using Telegram.Bot.Types.InputFiles;
-using Telegram.Bot.Types.ReplyMarkups;
-using Telegram.Bot.Types.InlineQueryResults;
-using Telegram.Bot.Types.Payments;
 
 namespace Library
 {
@@ -100,7 +90,7 @@ namespace Library
                 UserProfile PerfilUsuario;
                 Users.TryGetValue(message.Chat.Id, out PerfilUsuario);
                 Console.WriteLine($"{chatInfo.FirstName}: envío {message.Text}");
-                //await ListOfHandlers.newBankAccountHandler.Handle(new Request(message, PerfilUsuario));
+                await ListOfHandlers.newBankAccountHandler.Handle(new Request(message, PerfilUsuario));
             }
         }
     }
