@@ -14,7 +14,7 @@ namespace Library.Test
         {
             currency = new Currency("USD");
             subWallet = new SubWallet("USD wallet", currency);
-            subWallet.Statement.AddTransaction(new Income("sueldo", 3000, currency));
+            subWallet.Statement.AddTransaction("sueldo", 3000, currency, true);
         }
 
         [Test]

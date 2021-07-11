@@ -16,7 +16,8 @@ using NUnit.Framework;
 	           
                 expenseType = new ExpenseType ("Alimentos");
                 currency = new Currency("UYU");
-	            expense = new Expense("Alfajor", 55,currency,expenseType);
+	            expense = new Expense("Alfajor", 55,currency);
+				expense.ChangeExpenseType(expenseType);
 	          
 	        }
 	
@@ -29,7 +30,7 @@ using NUnit.Framework;
 	        }
 	
 	           [Test]
-	        public void TestTestAmmount() 
+	        public void TestAmmount() 
 	        {
 	            double a = 55;
 	            	
@@ -38,14 +39,14 @@ using NUnit.Framework;
 
             
 	           [Test]
-	        public void TestTestCurrency() 
+	        public void TestCurrency() 
 	        {
 	            string a = "UYU";
 	            	
 	            Assert.AreEqual(expense.Currency.Name, a);
 	        }
 
-            	           [Test]
+            [Test]
 	        public void TestExpenseType() 
 	        {
 	            string a = "Alimentos";

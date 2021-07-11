@@ -24,7 +24,8 @@ using Library;
 	        public void TestExpensesTypes()
 			{
 	            string a = "Alimentos";
-	            Assert.AreEqual(a, expenseType1.Name);
+				var name = expenseType1.Name; 
+	            Assert.AreEqual(a, name);
 
 	        }
 

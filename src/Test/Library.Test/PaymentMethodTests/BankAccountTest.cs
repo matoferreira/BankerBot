@@ -14,7 +14,7 @@ namespace Library.Test
         {
             currency = new Currency("USD");
             bankAccount = new BankAccount("Santander", currency);
-            bankAccount.CurrentStatement.AddTransaction(new Income("sueldo", 1000, currency));
+            bankAccount.CurrentStatement.AddTransaction("sueldo", 1000, currency, true);
         }
 
         [Test]
