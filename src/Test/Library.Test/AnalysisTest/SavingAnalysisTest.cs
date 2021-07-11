@@ -24,9 +24,9 @@ using Library;
 			savingsAccounts.Add(bankAccount1);
 			expenseType1 = new ExpenseType("Ropa");
 			expenseType2 = new ExpenseType("Alimentos");
-            bankAccount1.CurrentStatement.AddTransaction(new Income("Sueldo", 100000, currency));
-			bankAccount1.CurrentStatement.AddTransaction(new Expense("camisa", 1000, currency,expenseType1));
-			bankAccount1.CurrentStatement.AddTransaction(new Expense("alfajor", 500, currency,expenseType2));;
+            bankAccount1.CurrentStatement.AddTransaction("Sueldo", 100000, currency, true);
+			bankAccount1.CurrentStatement.AddTransaction("camisa", 1000, currency, false);
+			bankAccount1.CurrentStatement.AddTransaction("alfajor", 500, currency, false);;
             mySavingsAnalysis = new SavingsAnalysis();
 
             

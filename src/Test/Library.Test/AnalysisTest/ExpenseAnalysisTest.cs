@@ -9,12 +9,13 @@ using Library;
 
 		{  
 
-			private ExpenseType expenseType3;
-			private ExpenseType expenseType4;
+			private ExpenseType expenseType1;
+			private ExpenseType expenseType2;
 			private BankAccount bankAccount10;
 			private BankAccount bankAccount20;
 			private Currency currency1;
 			private List<PaymentMethod> payments1;
+			private List<ExpenseType> expenseList;
 			private ExpenseAnalysis expenseAnalysis2;
             [SetUp]
         	public void Setup()
@@ -25,15 +26,18 @@ using Library;
 			payments1 = new List<PaymentMethod>();
 			payments1.Add(bankAccount10);
 			payments1.Add(bankAccount20);
-			expenseType3 = new ExpenseType("Ropa");
-			expenseType4 = new ExpenseType("Alimentos");
-			bankAccount10.CurrentStatement.AddTransaction(new Expense("camisa", 1000, currency1,expenseType3));
-			bankAccount20.CurrentStatement.AddTransaction(new Expense("fideos", 2000, currency1,expenseType4));
-			bankAccount10.CurrentStatement.AddTransaction(new Expense("pantalon", 500, currency1,expenseType3));
-			bankAccount20.CurrentStatement.AddTransaction(new Expense("alfajor", 600, currency1,expenseType4));
+			expenseList = new List<ExpenseType>();
+			expenseType1 = new ExpenseType("ropa");
+			expenseType2 = new ExpenseType("Alimentos");
+			expenseList.Add(expenseType1);
+			expenseList.Add(expenseType2);
+			bankAccount10.CurrentStatement.AddTransaction("camisa", 1000, currency1, false);
+			bankAccount20.CurrentStatement.AddTransaction("fideos", 2000, currency1, false);
+			bankAccount10.CurrentStatement.AddTransaction("pantalon", 500, currency1, false);
+			bankAccount20.CurrentStatement.AddTransaction("alfajor", 600, currency1, false);
 			expenseAnalysis2 = new ExpenseAnalysis();
 
-			Console.WriteLine(expenseAnalysis2.CalculateTotalByType(payments1));
+			Console.WriteLine($"{expenseAnalysis2.CalculateTotalByType(payments1, expenseList)}");
             
         }
 
@@ -41,7 +45,7 @@ using Library;
         public void CalculateTotalByTypeTest()
         {
            string a="Gastos Mensuales:\n Ropa: 1500#Gastos Mensuales:\n Alimentos: 2600#";
-		   Assert.AreEqual(a,expenseAnalysis2.CalculateTotalByType(payments1));
+		   Assert.AreEqual(a,expenseAnalysis2.CalculateTotalByType(payments1, expenseList));
 		  
         }
 		}

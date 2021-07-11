@@ -8,7 +8,7 @@ namespace Library
         {
             if (request.Content == "/mostrarahorros")
             {
-                //Acá va la integración con la API de HTML
+                request.Profile.SavingsAnalysis.AnalyseSavings(request.Profile.PaymentMethods);
             }
             else
             {

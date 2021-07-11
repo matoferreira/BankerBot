@@ -8,7 +8,9 @@ namespace Library
         {
             if (request.Content == "/mostrargastos")
             {
-                //Acá va la integración con la API de HTML
+                var expenseTypes = UserProfile.ExpenseTypes;
+                request.Profile.ExpenseAnalysis.CalculateTotalByType(request.Profile.PaymentMethods,
+                                                                     expenseTypes);
             }
             else
             {

@@ -11,16 +11,13 @@ namespace Library.Test
         private Currency currency;
         private double limit;
 
-        private ExpenseType super;
-
         [SetUp]
         public void Setup()
         {
-            super = new ExpenseType("Alimentos");
             currency = new Currency("USD");
             limit = 5000;
             creditCard = new CreditCard("Hipermas", currency, limit);
-            creditCard.CurrentStatement.AddTransaction(new Expense("surtido", 2000, currency, super));
+            creditCard.CurrentStatement.AddTransaction("surtido", 2000, currency, false);
 
         }
 
