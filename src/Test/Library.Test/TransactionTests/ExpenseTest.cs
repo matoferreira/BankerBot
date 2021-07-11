@@ -51,7 +51,7 @@ using NUnit.Framework;
 	        {
 	            string a = "Alimentos";
 	            	
-	            Assert.AreEqual(expenseType.Name, a);
+	            Assert.AreEqual(ExpenseType.Name, a);
 	        }
             
 	    }
