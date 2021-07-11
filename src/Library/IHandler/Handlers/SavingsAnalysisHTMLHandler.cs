@@ -1,6 +1,11 @@
-//Agregar comentarios:
-//Menos acoplado porque el total se calcula en el IF
-//Que solucionamos el problema haciendo el foreach afuera de la tabla
+//El propósito de este Handler es, utilizando la API de HTML, generar los reportes de los ahorros.
+//Para esto, implementamos un método que recorriera los métodos de pago que tiene el usuario obteniendo nombre y balance de los mismos.
+//Procuramos hacerlo de esta manera, ya que generamos que este menos acoplado y que la tabla se genere específicamente por lo que tiene cada usuario,
+//evitando que nuestro código se pueda romper fácilmente por eso.
+//Esta clase cumple con SRP porque su única razón de cambio es como se genera la tabla.
+//A su vez, cumple con el patrón Expert porque es esta clase quien calcula el total que se coloca en el footer de la tabla,
+//esto se obtiene al tener una variable total que, cada vez que se agrega un entero a una celda, se suma a esta variable que, al final del método,
+//nos entrega el valor total sin necesidad de estar creando un método en el perfil del usuario para calcularlo.
 
 using System;
 using System.Collections.Generic;
