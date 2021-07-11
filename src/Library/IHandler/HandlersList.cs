@@ -7,14 +7,14 @@ namespace Library
             public AddExpenseHandler addExpenseHandler { get; private set; }
             public AddIncomeHandler addIncomeHandler{ get; private set; }
             public AddInternalTransferHandler addInternalTransferHandler{ get; private set; }
-            public AddMovementHandler addMovementHandler{ get; private set; }
             public CommandsHandler commandsHandler{ get; private set; }
             public ExpenseAnalysisHandler expenseAnalysisHandler{ get; private set; }
+            public ExpenseAnalysisHTMLHandler expenseAnalysisHTMLHandler{ get; private set; }
             public NewBankAccountHandler newBankAccountHandler{ get; private set; }
             public NewCreditCardHandler newCreditCardHandler{ get; private set; }
-            public NewPaymentMethodHandler newPaymentMethodHandler{ get; private set; }
             public NewWalletHandler newWalletHandler{ get; private set; }
             public SavingsAnalysisHandler savingsAnalysisHandler{ get; private set; }
+            public SavingsAnalysisHTMLHandler savingsAnalysisHTMLHandler{ get; private set; }
             public StatusHandler statusHandler{ get; private set; }
             public UpdateAlertHandler updateAlertHandler{ get; private set; }
             public UpdateHighSpendingAlertHandler updateHighSpendingAlertHandler{ get; private set; }
@@ -27,14 +27,14 @@ namespace Library
             this.addExpenseHandler = new AddExpenseHandler();
             this.addIncomeHandler = new AddIncomeHandler();
             this.addInternalTransferHandler = new AddInternalTransferHandler();
-            this.addMovementHandler = new AddMovementHandler();
             this.commandsHandler = new CommandsHandler();
             this.expenseAnalysisHandler = new ExpenseAnalysisHandler();
+            this.expenseAnalysisHTMLHandler = new ExpenseAnalysisHTMLHandler();
             this.newBankAccountHandler = new NewBankAccountHandler();
             this.newCreditCardHandler = new NewCreditCardHandler();
-            this.newPaymentMethodHandler = new NewPaymentMethodHandler();
             this.newWalletHandler = new NewWalletHandler();
             this.savingsAnalysisHandler = new SavingsAnalysisHandler();
+            this.savingsAnalysisHTMLHandler = new SavingsAnalysisHTMLHandler();
             this.statusHandler = new StatusHandler();
             this.updateAlertHandler = new UpdateAlertHandler();
             this.updateHighSpendingAlertHandler = new UpdateHighSpendingAlertHandler();
@@ -45,8 +45,7 @@ namespace Library
 
             startHandler.Next = commandsHandler;
             commandsHandler.Next = statusHandler;
-            statusHandler.Next = newPaymentMethodHandler;
-            newPaymentMethodHandler.Next = newBankAccountHandler;
+            statusHandler.Next = newBankAccountHandler;
             newBankAccountHandler.Next = newCreditCardHandler;
             newCreditCardHandler.Next = newWalletHandler;
             newWalletHandler.Next = updateAlertHandler;
@@ -55,11 +54,12 @@ namespace Library
             updateLowFundsAlertHandler.Next = updateHighSpendingAlertHandler;
             updateHighSpendingAlertHandler.Next = statusHandler;
             savingsAnalysisHandler.Next = expenseAnalysisHandler;
-            expenseAnalysisHandler.Next = addMovementHandler;
-            addMovementHandler.Next = addIncomeHandler;
+            expenseAnalysisHandler.Next = addIncomeHandler;
             addIncomeHandler.Next = addExpenseHandler;
             addExpenseHandler.Next = addInternalTransferHandler;
-            addInternalTransferHandler.Next = noComprendoHandler;
+            addInternalTransferHandler.Next = expenseAnalysisHTMLHandler;
+            expenseAnalysisHTMLHandler.Next = savingsAnalysisHTMLHandler;
+            savingsAnalysisHTMLHandler.Next = noComprendoHandler;
             noComprendoHandler.Next = null;
         }
     }
