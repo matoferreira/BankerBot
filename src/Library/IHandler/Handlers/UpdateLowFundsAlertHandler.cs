@@ -16,8 +16,6 @@ namespace Library
                 
                 alerta.ChangeLevel(newLevel);
                 Output.PrintLine("Alerta actualizada con éxito.");
-
-                base.Handle(request);
             }
             else
             {

@@ -52,7 +52,7 @@ namespace Library
             updateAlertHandler.Next = updateSavingsAlertHandler;
             updateSavingsAlertHandler.Next = updateLowFundsAlertHandler;
             updateLowFundsAlertHandler.Next = updateHighSpendingAlertHandler;
-            updateHighSpendingAlertHandler.Next = statusHandler;
+            updateHighSpendingAlertHandler.Next = savingsAnalysisHandler;
             savingsAnalysisHandler.Next = expenseAnalysisHandler;
             expenseAnalysisHandler.Next = addIncomeHandler;
             addIncomeHandler.Next = addExpenseHandler;

@@ -23,10 +23,7 @@ namespace Library
                     if (typeof(Wallet).IsInstanceOfType(method))
                     {
                         status = status + $"Saldo en la billetera es: #";
-                        foreach (SubWallet item in ((Wallet)method).SubWalletList)
-                        {
-                            status = status + $"{((Wallet)method).GetBalanceBySubWallet(item)} Pesos#";
-                        }
+                        status = status + ((Wallet)method).GetSavings();
                     }
                 }
                 foreach (Alert item in request.Profile.Alerts)
