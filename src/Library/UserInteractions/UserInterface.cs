@@ -115,7 +115,7 @@ namespace Library
                         Currency currency = new Currency(moneda);
                         BankAccount banco = new BankAccount(nombre, currency);
                         double saldo = Convert.ToDouble(IntImput.GetInput("Ingrese el saldo de la cuenta"));
-                        banco.CurrentStatement.ChangeBalance(saldo);
+                        banco.CurrentStatement.AddTransaction("Balance Inicial", saldo, currency, true);
                         profile.AddPaymentMethod(banco);
                         break;
                     }
@@ -246,10 +246,8 @@ namespace Library
                 if (typeof(Wallet).IsInstanceOfType(method))
                 {
                     status = status + $"Saldo en la billetera es: #";
-                    foreach (SubWallet item in ((Wallet)method).SubWalletList)
-                    {
-                        status = status + $"{((Wallet)method).GetBalanceBySubWallet(item)} Pesos#";
-                    }
+                    status = status + ((Wallet)method).GetSavings();
+                
                 }
             }
             foreach (Alert item in profile.Alerts)

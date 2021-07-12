@@ -13,13 +13,17 @@ namespace Library
         public static List<ExpenseType> ExpenseTypes { get; private set; }
         public ExpenseAnalysis ExpenseAnalysis = new ExpenseAnalysis();
         public SavingsAnalysis SavingsAnalysis = new SavingsAnalysis();
+        private Wallet wallet;
         public UserProfile()
         {
             this.PaymentMethods = new List<PaymentMethod>();
             ExpenseTypes = new List<ExpenseType>();
             this.AddExpenseType("Sin Asignar");
             this.AddExpenseType("Transferencia Interna");
-            this.AddPaymentMethod(new Wallet(new SubWallet("Pesos", new Currency("Pesos"))));
+            wallet = new Wallet(new SubWallet("Pesos", new Currency("Pesos")));
+            wallet.AddSubWallet(new SubWallet("Dolares", new Currency("USD")));
+            wallet.AddSubWallet(new SubWallet("Euros", new Currency("EUR")));
+            this.AddPaymentMethod(wallet);
             this.Alerts = new List<Alert>();
             Alerts.Add(new HighSpendingAlert());
             Alerts.Add(new SavingsTargetAlert());

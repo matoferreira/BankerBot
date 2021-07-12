@@ -71,9 +71,8 @@ namespace Library
             string linea = "";
             foreach (SubWallet subwallet in this.SubWalletList)
             {
-                linea = linea + $"{subwallet.Statement.GetBalance()} {this.Currency.Name} En la Billetera#";
+                linea = linea + $"{subwallet.Statement.GetBalance()} {subwallet.Currency.Name} En la Billetera\n";
             }
-            linea = linea + $"Valor en Pesos del dinero en la billetera: {this.GetBalance()}#";
             return linea;
         }
     }
