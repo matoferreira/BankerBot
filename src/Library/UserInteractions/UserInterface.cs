@@ -18,7 +18,8 @@ namespace Library
         public IStringInput StringImput = Singleton<ConsoleReader>.Instance;
         public IIntInput IntImput = Singleton<IntConsoleReader>.Instance;
         public IExitFormat Output = Singleton<ConsolePrinter>.Instance;
-        private UserProfile profile;
+        protected UserProfile profile;
+        public HandlersList Handlers = new HandlersList();
         public UserInterface()
         {
             this.profile = new UserProfile();
@@ -28,12 +29,14 @@ namespace Library
         {
             Output.PrintLine(
                 "Opciones Posibles: \n" +
-                "1. AgregarPaymentMethod\n" +
+                "1. Agregar Medio de Pago\n" +
                 "2. Cambia Alerta \n" +
                 "3. Mostrar Status \n" +
                 "4. Agregar Movimiento \n" +
                 "5. Ver Analisis de Ahorro \n" +
                 "6. Ver Analisis de Gastos Mensuales \n" +
+                "7. Imprimir Analisis de Ahorro en HTML\n" +
+                "8. Imprimir Analisis de Gastos Mensuales en HTML \n" +
                 "9. Salir \n"
             );
             int x = IntImput.GetInput("Ingrese el número de la opción deseada:");
@@ -70,6 +73,16 @@ namespace Library
                         this.ShowExpensesAnalysis();
                         break;
                     }
+                    case 7:
+                    {
+                        this.ShowSavingsAnalysisinHTML();
+                        break;
+                    }
+                    case 8:
+                    {
+                        this.ShowExpensesAnalysisInHTML();
+                        break;
+                    }
                 case 9:
                     {
                         break;
@@ -79,6 +92,19 @@ namespace Library
                     break;
             }
         }
+
+        private void ShowExpensesAnalysisInHTML()
+        {
+            Handlers.newBankAccountHandler.Handle(new Request("/mostrargastosHTML", profile));
+            this.MainMenu();
+        }
+
+        private void ShowSavingsAnalysisinHTML()
+        {
+            Handlers.newBankAccountHandler.Handle(new Request("/mostrarahorrosHTML", profile));
+            this.MainMenu();
+        }
+
         public void NewPaymentMethod()
         {
             int x = IntImput.GetInput("1. Agregar nueva cuenta bancaria \n2. Agregar nueva tarjeta de Crédito \n3. Agregar nueva billetera");
@@ -86,106 +112,15 @@ namespace Library
             {
                 case 1:
                     {
-                        string nombre = StringImput.GetInput("Ingrese el nombre del banco");
-                        int intmoneda = IntImput.GetInput("Ingrese una Moneda: \n1. USD \n2. EUR \n3. Pesos");
-                        string moneda = "";
-                        switch (intmoneda)
-                        {
-                            case 1:
-                                {
-                                    moneda = "USD";
-                                    break;
-                                }
-                            case 2:
-                                {
-                                    moneda = "EUR";
-                                    break;
-                                }
-                            case 3:
-                                {
-                                    moneda = "Pesos";
-                                    break;
-                                }
-                            default:
-                                {
-                                    Output.PrintLine("Unknown value");
-                                    break;
-                                }
-                        }
-                        Currency currency = new Currency(moneda);
-                        BankAccount banco = new BankAccount(nombre, currency);
-                        double saldo = Convert.ToDouble(IntImput.GetInput("Ingrese el saldo de la cuenta"));
-                        banco.CurrentStatement.AddTransaction("Balance Inicial", saldo, currency, true);
-                        profile.AddPaymentMethod(banco);
+                        Handlers.newBankAccountHandler.Handle(new Request("/agregarcuentabancaria", profile));
                         break;
                     }
 
                 case 2:
                     {
-                        string nombre2 = StringImput.GetInput("Ingrese el nombre de la tarjeta");
-                        int intmoneda2 = IntImput.GetInput("Ingrese una Moneda: \n1. USD \n2. EUR \n3. Pesos");
-                        string moneda2 = "";
-                        switch (intmoneda2)
-                        {
-                            case 1:
-                                {
-                                    moneda2 = "USD";
-                                    break;
-                                }
-                            case 2:
-                                {
-                                    moneda2 = "EUR";
-                                    break;
-                                }
-                            case 3:
-                                {
-                                    moneda2 = "Pesos";
-                                    break;
-                                }
-                            default:
-                                {
-                                    Output.PrintLine("Unknown value");
-                                    break;
-                                }
-                        }
-                        Currency currency2 = new Currency(moneda2);
-                        double limite = IntImput.GetInput("Ingrese el limite de gasto de la tarjeta");
-                        CreditCard tarjeta = new CreditCard(nombre2, currency2, limite);
-                        profile.AddPaymentMethod(tarjeta);
+                        Handlers.newBankAccountHandler.Handle(new Request("/agregartarjeta", profile));
                         break;
                     }
-
-                case 3:
-                    {
-                        int intmoneda3 = IntImput.GetInput("Ingrese la Moneda de la billetera: \n1. USD \n2. EUR \n3. Pesos");
-                        string moneda3 = "";
-                        switch (intmoneda3)
-                        {
-                            case 1:
-                                {
-                                    moneda3 = "USD";
-                                    break;
-                                }
-                            case 2:
-                                {
-                                    moneda3 = "EUR";
-                                    break;
-                                }
-                            case 3:
-                                {
-                                    moneda3 = "Pesos";
-                                    break;
-                                }
-                            default:
-                                {
-                                    Output.PrintLine("Unknown value");
-                                    break;
-                                }
-                        }
-                        Currency currency3 = new Currency(moneda3);
-                        break;
-                    }
-
                 default:
                     Output.PrintLine("Unknown value");
                     break;
@@ -195,29 +130,22 @@ namespace Library
         }
         public void ChangeAlertLevel()
         {
-            Alert alerta;
             int x = IntImput.GetInput("Ingrese la Alerta a cambiar: \n1. Ahorro Mensual \n2. Fondos Bajos \n3. Gastos Altos");
             switch (x)
             {
                 case 3:
                     {
-                        alerta = profile.Alerts.Find(x => x is HighSpendingAlert);
-                        double newLevel = IntImput.GetInput("Ingrese el Limite de gastos mensuales a controlar");
-                        alerta.ChangeLevel(newLevel);
+                        Handlers.newBankAccountHandler.Handle(new Request("/alertagastosmensuales", profile));
                         break;
                     }
                 case 2:
                     {
-                        alerta = profile.Alerts.Find(x => x is LowFundsAlert);
-                        double newLevel = IntImput.GetInput("Ingrese el monto minimo de fondos deseado");
-                        alerta.ChangeLevel(newLevel);
+                        Handlers.newBankAccountHandler.Handle(new Request("/alertabajosfondos", profile));
                         break;
                     }
                 case 1:
                     {
-                        alerta = profile.Alerts.Find(x => x is SavingsTargetAlert);
-                        double newLevel = IntImput.GetInput("Ingrese el monto a ahorrar por mes");
-                        alerta.ChangeLevel(newLevel);
+                        Handlers.newBankAccountHandler.Handle(new Request("/alertadeahorros", profile));
                         break;
                     }
                 default:
@@ -231,34 +159,7 @@ namespace Library
         }
         public void GetStatus()
         {
-            string status = "";
-            profile.Update();
-            foreach (PaymentMethod method in profile.PaymentMethods)
-            {
-                if (typeof(BankAccount).IsInstanceOfType(method))
-                {
-                    status = status + $"Saldo en cuenta bancaria {((BankAccount)method).Name} en {((BankAccount)method).Currency.Name} es {((BankAccount)method).GetBalance()}#";
-                }
-                if (typeof(CreditCard).IsInstanceOfType(method))
-                {
-                    status = status + $"Saldo en {((CreditCard)method).Name} en {method.Currency.Name} es {method.GetBalance()}#";
-                }
-                if (typeof(Wallet).IsInstanceOfType(method))
-                {
-                    status = status + $"Saldo en la billetera es: #";
-                    status = status + ((Wallet)method).GetSavings();
-                
-                }
-            }
-            foreach (Alert item in profile.Alerts)
-            {
-                if (item.IsOn == true)
-                {
-                    status = status + $"{item.Message}#";
-                }
-            }
-            Output.PrintLine(status);
-            Output.PrintLine("------------------------#");
+            Handlers.newBankAccountHandler.Handle(new Request("/estado", profile));
             this.MainMenu();
         }
         public void ShowSavingsAnalysis()
@@ -273,147 +174,22 @@ namespace Library
         }
         public void AddMovement()
         {
-            bool movimiento;
             int y = IntImput.GetInput("Elegir movimiento a agregar: \n1. Ingreso \n2. Gasto \n3. Transferencia Interna");
             switch (y)
             {
                 case 1:
                     {
-                        Output.PrintLine("Elija la cuenta a la que agrega el movimiento:");
-                        foreach (PaymentMethod item in profile.PaymentMethods)
-                        {
-                            Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
-                        }
-                        int z = IntImput.GetInput("Cuenta:");
-                        double monto = IntImput.GetInput($"Ingrese el monto del ingreso");
-                        string concepto = StringImput.GetInput("Escriba el concepto del Ingreso");
-                        int intmoneda3 = IntImput.GetInput("Ingrese la Moneda de la transacción: \n1. USD \n2. EUR \n3. Pesos");
-                        string moneda3 = "";
-                        switch (intmoneda3)
-                        {
-                            case 1:
-                                {
-                                    moneda3 = "USD";
-                                    break;
-                                }
-                            case 2:
-                                {
-                                    moneda3 = "EUR";
-                                    break;
-                                }
-                            case 3:
-                                {
-                                    moneda3 = "Pesos";
-                                    break;
-                                }
-                            default:
-                                {
-                                    Output.PrintLine("Unknown value");
-                                    break;
-                                }
-                        }
-                        Currency currency3 = new Currency(moneda3);
-                        if (typeof(Wallet).IsInstanceOfType(profile.PaymentMethods[z]))
-                        {
-                            ((Wallet)profile.PaymentMethods[z]).SubWalletList.Find(x => x.Currency.Name == currency3.Name).Statement.AddTransaction(concepto, monto, currency3, true);
-                        }
-                        else
-                        {
-                            movimiento = profile.AddMovement(profile.PaymentMethods[z], concepto, monto, currency3, true);
-                        }
-
+                        Handlers.newBankAccountHandler.Handle(new Request("/agregaringreso", profile));
                         break;
                     }
                 case 2:
                     {
-                        Output.PrintLine("Elija la cuenta a la que agrega el gasto:");
-                        foreach (PaymentMethod item in profile.PaymentMethods)
-                        {
-                            Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
-                        }
-                        int z = IntImput.GetInput("Cuenta:");
-                        double monto = Convert.ToDouble(IntImput.GetInput($"Ingrese el monto del gasto"));
-                        string concepto = StringImput.GetInput("Escriba el concepto del gasto");
-                        ExpenseType tipo = new ExpenseType(StringImput.GetInput("Ingrese el tipo del gasto"));
-                        int intmoneda3 = IntImput.GetInput("Ingrese la Moneda de la transacción: \n1. USD \n2. EUR \n3. Pesos");
-                        string moneda3 = "";
-                        switch (intmoneda3)
-                        {
-                            case 1:
-                                {
-                                    moneda3 = "USD";
-                                    break;
-                                }
-                            case 2:
-                                {
-                                    moneda3 = "EUR";
-                                    break;
-                                }
-                            case 3:
-                                {
-                                    moneda3 = "Pesos";
-                                    break;
-                                }
-                            default:
-                                {
-                                    Output.PrintLine("Unknown value");
-                                    break;
-                                }
-                        }
-                        Currency currency3 = new Currency(moneda3);
-                        if (typeof(Wallet).IsInstanceOfType(profile.PaymentMethods[z]))
-                        {
-                            ((Wallet)profile.PaymentMethods[z]).SubWalletList.Find(x => x.Currency.Name == currency3.Name).Statement.AddTransaction(concepto, monto, currency3, false);
-                        }
-                        else
-                        {
-                            profile.PaymentMethods[z].CurrentStatement.AddTransaction(concepto, monto, currency3, false);
-                        }
+                        Handlers.newBankAccountHandler.Handle(new Request("/agregargasto", profile));
                         break;
                     }
                 case 3:
                     {
-                        Output.PrintLine("Elija la cuenta de la que proviene la transferencia:");
-                        foreach (PaymentMethod item in profile.PaymentMethods)
-                        {
-                            Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
-                        }
-                        int z = IntImput.GetInput("Cuenta a debitar:");
-                        int intmoneda3 = IntImput.GetInput("Ingrese la Moneda de la transacción: \n1. USD \n2. EUR \n3. Pesos");
-                        string moneda3 = "";
-                        switch (intmoneda3)
-                        {
-                            case 1:
-                                {
-                                    moneda3 = "USD";
-                                    break;
-                                }
-                            case 2:
-                                {
-                                    moneda3 = "EUR";
-                                    break;
-                                }
-                            case 3:
-                                {
-                                    moneda3 = "Pesos";
-                                    break;
-                                }
-                            default:
-                                {
-                                    Output.PrintLine("Unknown value");
-                                    break;
-                                }
-                        }
-                        Currency currency3 = new Currency(moneda3);
-                        double monto = Convert.ToDouble(IntImput.GetInput($"Ingrese el monto a transferir"));
-                        string concepto = StringImput.GetInput("Escriba el concepto de la transferencia");
-                        Output.PrintLine("Elija la cuenta a la que envía la transferencia:");
-                        foreach (PaymentMethod item in profile.PaymentMethods)
-                        {
-                            Output.PrintLine($"{profile.PaymentMethods.IndexOf(item)}. {item.Name}");
-                        }
-                        int destino = IntImput.GetInput("Cuenta a acreditar:");
-                        profile.MakeInternalTransfer(concepto, monto, currency3, profile.PaymentMethods[z], profile.PaymentMethods[destino]);
+                        Handlers.newBankAccountHandler.Handle(new Request("/agregartransferenciainterna", profile));
                         break;
                     }
                 default:

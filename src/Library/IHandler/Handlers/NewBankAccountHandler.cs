@@ -14,14 +14,10 @@ namespace Library
 
                 Currency currency = new Currency(moneda);
                 BankAccount newAccount = new BankAccount(name, currency);
-                
-                int balance = Convert.ToInt32(StringImput.GetInput("Ingrese el saldo de la cuenta:"));
-                newAccount.CurrentStatement.ChangeBalance(balance);
-            
+                double balance = Convert.ToDouble(StringImput.GetInput("Ingrese el saldo de la cuenta:"));
+                Transactions trans = newAccount.CurrentStatement.AddTransaction("Balance Inicial", balance, currency, true);
                 request.Profile.AddPaymentMethod(newAccount);
-                Output.PrintLine("Medio de pago agregado con éxito.");
-
-                base.Handle(request);
+                Output.PrintLine("Medio de pago agregado con exito.");
             }
             else
             {

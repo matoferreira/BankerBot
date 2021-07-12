@@ -19,7 +19,7 @@ namespace Library
     {
         public override void Handle(Request request)
         {
-            if (request.Content == "/mostrargastos")
+            if (request.Content == "/mostrargastosHTML")
             {
                 double total = 0;
                 HtmlDocument doc = new HtmlDocument("AnalisisdeGastos.html", "BankerBot");
